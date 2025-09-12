@@ -1,0 +1,582 @@
+openapi: 3.0.0
+info:
+  description: API for interacting with the Chapar shipping service.
+  title: Chapar Customer API
+  version: 1.0.0
+servers:
+- url: https://app.krch.ir/v1
+paths:
+  /get_quote:
+    post:
+      operationId: getQuote
+      parameters:
+      - explode: false
+        in: header
+        name: APP-AUTH
+        required: true
+        schema:
+          example: aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/getQuote_request"
+      responses:
+        "200":
+          description: Successful operation
+      summary: Get a shipping quote.
+  /bulk_import:
+    post:
+      operationId: bulkImport
+      parameters:
+      - explode: false
+        in: header
+        name: APP-AUTH
+        required: true
+        schema:
+          example: aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/bulkImport_request"
+      responses:
+        "200":
+          description: Successful operation
+      summary: Import multiple shipments at once.
+  /tracking:
+    post:
+      operationId: tracking
+      parameters:
+      - explode: false
+        in: header
+        name: APP-AUTH
+        required: true
+        schema:
+          example: aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/tracking_request"
+      responses:
+        "200":
+          description: Successful operation
+      summary: Track shipments.
+  /history_report:
+    post:
+      operationId: historyReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HistoryReportRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HistoryReportResponse"
+          description: Successful operation
+      summary: This method is used to receive information for each of the registered
+        products.
+  /bulk_history_report:
+    post:
+      operationId: bulkHistoryReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BulkHistoryReportRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BulkHistoryReportResponse"
+          description: Successful operation
+      summary: "Receive tracking information for N consignments in a single report.\
+        \ With this method, you can retrieve the tracking information for one or several\
+        \ bills of lading."
+  /cancel_pickup:
+    post:
+      operationId: cancelPickup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CancelPickupRequest"
+      responses:
+        "200":
+          description: Successful operation
+      summary: This method is used to cancel an order.
+  /get_state:
+    get:
+      operationId: getState
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetStateResponse"
+          description: Successful operation
+      summary: This method is used to receive the list of provinces covered by the
+        Chapar company.
+  /get_city:
+    post:
+      operationId: getCity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetCityRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCityResponse"
+          description: Successful operation
+      summary: Use this method to receive the list of cities covered by the Chapar
+        company.
+components:
+  schemas:
+    HistoryReportRequest:
+      example:
+        date:
+          from: 25-09 -2017
+          to: 10-10 -2017
+        maximum_records: 10
+        user:
+          password: "1234"
+          username: test
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        date:
+          $ref: "#/components/schemas/HistoryReportRequest_date"
+        maximum_records:
+          example: 10
+          type: integer
+      type: object
+    HistoryReportResponse:
+      example:
+        receiver:
+          address: تهران تستی برای تست
+          city: تهران
+          person: تست سعید
+          post_code: post_code
+          mobile: "09360950049"
+          company: company
+          telephone: "02144444444"
+        financial:
+          extra_charge: "0"
+          delivery_charge: "108945"
+          pack_charge: "0"
+          cod_value: 0
+          insurance_charge: "15000"
+          total_charge: 136450
+          vat_charge: "12505"
+        cn:
+          date: 2020-06-17 14:20:00
+          delivery_date: 2020-06-20 13:58:08
+          payment_term: "0"
+          service: "1"
+          last_status: OK
+          delivery_person: تست سعید
+          weight: "0.001"
+          change_state_url: http://foo.bar.com/on-status-changed
+          tracking: "54100004430041101"
+          value: "0"
+          assinged_pieces: "4"
+        history:
+        - date: 2020-06-20 13:58:08
+          status_note: بار به صورت صحیح و سالم تحویل شد
+          timestamp_date: 1592645288
+          status: OK
+        - date: 2020-06-20 13:58:08
+          status_note: بار به صورت صحیح و سالم تحویل شد
+          timestamp_date: 1592645288
+          status: OK
+      properties:
+        cn:
+          $ref: "#/components/schemas/ConsignmentNote"
+        receiver:
+          $ref: "#/components/schemas/ReceiverInfo"
+        financial:
+          $ref: "#/components/schemas/FinancialInfo"
+        history:
+          items:
+            $ref: "#/components/schemas/HistoryEvent"
+          type: array
+      type: object
+    BulkHistoryReportRequest:
+      example:
+        bulk:
+        - "54100003992527101"
+        - "54100003992527101"
+        user:
+          password: "1234"
+          username: test
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        bulk:
+          items:
+            example: "54100003992527101"
+            type: string
+          type: array
+      type: object
+    BulkHistoryReportResponse:
+      example:
+        history:
+        - date: 2020-07-19
+          reference: "123"
+          status_note: بار در سیستم ورود اطلاعات شد
+          time: 01:26
+          tracking: "54100004430128101"
+          status: D01
+        - date: 2020-07-19
+          reference: "123"
+          status_note: بار در سیستم ورود اطلاعات شد
+          time: 01:26
+          tracking: "54100004430128101"
+          status: D01
+      properties:
+        history:
+          items:
+            $ref: "#/components/schemas/BulkHistoryEvent"
+          type: array
+      type: object
+    CancelPickupRequest:
+      example:
+        reason: آزمایشی
+        consignment_no: "54100004430041101"
+        user:
+          password: "1234"
+          username: test
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        consignment_no:
+          example: "54100004430041101"
+          type: string
+        reason:
+          example: آزمایشی
+          type: string
+      type: object
+    GetStateResponse:
+      example:
+        state:
+        - "false": "1"
+          name: آذربایجان شرقی
+        - "false": "1"
+          name: آذربایجان شرقی
+      properties:
+        state:
+          items:
+            $ref: "#/components/schemas/State"
+          type: array
+      type: object
+    GetCityRequest:
+      example:
+        state:
+          "false": 9
+      properties:
+        state:
+          $ref: "#/components/schemas/GetCityRequest_state"
+      type: object
+    GetCityResponse:
+      example:
+        objects:
+          city:
+          - "false": "11907"
+            name: آرين شهر
+            state_no: "9"
+          - "false": "11907"
+            name: آرين شهر
+            state_no: "9"
+          selected: "{}"
+      properties:
+        objects:
+          $ref: "#/components/schemas/GetCityResponse_objects"
+      type: object
+    User:
+      example:
+        password: "1234"
+        username: test
+      properties:
+        username:
+          example: test
+          type: string
+        password:
+          example: "1234"
+          type: string
+      type: object
+    ConsignmentNote:
+      example:
+        date: 2020-06-17 14:20:00
+        delivery_date: 2020-06-20 13:58:08
+        payment_term: "0"
+        service: "1"
+        last_status: OK
+        delivery_person: تست سعید
+        weight: "0.001"
+        change_state_url: http://foo.bar.com/on-status-changed
+        tracking: "54100004430041101"
+        value: "0"
+        assinged_pieces: "4"
+      properties:
+        tracking:
+          example: "54100004430041101"
+          type: string
+        date:
+          example: 2020-06-17 14:20:00
+          type: string
+        assinged_pieces:
+          example: "4"
+          type: string
+        weight:
+          example: "0.001"
+          type: string
+        service:
+          example: "1"
+          type: string
+        value:
+          example: "0"
+          type: string
+        payment_term:
+          example: "0"
+          type: string
+        last_status:
+          example: OK
+          type: string
+        delivery_date:
+          example: 2020-06-20 13:58:08
+          type: string
+        delivery_person:
+          example: تست سعید
+          type: string
+        change_state_url:
+          example: http://foo.bar.com/on-status-changed
+          type: string
+      type: object
+    ReceiverInfo:
+      example:
+        address: تهران تستی برای تست
+        city: تهران
+        person: تست سعید
+        post_code: post_code
+        mobile: "09360950049"
+        company: company
+        telephone: "02144444444"
+      properties:
+        person:
+          example: تست سعید
+          type: string
+        company:
+          nullable: true
+          type: string
+        city:
+          example: تهران
+          type: string
+        telephone:
+          example: "02144444444"
+          type: string
+        mobile:
+          example: "09360950049"
+          type: string
+        address:
+          example: تهران تستی برای تست
+          type: string
+        post_code:
+          nullable: true
+          type: string
+      type: object
+    FinancialInfo:
+      example:
+        extra_charge: "0"
+        delivery_charge: "108945"
+        pack_charge: "0"
+        cod_value: 0
+        insurance_charge: "15000"
+        total_charge: 136450
+        vat_charge: "12505"
+      properties:
+        delivery_charge:
+          example: "108945"
+          type: string
+        insurance_charge:
+          example: "15000"
+          type: string
+        vat_charge:
+          example: "12505"
+          type: string
+        pack_charge:
+          example: "0"
+          type: string
+        extra_charge:
+          example: "0"
+          type: string
+        cod_value:
+          example: 0
+          type: integer
+        total_charge:
+          example: 136450
+          type: integer
+      type: object
+    HistoryEvent:
+      example:
+        date: 2020-06-20 13:58:08
+        status_note: بار به صورت صحیح و سالم تحویل شد
+        timestamp_date: 1592645288
+        status: OK
+      properties:
+        timestamp_date:
+          example: 1592645288
+          type: integer
+        date:
+          example: 2020-06-20 13:58:08
+          type: string
+        status:
+          example: OK
+          type: string
+        status_note:
+          example: بار به صورت صحیح و سالم تحویل شد
+          type: string
+      type: object
+    BulkHistoryEvent:
+      example:
+        date: 2020-07-19
+        reference: "123"
+        status_note: بار در سیستم ورود اطلاعات شد
+        time: 01:26
+        tracking: "54100004430128101"
+        status: D01
+      properties:
+        time:
+          example: 01:26
+          type: string
+        date:
+          example: 2020-07-19
+          type: string
+        status:
+          example: D01
+          type: string
+        status_note:
+          example: بار در سیستم ورود اطلاعات شد
+          type: string
+        tracking:
+          example: "54100004430128101"
+          type: string
+        reference:
+          example: "123"
+          type: string
+      type: object
+    State:
+      example:
+        "false": "1"
+        name: آذربایجان شرقی
+      properties:
+        "false":
+          example: "1"
+          type: string
+        name:
+          example: آذربایجان شرقی
+          type: string
+      type: object
+    City:
+      example:
+        "false": "11907"
+        name: آرين شهر
+        state_no: "9"
+      properties:
+        state_no:
+          example: "9"
+          type: string
+        "false":
+          example: "11907"
+          type: string
+        name:
+          example: آرين شهر
+          type: string
+      type: object
+    getQuote_request:
+      properties:
+        input:
+          example: "{\"order\":{\"origin\":\"10866\",\"destination\":\"10866\",\"\
+            weight\":\"1\",\"value\":\"2000000\",\"method\":\"1\",\"sender_code\"\
+            :\"1000\",\"receiver_code\":\"1000\",\"cod\":\"0\"}}"
+          type: string
+      type: object
+    bulkImport_request:
+      properties:
+        input:
+          example: "{\"user\":{\"username\":\"8888\",\"password\":\"8888\"},\"bulk\"\
+            :[{\"cn\":{\"reference\":\"76498\",\"date\":\"9/28/2021\",\"assinged_pieces\"\
+            :0,\"service\":\"1\",\"value\":\"1\",\"payment_term\":0,\"weight\":0.66,\"\
+            content\":\"\",\"note\":\"\",\"inv_value\": 0},\"sender\":{\"person\"\
+            :\"Dandanet\",\"company\":\"Dandanet\",\"city_no\":\"10866\",\"telephone\"\
+            :\"02166948060\",\"mobile\":\"09123181638\",\"email\":\"info@dandanet.com\"\
+            ,\"address\":\"تهران، خیابان آزادی، نبش اسکندری شمالی، ساختمان 241، طب\
+            قه 12، واحد 4\",\"postcode\":\"1419934964\"},\"receiver\":{\"person\"\
+            :\"دکتر سیمین عظیمی\",\"company\":\"\",\"city_no\":\"11347\",\"telephone\"\
+            :\"\",\"mobile\":\"09352951989\",\"email\":\"dr_simin.azimi@yahoo.com\"\
+            ,\"address\":\"خیابان امام خمینی ۹،پلاک ۹۹\",\"post_code\":\"\"}}]}"
+          type: string
+        signature:
+          format: binary
+          type: string
+      type: object
+    tracking_request:
+      properties:
+        input:
+          example: "{\"order\":{\"reference\":[\"54100006968781101\"],\"lang\":\"\
+            fa\"}}"
+          type: string
+      type: object
+    HistoryReportRequest_date:
+      example:
+        from: 25-09 -2017
+        to: 10-10 -2017
+      properties:
+        from:
+          example: 25-09 -2017
+          type: string
+        to:
+          example: 10-10 -2017
+          type: string
+      type: object
+    GetCityRequest_state:
+      example:
+        "false": 9
+      properties:
+        "false":
+          example: 9
+          type: integer
+      type: object
+    GetCityResponse_objects:
+      example:
+        city:
+        - "false": "11907"
+          name: آرين شهر
+          state_no: "9"
+        - "false": "11907"
+          name: آرين شهر
+          state_no: "9"
+        selected: "{}"
+      properties:
+        city:
+          items:
+            $ref: "#/components/schemas/City"
+          type: array
+        selected:
+          nullable: true
+          type: object
+      type: object
