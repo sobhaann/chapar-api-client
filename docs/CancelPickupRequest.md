@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | Pointer to [**User**](User.md) |  | [optional] 
-**ConsignmentNo** | Pointer to **string** |  | [optional] 
+**User** | [**User**](User.md) |  | 
+**ConsignmentNo** | **string** |  | 
 **Reason** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCancelPickupRequest
 
-`func NewCancelPickupRequest() *CancelPickupRequest`
+`func NewCancelPickupRequest(user User, consignmentNo string, ) *CancelPickupRequest`
 
 NewCancelPickupRequest instantiates a new CancelPickupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetUser sets User field to given value.
 
-### HasUser
-
-`func (o *CancelPickupRequest) HasUser() bool`
-
-HasUser returns a boolean if a field has been set.
 
 ### GetConsignmentNo
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetConsignmentNo sets ConsignmentNo field to given value.
 
-### HasConsignmentNo
-
-`func (o *CancelPickupRequest) HasConsignmentNo() bool`
-
-HasConsignmentNo returns a boolean if a field has been set.
 
 ### GetReason
 

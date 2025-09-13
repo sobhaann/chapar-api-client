@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -12,24 +12,30 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the HistoryReportRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &HistoryReportRequest{}
 
-// HistoryReportRequest struct for HistoryReportRequest
+// HistoryReportRequest The main payload for history report, to be sent as a stringified JSON in the 'input' field.
 type HistoryReportRequest struct {
-	User *User `json:"user,omitempty"`
-	Date *HistoryReportRequestDate `json:"date,omitempty"`
+	User User `json:"user"`
+	Date HistoryReportRequestDate `json:"date"`
 	MaximumRecords *int32 `json:"maximum_records,omitempty"`
 }
+
+type _HistoryReportRequest HistoryReportRequest
 
 // NewHistoryReportRequest instantiates a new HistoryReportRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHistoryReportRequest() *HistoryReportRequest {
+func NewHistoryReportRequest(user User, date HistoryReportRequestDate) *HistoryReportRequest {
 	this := HistoryReportRequest{}
+	this.User = user
+	this.Date = date
 	return &this
 }
 
@@ -41,68 +47,52 @@ func NewHistoryReportRequestWithDefaults() *HistoryReportRequest {
 	return &this
 }
 
-// GetUser returns the User field value if set, zero value otherwise.
+// GetUser returns the User field value
 func (o *HistoryReportRequest) GetUser() User {
-	if o == nil || IsNil(o.User) {
+	if o == nil {
 		var ret User
 		return ret
 	}
-	return *o.User
+
+	return o.User
 }
 
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *HistoryReportRequest) GetUserOk() (*User, bool) {
-	if o == nil || IsNil(o.User) {
+	if o == nil {
 		return nil, false
 	}
-	return o.User, true
+	return &o.User, true
 }
 
-// HasUser returns a boolean if a field has been set.
-func (o *HistoryReportRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given User and assigns it to the User field.
+// SetUser sets field value
 func (o *HistoryReportRequest) SetUser(v User) {
-	o.User = &v
+	o.User = v
 }
 
-// GetDate returns the Date field value if set, zero value otherwise.
+// GetDate returns the Date field value
 func (o *HistoryReportRequest) GetDate() HistoryReportRequestDate {
-	if o == nil || IsNil(o.Date) {
+	if o == nil {
 		var ret HistoryReportRequestDate
 		return ret
 	}
-	return *o.Date
+
+	return o.Date
 }
 
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
+// GetDateOk returns a tuple with the Date field value
 // and a boolean to check if the value has been set.
 func (o *HistoryReportRequest) GetDateOk() (*HistoryReportRequestDate, bool) {
-	if o == nil || IsNil(o.Date) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Date, true
+	return &o.Date, true
 }
 
-// HasDate returns a boolean if a field has been set.
-func (o *HistoryReportRequest) HasDate() bool {
-	if o != nil && !IsNil(o.Date) {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given HistoryReportRequestDate and assigns it to the Date field.
+// SetDate sets field value
 func (o *HistoryReportRequest) SetDate(v HistoryReportRequestDate) {
-	o.Date = &v
+	o.Date = v
 }
 
 // GetMaximumRecords returns the MaximumRecords field value if set, zero value otherwise.
@@ -147,16 +137,50 @@ func (o HistoryReportRequest) MarshalJSON() ([]byte, error) {
 
 func (o HistoryReportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
-		toSerialize["user"] = o.User
-	}
-	if !IsNil(o.Date) {
-		toSerialize["date"] = o.Date
-	}
+	toSerialize["user"] = o.User
+	toSerialize["date"] = o.Date
 	if !IsNil(o.MaximumRecords) {
 		toSerialize["maximum_records"] = o.MaximumRecords
 	}
 	return toSerialize, nil
+}
+
+func (o *HistoryReportRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"user",
+		"date",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHistoryReportRequest := _HistoryReportRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHistoryReportRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HistoryReportRequest(varHistoryReportRequest)
+
+	return err
 }
 
 type NullableHistoryReportRequest struct {

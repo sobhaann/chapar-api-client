@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**GetCityRequestState**](GetCityRequestState.md) |  | [optional] 
+**StateNo** | **string** |  | 
 
 ## Methods
 
 ### NewGetCityRequest
 
-`func NewGetCityRequest() *GetCityRequest`
+`func NewGetCityRequest(stateNo string, ) *GetCityRequest`
 
 NewGetCityRequest instantiates a new GetCityRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,30 +25,25 @@ NewGetCityRequestWithDefaults instantiates a new GetCityRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetState
+### GetStateNo
 
-`func (o *GetCityRequest) GetState() GetCityRequestState`
+`func (o *GetCityRequest) GetStateNo() string`
 
-GetState returns the State field if non-nil, zero value otherwise.
+GetStateNo returns the StateNo field if non-nil, zero value otherwise.
 
-### GetStateOk
+### GetStateNoOk
 
-`func (o *GetCityRequest) GetStateOk() (*GetCityRequestState, bool)`
+`func (o *GetCityRequest) GetStateNoOk() (*string, bool)`
 
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+GetStateNoOk returns a tuple with the StateNo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetState
+### SetStateNo
 
-`func (o *GetCityRequest) SetState(v GetCityRequestState)`
+`func (o *GetCityRequest) SetStateNo(v string)`
 
-SetState sets State field to given value.
+SetStateNo sets StateNo field to given value.
 
-### HasState
-
-`func (o *GetCityRequest) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

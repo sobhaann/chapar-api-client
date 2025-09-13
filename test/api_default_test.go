@@ -11,10 +11,11 @@ package chapar
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sobhaann/chapar-api-client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/user/chapar"
 )
 
 func Test_chapar_DefaultAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService BulkHistoryReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.BulkHistoryReport(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService BulkImport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.BulkImport(context.Background()).Execute()
 
@@ -47,7 +48,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService CancelPickup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.CancelPickup(context.Background()).Execute()
 
@@ -58,7 +59,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetCity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetCity(context.Background()).Execute()
 
@@ -70,7 +71,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetQuote", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.GetQuote(context.Background()).Execute()
 
@@ -81,7 +82,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetState", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetState(context.Background()).Execute()
 
@@ -93,7 +94,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService HistoryReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.HistoryReport(context.Background()).Execute()
 
@@ -105,7 +106,7 @@ func Test_chapar_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService Tracking", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.Tracking(context.Background()).Execute()
 

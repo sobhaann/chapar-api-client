@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | Pointer to [**User**](User.md) |  | [optional] 
-**Date** | Pointer to [**HistoryReportRequestDate**](HistoryReportRequestDate.md) |  | [optional] 
+**User** | [**User**](User.md) |  | 
+**Date** | [**HistoryReportRequestDate**](HistoryReportRequestDate.md) |  | 
 **MaximumRecords** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
 ### NewHistoryReportRequest
 
-`func NewHistoryReportRequest() *HistoryReportRequest`
+`func NewHistoryReportRequest(user User, date HistoryReportRequestDate, ) *HistoryReportRequest`
 
 NewHistoryReportRequest instantiates a new HistoryReportRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetUser sets User field to given value.
 
-### HasUser
-
-`func (o *HistoryReportRequest) HasUser() bool`
-
-HasUser returns a boolean if a field has been set.
 
 ### GetDate
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetDate sets Date field to given value.
 
-### HasDate
-
-`func (o *HistoryReportRequest) HasDate() bool`
-
-HasDate returns a boolean if a field has been set.
 
 ### GetMaximumRecords
 

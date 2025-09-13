@@ -1,0 +1,134 @@
+# HistoryReportData
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Cn** | Pointer to [**ConsignmentNote**](ConsignmentNote.md) |  | [optional] 
+**Receiver** | Pointer to [**ReceiverInfo**](ReceiverInfo.md) |  | [optional] 
+**Financial** | Pointer to [**FinancialInfo**](FinancialInfo.md) |  | [optional] 
+**History** | Pointer to [**[]HistoryEvent**](HistoryEvent.md) |  | [optional] 
+
+## Methods
+
+### NewHistoryReportData
+
+`func NewHistoryReportData() *HistoryReportData`
+
+NewHistoryReportData instantiates a new HistoryReportData object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewHistoryReportDataWithDefaults
+
+`func NewHistoryReportDataWithDefaults() *HistoryReportData`
+
+NewHistoryReportDataWithDefaults instantiates a new HistoryReportData object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetCn
+
+`func (o *HistoryReportData) GetCn() ConsignmentNote`
+
+GetCn returns the Cn field if non-nil, zero value otherwise.
+
+### GetCnOk
+
+`func (o *HistoryReportData) GetCnOk() (*ConsignmentNote, bool)`
+
+GetCnOk returns a tuple with the Cn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCn
+
+`func (o *HistoryReportData) SetCn(v ConsignmentNote)`
+
+SetCn sets Cn field to given value.
+
+### HasCn
+
+`func (o *HistoryReportData) HasCn() bool`
+
+HasCn returns a boolean if a field has been set.
+
+### GetReceiver
+
+`func (o *HistoryReportData) GetReceiver() ReceiverInfo`
+
+GetReceiver returns the Receiver field if non-nil, zero value otherwise.
+
+### GetReceiverOk
+
+`func (o *HistoryReportData) GetReceiverOk() (*ReceiverInfo, bool)`
+
+GetReceiverOk returns a tuple with the Receiver field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReceiver
+
+`func (o *HistoryReportData) SetReceiver(v ReceiverInfo)`
+
+SetReceiver sets Receiver field to given value.
+
+### HasReceiver
+
+`func (o *HistoryReportData) HasReceiver() bool`
+
+HasReceiver returns a boolean if a field has been set.
+
+### GetFinancial
+
+`func (o *HistoryReportData) GetFinancial() FinancialInfo`
+
+GetFinancial returns the Financial field if non-nil, zero value otherwise.
+
+### GetFinancialOk
+
+`func (o *HistoryReportData) GetFinancialOk() (*FinancialInfo, bool)`
+
+GetFinancialOk returns a tuple with the Financial field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinancial
+
+`func (o *HistoryReportData) SetFinancial(v FinancialInfo)`
+
+SetFinancial sets Financial field to given value.
+
+### HasFinancial
+
+`func (o *HistoryReportData) HasFinancial() bool`
+
+HasFinancial returns a boolean if a field has been set.
+
+### GetHistory
+
+`func (o *HistoryReportData) GetHistory() []HistoryEvent`
+
+GetHistory returns the History field if non-nil, zero value otherwise.
+
+### GetHistoryOk
+
+`func (o *HistoryReportData) GetHistoryOk() (*[]HistoryEvent, bool)`
+
+GetHistoryOk returns a tuple with the History field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHistory
+
+`func (o *HistoryReportData) SetHistory(v []HistoryEvent)`
+
+SetHistory sets History field to given value.
+
+### HasHistory
+
+`func (o *HistoryReportData) HasHistory() bool`
+
+HasHistory returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

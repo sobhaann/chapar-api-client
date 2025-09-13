@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -19,10 +19,9 @@ var _ MappedNullable = &HistoryReportResponse{}
 
 // HistoryReportResponse struct for HistoryReportResponse
 type HistoryReportResponse struct {
-	Cn *ConsignmentNote `json:"cn,omitempty"`
-	Receiver *ReceiverInfo `json:"receiver,omitempty"`
-	Financial *FinancialInfo `json:"financial,omitempty"`
-	History []HistoryEvent `json:"history,omitempty"`
+	Success *bool `json:"success,omitempty"`
+	Data *HistoryReportData `json:"data,omitempty"`
+	Message NullableString `json:"message,omitempty"`
 }
 
 // NewHistoryReportResponse instantiates a new HistoryReportResponse object
@@ -42,132 +41,110 @@ func NewHistoryReportResponseWithDefaults() *HistoryReportResponse {
 	return &this
 }
 
-// GetCn returns the Cn field value if set, zero value otherwise.
-func (o *HistoryReportResponse) GetCn() ConsignmentNote {
-	if o == nil || IsNil(o.Cn) {
-		var ret ConsignmentNote
+// GetSuccess returns the Success field value if set, zero value otherwise.
+func (o *HistoryReportResponse) GetSuccess() bool {
+	if o == nil || IsNil(o.Success) {
+		var ret bool
 		return ret
 	}
-	return *o.Cn
+	return *o.Success
 }
 
-// GetCnOk returns a tuple with the Cn field value if set, nil otherwise
+// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportResponse) GetCnOk() (*ConsignmentNote, bool) {
-	if o == nil || IsNil(o.Cn) {
+func (o *HistoryReportResponse) GetSuccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
-	return o.Cn, true
+	return o.Success, true
 }
 
-// HasCn returns a boolean if a field has been set.
-func (o *HistoryReportResponse) HasCn() bool {
-	if o != nil && !IsNil(o.Cn) {
+// HasSuccess returns a boolean if a field has been set.
+func (o *HistoryReportResponse) HasSuccess() bool {
+	if o != nil && !IsNil(o.Success) {
 		return true
 	}
 
 	return false
 }
 
-// SetCn gets a reference to the given ConsignmentNote and assigns it to the Cn field.
-func (o *HistoryReportResponse) SetCn(v ConsignmentNote) {
-	o.Cn = &v
+// SetSuccess gets a reference to the given bool and assigns it to the Success field.
+func (o *HistoryReportResponse) SetSuccess(v bool) {
+	o.Success = &v
 }
 
-// GetReceiver returns the Receiver field value if set, zero value otherwise.
-func (o *HistoryReportResponse) GetReceiver() ReceiverInfo {
-	if o == nil || IsNil(o.Receiver) {
-		var ret ReceiverInfo
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *HistoryReportResponse) GetData() HistoryReportData {
+	if o == nil || IsNil(o.Data) {
+		var ret HistoryReportData
 		return ret
 	}
-	return *o.Receiver
+	return *o.Data
 }
 
-// GetReceiverOk returns a tuple with the Receiver field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportResponse) GetReceiverOk() (*ReceiverInfo, bool) {
-	if o == nil || IsNil(o.Receiver) {
+func (o *HistoryReportResponse) GetDataOk() (*HistoryReportData, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
-	return o.Receiver, true
+	return o.Data, true
 }
 
-// HasReceiver returns a boolean if a field has been set.
-func (o *HistoryReportResponse) HasReceiver() bool {
-	if o != nil && !IsNil(o.Receiver) {
+// HasData returns a boolean if a field has been set.
+func (o *HistoryReportResponse) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
 	return false
 }
 
-// SetReceiver gets a reference to the given ReceiverInfo and assigns it to the Receiver field.
-func (o *HistoryReportResponse) SetReceiver(v ReceiverInfo) {
-	o.Receiver = &v
+// SetData gets a reference to the given HistoryReportData and assigns it to the Data field.
+func (o *HistoryReportResponse) SetData(v HistoryReportData) {
+	o.Data = &v
 }
 
-// GetFinancial returns the Financial field value if set, zero value otherwise.
-func (o *HistoryReportResponse) GetFinancial() FinancialInfo {
-	if o == nil || IsNil(o.Financial) {
-		var ret FinancialInfo
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HistoryReportResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.Financial
+	return *o.Message.Get()
 }
 
-// GetFinancialOk returns a tuple with the Financial field value if set, nil otherwise
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportResponse) GetFinancialOk() (*FinancialInfo, bool) {
-	if o == nil || IsNil(o.Financial) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *HistoryReportResponse) GetMessageOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Financial, true
+	return o.Message.Get(), o.Message.IsSet()
 }
 
-// HasFinancial returns a boolean if a field has been set.
-func (o *HistoryReportResponse) HasFinancial() bool {
-	if o != nil && !IsNil(o.Financial) {
+// HasMessage returns a boolean if a field has been set.
+func (o *HistoryReportResponse) HasMessage() bool {
+	if o != nil && o.Message.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFinancial gets a reference to the given FinancialInfo and assigns it to the Financial field.
-func (o *HistoryReportResponse) SetFinancial(v FinancialInfo) {
-	o.Financial = &v
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+func (o *HistoryReportResponse) SetMessage(v string) {
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *HistoryReportResponse) SetMessageNil() {
+	o.Message.Set(nil)
 }
 
-// GetHistory returns the History field value if set, zero value otherwise.
-func (o *HistoryReportResponse) GetHistory() []HistoryEvent {
-	if o == nil || IsNil(o.History) {
-		var ret []HistoryEvent
-		return ret
-	}
-	return o.History
-}
-
-// GetHistoryOk returns a tuple with the History field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HistoryReportResponse) GetHistoryOk() ([]HistoryEvent, bool) {
-	if o == nil || IsNil(o.History) {
-		return nil, false
-	}
-	return o.History, true
-}
-
-// HasHistory returns a boolean if a field has been set.
-func (o *HistoryReportResponse) HasHistory() bool {
-	if o != nil && !IsNil(o.History) {
-		return true
-	}
-
-	return false
-}
-
-// SetHistory gets a reference to the given []HistoryEvent and assigns it to the History field.
-func (o *HistoryReportResponse) SetHistory(v []HistoryEvent) {
-	o.History = v
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *HistoryReportResponse) UnsetMessage() {
+	o.Message.Unset()
 }
 
 func (o HistoryReportResponse) MarshalJSON() ([]byte, error) {
@@ -180,17 +157,14 @@ func (o HistoryReportResponse) MarshalJSON() ([]byte, error) {
 
 func (o HistoryReportResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Cn) {
-		toSerialize["cn"] = o.Cn
+	if !IsNil(o.Success) {
+		toSerialize["success"] = o.Success
 	}
-	if !IsNil(o.Receiver) {
-		toSerialize["receiver"] = o.Receiver
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.Financial) {
-		toSerialize["financial"] = o.Financial
-	}
-	if !IsNil(o.History) {
-		toSerialize["history"] = o.History
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
 	}
 	return toSerialize, nil
 }

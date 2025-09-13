@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */

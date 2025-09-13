@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -19,7 +19,9 @@ var _ MappedNullable = &BulkHistoryReportResponse{}
 
 // BulkHistoryReportResponse struct for BulkHistoryReportResponse
 type BulkHistoryReportResponse struct {
-	History []BulkHistoryEvent `json:"history,omitempty"`
+	Success *bool `json:"success,omitempty"`
+	Data *BulkHistoryReportData `json:"data,omitempty"`
+	Message NullableString `json:"message,omitempty"`
 }
 
 // NewBulkHistoryReportResponse instantiates a new BulkHistoryReportResponse object
@@ -39,36 +41,110 @@ func NewBulkHistoryReportResponseWithDefaults() *BulkHistoryReportResponse {
 	return &this
 }
 
-// GetHistory returns the History field value if set, zero value otherwise.
-func (o *BulkHistoryReportResponse) GetHistory() []BulkHistoryEvent {
-	if o == nil || IsNil(o.History) {
-		var ret []BulkHistoryEvent
+// GetSuccess returns the Success field value if set, zero value otherwise.
+func (o *BulkHistoryReportResponse) GetSuccess() bool {
+	if o == nil || IsNil(o.Success) {
+		var ret bool
 		return ret
 	}
-	return o.History
+	return *o.Success
 }
 
-// GetHistoryOk returns a tuple with the History field value if set, nil otherwise
+// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkHistoryReportResponse) GetHistoryOk() ([]BulkHistoryEvent, bool) {
-	if o == nil || IsNil(o.History) {
+func (o *BulkHistoryReportResponse) GetSuccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
-	return o.History, true
+	return o.Success, true
 }
 
-// HasHistory returns a boolean if a field has been set.
-func (o *BulkHistoryReportResponse) HasHistory() bool {
-	if o != nil && !IsNil(o.History) {
+// HasSuccess returns a boolean if a field has been set.
+func (o *BulkHistoryReportResponse) HasSuccess() bool {
+	if o != nil && !IsNil(o.Success) {
 		return true
 	}
 
 	return false
 }
 
-// SetHistory gets a reference to the given []BulkHistoryEvent and assigns it to the History field.
-func (o *BulkHistoryReportResponse) SetHistory(v []BulkHistoryEvent) {
-	o.History = v
+// SetSuccess gets a reference to the given bool and assigns it to the Success field.
+func (o *BulkHistoryReportResponse) SetSuccess(v bool) {
+	o.Success = &v
+}
+
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *BulkHistoryReportResponse) GetData() BulkHistoryReportData {
+	if o == nil || IsNil(o.Data) {
+		var ret BulkHistoryReportData
+		return ret
+	}
+	return *o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkHistoryReportResponse) GetDataOk() (*BulkHistoryReportData, bool) {
+	if o == nil || IsNil(o.Data) {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// HasData returns a boolean if a field has been set.
+func (o *BulkHistoryReportResponse) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given BulkHistoryReportData and assigns it to the Data field.
+func (o *BulkHistoryReportResponse) SetData(v BulkHistoryReportData) {
+	o.Data = &v
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BulkHistoryReportResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Message.Get()
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BulkHistoryReportResponse) GetMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Message.Get(), o.Message.IsSet()
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *BulkHistoryReportResponse) HasMessage() bool {
+	if o != nil && o.Message.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+func (o *BulkHistoryReportResponse) SetMessage(v string) {
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *BulkHistoryReportResponse) SetMessageNil() {
+	o.Message.Set(nil)
+}
+
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *BulkHistoryReportResponse) UnsetMessage() {
+	o.Message.Unset()
 }
 
 func (o BulkHistoryReportResponse) MarshalJSON() ([]byte, error) {
@@ -81,8 +157,14 @@ func (o BulkHistoryReportResponse) MarshalJSON() ([]byte, error) {
 
 func (o BulkHistoryReportResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.History) {
-		toSerialize["history"] = o.History
+	if !IsNil(o.Success) {
+		toSerialize["success"] = o.Success
+	}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
 	}
 	return toSerialize, nil
 }

@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**[]State**](State.md) |  | [optional] 
+**Success** | Pointer to **bool** |  | [optional] 
+**Data** | Pointer to [**GetStateData**](GetStateData.md) |  | [optional] 
+**Message** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -25,31 +27,91 @@ NewGetStateResponseWithDefaults instantiates a new GetStateResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetState
+### GetSuccess
 
-`func (o *GetStateResponse) GetState() []State`
+`func (o *GetStateResponse) GetSuccess() bool`
 
-GetState returns the State field if non-nil, zero value otherwise.
+GetSuccess returns the Success field if non-nil, zero value otherwise.
 
-### GetStateOk
+### GetSuccessOk
 
-`func (o *GetStateResponse) GetStateOk() (*[]State, bool)`
+`func (o *GetStateResponse) GetSuccessOk() (*bool, bool)`
 
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetState
+### SetSuccess
 
-`func (o *GetStateResponse) SetState(v []State)`
+`func (o *GetStateResponse) SetSuccess(v bool)`
 
-SetState sets State field to given value.
+SetSuccess sets Success field to given value.
 
-### HasState
+### HasSuccess
 
-`func (o *GetStateResponse) HasState() bool`
+`func (o *GetStateResponse) HasSuccess() bool`
 
-HasState returns a boolean if a field has been set.
+HasSuccess returns a boolean if a field has been set.
 
+### GetData
+
+`func (o *GetStateResponse) GetData() GetStateData`
+
+GetData returns the Data field if non-nil, zero value otherwise.
+
+### GetDataOk
+
+`func (o *GetStateResponse) GetDataOk() (*GetStateData, bool)`
+
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetData
+
+`func (o *GetStateResponse) SetData(v GetStateData)`
+
+SetData sets Data field to given value.
+
+### HasData
+
+`func (o *GetStateResponse) HasData() bool`
+
+HasData returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *GetStateResponse) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *GetStateResponse) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *GetStateResponse) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *GetStateResponse) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *GetStateResponse) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *GetStateResponse) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

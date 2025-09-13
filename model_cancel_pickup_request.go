@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -12,24 +12,30 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CancelPickupRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CancelPickupRequest{}
 
-// CancelPickupRequest struct for CancelPickupRequest
+// CancelPickupRequest The main payload for cancelling a pickup, to be sent as a stringified JSON in the 'input' field.
 type CancelPickupRequest struct {
-	User *User `json:"user,omitempty"`
-	ConsignmentNo *string `json:"consignment_no,omitempty"`
+	User User `json:"user"`
+	ConsignmentNo string `json:"consignment_no"`
 	Reason *string `json:"reason,omitempty"`
 }
+
+type _CancelPickupRequest CancelPickupRequest
 
 // NewCancelPickupRequest instantiates a new CancelPickupRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCancelPickupRequest() *CancelPickupRequest {
+func NewCancelPickupRequest(user User, consignmentNo string) *CancelPickupRequest {
 	this := CancelPickupRequest{}
+	this.User = user
+	this.ConsignmentNo = consignmentNo
 	return &this
 }
 
@@ -41,68 +47,52 @@ func NewCancelPickupRequestWithDefaults() *CancelPickupRequest {
 	return &this
 }
 
-// GetUser returns the User field value if set, zero value otherwise.
+// GetUser returns the User field value
 func (o *CancelPickupRequest) GetUser() User {
-	if o == nil || IsNil(o.User) {
+	if o == nil {
 		var ret User
 		return ret
 	}
-	return *o.User
+
+	return o.User
 }
 
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *CancelPickupRequest) GetUserOk() (*User, bool) {
-	if o == nil || IsNil(o.User) {
+	if o == nil {
 		return nil, false
 	}
-	return o.User, true
+	return &o.User, true
 }
 
-// HasUser returns a boolean if a field has been set.
-func (o *CancelPickupRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given User and assigns it to the User field.
+// SetUser sets field value
 func (o *CancelPickupRequest) SetUser(v User) {
-	o.User = &v
+	o.User = v
 }
 
-// GetConsignmentNo returns the ConsignmentNo field value if set, zero value otherwise.
+// GetConsignmentNo returns the ConsignmentNo field value
 func (o *CancelPickupRequest) GetConsignmentNo() string {
-	if o == nil || IsNil(o.ConsignmentNo) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ConsignmentNo
+
+	return o.ConsignmentNo
 }
 
-// GetConsignmentNoOk returns a tuple with the ConsignmentNo field value if set, nil otherwise
+// GetConsignmentNoOk returns a tuple with the ConsignmentNo field value
 // and a boolean to check if the value has been set.
 func (o *CancelPickupRequest) GetConsignmentNoOk() (*string, bool) {
-	if o == nil || IsNil(o.ConsignmentNo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConsignmentNo, true
+	return &o.ConsignmentNo, true
 }
 
-// HasConsignmentNo returns a boolean if a field has been set.
-func (o *CancelPickupRequest) HasConsignmentNo() bool {
-	if o != nil && !IsNil(o.ConsignmentNo) {
-		return true
-	}
-
-	return false
-}
-
-// SetConsignmentNo gets a reference to the given string and assigns it to the ConsignmentNo field.
+// SetConsignmentNo sets field value
 func (o *CancelPickupRequest) SetConsignmentNo(v string) {
-	o.ConsignmentNo = &v
+	o.ConsignmentNo = v
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise.
@@ -147,16 +137,50 @@ func (o CancelPickupRequest) MarshalJSON() ([]byte, error) {
 
 func (o CancelPickupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
-		toSerialize["user"] = o.User
-	}
-	if !IsNil(o.ConsignmentNo) {
-		toSerialize["consignment_no"] = o.ConsignmentNo
-	}
+	toSerialize["user"] = o.User
+	toSerialize["consignment_no"] = o.ConsignmentNo
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
 	return toSerialize, nil
+}
+
+func (o *CancelPickupRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"user",
+		"consignment_no",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCancelPickupRequest := _CancelPickupRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCancelPickupRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CancelPickupRequest(varCancelPickupRequest)
+
+	return err
 }
 
 type NullableCancelPickupRequest struct {

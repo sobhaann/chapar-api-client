@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -19,7 +19,9 @@ var _ MappedNullable = &GetStateResponse{}
 
 // GetStateResponse struct for GetStateResponse
 type GetStateResponse struct {
-	State []State `json:"state,omitempty"`
+	Success *bool `json:"success,omitempty"`
+	Data *GetStateData `json:"data,omitempty"`
+	Message NullableString `json:"message,omitempty"`
 }
 
 // NewGetStateResponse instantiates a new GetStateResponse object
@@ -39,36 +41,110 @@ func NewGetStateResponseWithDefaults() *GetStateResponse {
 	return &this
 }
 
-// GetState returns the State field value if set, zero value otherwise.
-func (o *GetStateResponse) GetState() []State {
-	if o == nil || IsNil(o.State) {
-		var ret []State
+// GetSuccess returns the Success field value if set, zero value otherwise.
+func (o *GetStateResponse) GetSuccess() bool {
+	if o == nil || IsNil(o.Success) {
+		var ret bool
 		return ret
 	}
-	return o.State
+	return *o.Success
 }
 
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetStateResponse) GetStateOk() ([]State, bool) {
-	if o == nil || IsNil(o.State) {
+func (o *GetStateResponse) GetSuccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
-	return o.State, true
+	return o.Success, true
 }
 
-// HasState returns a boolean if a field has been set.
-func (o *GetStateResponse) HasState() bool {
-	if o != nil && !IsNil(o.State) {
+// HasSuccess returns a boolean if a field has been set.
+func (o *GetStateResponse) HasSuccess() bool {
+	if o != nil && !IsNil(o.Success) {
 		return true
 	}
 
 	return false
 }
 
-// SetState gets a reference to the given []State and assigns it to the State field.
-func (o *GetStateResponse) SetState(v []State) {
-	o.State = v
+// SetSuccess gets a reference to the given bool and assigns it to the Success field.
+func (o *GetStateResponse) SetSuccess(v bool) {
+	o.Success = &v
+}
+
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *GetStateResponse) GetData() GetStateData {
+	if o == nil || IsNil(o.Data) {
+		var ret GetStateData
+		return ret
+	}
+	return *o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetStateResponse) GetDataOk() (*GetStateData, bool) {
+	if o == nil || IsNil(o.Data) {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// HasData returns a boolean if a field has been set.
+func (o *GetStateResponse) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given GetStateData and assigns it to the Data field.
+func (o *GetStateResponse) SetData(v GetStateData) {
+	o.Data = &v
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetStateResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Message.Get()
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetStateResponse) GetMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Message.Get(), o.Message.IsSet()
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *GetStateResponse) HasMessage() bool {
+	if o != nil && o.Message.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+func (o *GetStateResponse) SetMessage(v string) {
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *GetStateResponse) SetMessageNil() {
+	o.Message.Set(nil)
+}
+
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *GetStateResponse) UnsetMessage() {
+	o.Message.Unset()
 }
 
 func (o GetStateResponse) MarshalJSON() ([]byte, error) {
@@ -81,8 +157,14 @@ func (o GetStateResponse) MarshalJSON() ([]byte, error) {
 
 func (o GetStateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
+	if !IsNil(o.Success) {
+		toSerialize["success"] = o.Success
+	}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
 	}
 	return toSerialize, nil
 }

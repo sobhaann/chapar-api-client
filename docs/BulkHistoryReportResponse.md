@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**History** | Pointer to [**[]BulkHistoryEvent**](BulkHistoryEvent.md) |  | [optional] 
+**Success** | Pointer to **bool** |  | [optional] 
+**Data** | Pointer to [**BulkHistoryReportData**](BulkHistoryReportData.md) |  | [optional] 
+**Message** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -25,31 +27,91 @@ NewBulkHistoryReportResponseWithDefaults instantiates a new BulkHistoryReportRes
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHistory
+### GetSuccess
 
-`func (o *BulkHistoryReportResponse) GetHistory() []BulkHistoryEvent`
+`func (o *BulkHistoryReportResponse) GetSuccess() bool`
 
-GetHistory returns the History field if non-nil, zero value otherwise.
+GetSuccess returns the Success field if non-nil, zero value otherwise.
 
-### GetHistoryOk
+### GetSuccessOk
 
-`func (o *BulkHistoryReportResponse) GetHistoryOk() (*[]BulkHistoryEvent, bool)`
+`func (o *BulkHistoryReportResponse) GetSuccessOk() (*bool, bool)`
 
-GetHistoryOk returns a tuple with the History field if it's non-nil, zero value otherwise
+GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHistory
+### SetSuccess
 
-`func (o *BulkHistoryReportResponse) SetHistory(v []BulkHistoryEvent)`
+`func (o *BulkHistoryReportResponse) SetSuccess(v bool)`
 
-SetHistory sets History field to given value.
+SetSuccess sets Success field to given value.
 
-### HasHistory
+### HasSuccess
 
-`func (o *BulkHistoryReportResponse) HasHistory() bool`
+`func (o *BulkHistoryReportResponse) HasSuccess() bool`
 
-HasHistory returns a boolean if a field has been set.
+HasSuccess returns a boolean if a field has been set.
 
+### GetData
+
+`func (o *BulkHistoryReportResponse) GetData() BulkHistoryReportData`
+
+GetData returns the Data field if non-nil, zero value otherwise.
+
+### GetDataOk
+
+`func (o *BulkHistoryReportResponse) GetDataOk() (*BulkHistoryReportData, bool)`
+
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetData
+
+`func (o *BulkHistoryReportResponse) SetData(v BulkHistoryReportData)`
+
+SetData sets Data field to given value.
+
+### HasData
+
+`func (o *BulkHistoryReportResponse) HasData() bool`
+
+HasData returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *BulkHistoryReportResponse) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *BulkHistoryReportResponse) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *BulkHistoryReportResponse) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *BulkHistoryReportResponse) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *BulkHistoryReportResponse) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *BulkHistoryReportResponse) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

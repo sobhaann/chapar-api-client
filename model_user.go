@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -12,23 +12,29 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the User type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &User{}
 
-// User struct for User
+// User User credentials for authentication.
 type User struct {
-	Username *string `json:"username,omitempty"`
-	Password *string `json:"password,omitempty"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
+
+type _User User
 
 // NewUser instantiates a new User object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser() *User {
+func NewUser(username string, password string) *User {
 	this := User{}
+	this.Username = username
+	this.Password = password
 	return &this
 }
 
@@ -40,68 +46,52 @@ func NewUserWithDefaults() *User {
 	return &this
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value
 func (o *User) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Username
+
+	return o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *User) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Username, true
+	return &o.Username, true
 }
 
-// HasUsername returns a boolean if a field has been set.
-func (o *User) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
+// SetUsername sets field value
 func (o *User) SetUsername(v string) {
-	o.Username = &v
+	o.Username = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
+// GetPassword returns the Password field value
 func (o *User) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Password
+
+	return o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
 func (o *User) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Password, true
+	return &o.Password, true
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *User) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
+// SetPassword sets field value
 func (o *User) SetPassword(v string) {
-	o.Password = &v
+	o.Password = v
 }
 
 func (o User) MarshalJSON() ([]byte, error) {
@@ -114,13 +104,47 @@ func (o User) MarshalJSON() ([]byte, error) {
 
 func (o User) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
+	toSerialize["username"] = o.Username
+	toSerialize["password"] = o.Password
 	return toSerialize, nil
+}
+
+func (o *User) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"username",
+		"password",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUser := _User{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = User(varUser)
+
+	return err
 }
 
 type NullableUser struct {

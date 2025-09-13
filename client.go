@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -49,7 +49,13 @@ type APIClient struct {
 
 	// API Services
 
-	DefaultAPI *DefaultAPIService
+	LocationsAPI *LocationsAPIService
+
+	QuotesAPI *QuotesAPIService
+
+	ShipmentsAPI *ShipmentsAPIService
+
+	TrackingAPI *TrackingAPIService
 }
 
 type service struct {
@@ -68,7 +74,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.DefaultAPI = (*DefaultAPIService)(&c.common)
+	c.LocationsAPI = (*LocationsAPIService)(&c.common)
+	c.QuotesAPI = (*QuotesAPIService)(&c.common)
+	c.ShipmentsAPI = (*ShipmentsAPIService)(&c.common)
+	c.TrackingAPI = (*TrackingAPIService)(&c.common)
 
 	return c
 }

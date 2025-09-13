@@ -30,7 +30,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiBulkHistoryReportRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkHistoryReportRequest** | [**BulkHistoryReportRequest**](BulkHistoryReportRequest.md) |  | 
+ **bulkHistoryReportRequest** | [**BulkHistoryReportRequest**](BulkHistoryReportRequest.md) |  |
 
 ### Return type
 
@@ -94,11 +94,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
-	aPPAUTH := "aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==" // string | 
+	aPPAUTH := "aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==" // string |
 	input := "input_example" // string |  (optional)
 	signature := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
@@ -123,9 +123,9 @@ Other parameters are passed through a pointer to a apiBulkImportRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **aPPAUTH** | **string** |  | 
- **input** | **string** |  | 
- **signature** | ***os.File** |  | 
+ **aPPAUTH** | **string** |  |
+ **input** | **string** |  |
+ **signature** | ***os.File** |  |
 
 ### Return type
 
@@ -160,7 +160,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
@@ -187,7 +187,7 @@ Other parameters are passed through a pointer to a apiCancelPickupRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelPickupRequest** | [**CancelPickupRequest**](CancelPickupRequest.md) |  | 
+ **cancelPickupRequest** | [**CancelPickupRequest**](CancelPickupRequest.md) |  |
 
 ### Return type
 
@@ -222,7 +222,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
@@ -251,7 +251,7 @@ Other parameters are passed through a pointer to a apiGetCityRequest struct via 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **getCityRequest** | [**GetCityRequest**](GetCityRequest.md) |  | 
+ **getCityRequest** | [**GetCityRequest**](GetCityRequest.md) |  |
 
 ### Return type
 
@@ -286,11 +286,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
-	aPPAUTH := "aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==" // string | 
+	aPPAUTH := "aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==" // string |
 	input := "input_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -314,8 +314,8 @@ Other parameters are passed through a pointer to a apiGetQuoteRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **aPPAUTH** | **string** |  | 
- **input** | **string** |  | 
+ **aPPAUTH** | **string** |  |
+ **input** | **string** |  |
 
 ### Return type
 
@@ -350,7 +350,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
@@ -409,7 +409,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
@@ -438,7 +438,7 @@ Other parameters are passed through a pointer to a apiHistoryReportRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **historyReportRequest** | [**HistoryReportRequest**](HistoryReportRequest.md) |  | 
+ **historyReportRequest** | [**HistoryReportRequest**](HistoryReportRequest.md) |  |
 
 ### Return type
 
@@ -473,11 +473,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/user/chapar"
+	openapiclient "github.com/sobhaann/chapar-api-client"
 )
 
 func main() {
-	aPPAUTH := "aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==" // string | 
+	aPPAUTH := "aW9zX2N1c3RvbWVyX2FwcDpUUFhAMjAxNg==" // string |
 	input := "input_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -501,8 +501,8 @@ Other parameters are passed through a pointer to a apiTrackingRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **aPPAUTH** | **string** |  | 
- **input** | **string** |  | 
+ **aPPAUTH** | **string** |  |
+ **input** | **string** |  |
 
 ### Return type
 
@@ -520,4 +520,3 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-

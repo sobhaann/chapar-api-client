@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -12,22 +12,27 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the GetCityRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GetCityRequest{}
 
-// GetCityRequest struct for GetCityRequest
+// GetCityRequest The main payload for getting cities, to be sent as a stringified JSON in the 'input' field.
 type GetCityRequest struct {
-	State *GetCityRequestState `json:"state,omitempty"`
+	StateNo string `json:"state_no"`
 }
+
+type _GetCityRequest GetCityRequest
 
 // NewGetCityRequest instantiates a new GetCityRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCityRequest() *GetCityRequest {
+func NewGetCityRequest(stateNo string) *GetCityRequest {
 	this := GetCityRequest{}
+	this.StateNo = stateNo
 	return &this
 }
 
@@ -39,36 +44,28 @@ func NewGetCityRequestWithDefaults() *GetCityRequest {
 	return &this
 }
 
-// GetState returns the State field value if set, zero value otherwise.
-func (o *GetCityRequest) GetState() GetCityRequestState {
-	if o == nil || IsNil(o.State) {
-		var ret GetCityRequestState
+// GetStateNo returns the StateNo field value
+func (o *GetCityRequest) GetStateNo() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.State
+
+	return o.StateNo
 }
 
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// GetStateNoOk returns a tuple with the StateNo field value
 // and a boolean to check if the value has been set.
-func (o *GetCityRequest) GetStateOk() (*GetCityRequestState, bool) {
-	if o == nil || IsNil(o.State) {
+func (o *GetCityRequest) GetStateNoOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return &o.StateNo, true
 }
 
-// HasState returns a boolean if a field has been set.
-func (o *GetCityRequest) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given GetCityRequestState and assigns it to the State field.
-func (o *GetCityRequest) SetState(v GetCityRequestState) {
-	o.State = &v
+// SetStateNo sets field value
+func (o *GetCityRequest) SetStateNo(v string) {
+	o.StateNo = v
 }
 
 func (o GetCityRequest) MarshalJSON() ([]byte, error) {
@@ -81,10 +78,45 @@ func (o GetCityRequest) MarshalJSON() ([]byte, error) {
 
 func (o GetCityRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
+	toSerialize["state_no"] = o.StateNo
 	return toSerialize, nil
+}
+
+func (o *GetCityRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"state_no",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGetCityRequest := _GetCityRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGetCityRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetCityRequest(varGetCityRequest)
+
+	return err
 }
 
 type NullableGetCityRequest struct {

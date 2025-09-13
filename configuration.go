@@ -1,7 +1,7 @@
 /*
 Chapar Customer API
 
-API for interacting with the Chapar shipping service.
+API for interacting with the Chapar shipping service. All POST requests use a unique `multipart/form-data` structure where the main payload is a JSON string inside a form field named `input`.
 
 API version: 1.0.0
 */
@@ -28,6 +28,9 @@ func (c contextKey) String() string {
 }
 
 var (
+	// ContextAPIKeys takes a string apikey as authentication for the request
+	ContextAPIKeys = contextKey("apiKeys")
+
 	// ContextServerIndex uses a server configuration from the index.
 	ContextServerIndex = contextKey("serverIndex")
 
@@ -91,10 +94,20 @@ func NewConfiguration() *Configuration {
 		Servers:          ServerConfigurations{
 			{
 				URL: "https://app.krch.ir/v1",
-				Description: "No description provided",
+				Description: "Production App Server",
+			},
+			{
+				URL: "https://api.krch.ir/v1",
+				Description: "Production API Server",
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
+			"ShipmentsAPIService.BulkImportPost": {
+				{
+					URL: "https://api.krch.ir/v1",
+					Description: "Production API Server for Bulk Import",
+				},
+			},
 		},
 	}
 	return cfg
