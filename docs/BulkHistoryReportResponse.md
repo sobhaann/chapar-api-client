@@ -1,4 +1,4 @@
-# BulkImportPost200Response
+# BulkHistoryReportResponse
 
 ## Properties
 
@@ -6,122 +6,112 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Success** | Pointer to **bool** |  | [optional] 
 **Message** | Pointer to **NullableString** |  | [optional] 
-**Object** | Pointer to **map[string]interface{}** |  | [optional] 
+**Object** | Pointer to [**BulkHistoryReportObject**](BulkHistoryReportObject.md) |  | [optional] 
 
 ## Methods
 
-### NewBulkImportPost200Response
+### NewBulkHistoryReportResponse
 
-`func NewBulkImportPost200Response() *BulkImportPost200Response`
+`func NewBulkHistoryReportResponse() *BulkHistoryReportResponse`
 
-NewBulkImportPost200Response instantiates a new BulkImportPost200Response object
+NewBulkHistoryReportResponse instantiates a new BulkHistoryReportResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBulkImportPost200ResponseWithDefaults
+### NewBulkHistoryReportResponseWithDefaults
 
-`func NewBulkImportPost200ResponseWithDefaults() *BulkImportPost200Response`
+`func NewBulkHistoryReportResponseWithDefaults() *BulkHistoryReportResponse`
 
-NewBulkImportPost200ResponseWithDefaults instantiates a new BulkImportPost200Response object
+NewBulkHistoryReportResponseWithDefaults instantiates a new BulkHistoryReportResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetSuccess
 
-`func (o *BulkImportPost200Response) GetSuccess() bool`
+`func (o *BulkHistoryReportResponse) GetSuccess() bool`
 
 GetSuccess returns the Success field if non-nil, zero value otherwise.
 
 ### GetSuccessOk
 
-`func (o *BulkImportPost200Response) GetSuccessOk() (*bool, bool)`
+`func (o *BulkHistoryReportResponse) GetSuccessOk() (*bool, bool)`
 
 GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccess
 
-`func (o *BulkImportPost200Response) SetSuccess(v bool)`
+`func (o *BulkHistoryReportResponse) SetSuccess(v bool)`
 
 SetSuccess sets Success field to given value.
 
 ### HasSuccess
 
-`func (o *BulkImportPost200Response) HasSuccess() bool`
+`func (o *BulkHistoryReportResponse) HasSuccess() bool`
 
 HasSuccess returns a boolean if a field has been set.
 
 ### GetMessage
 
-`func (o *BulkImportPost200Response) GetMessage() string`
+`func (o *BulkHistoryReportResponse) GetMessage() string`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *BulkImportPost200Response) GetMessageOk() (*string, bool)`
+`func (o *BulkHistoryReportResponse) GetMessageOk() (*string, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *BulkImportPost200Response) SetMessage(v string)`
+`func (o *BulkHistoryReportResponse) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *BulkImportPost200Response) HasMessage() bool`
+`func (o *BulkHistoryReportResponse) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 
 ### SetMessageNil
 
-`func (o *BulkImportPost200Response) SetMessageNil(b bool)`
+`func (o *BulkHistoryReportResponse) SetMessageNil(b bool)`
 
  SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
-`func (o *BulkImportPost200Response) UnsetMessage()`
+`func (o *BulkHistoryReportResponse) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
 ### GetObject
 
-`func (o *BulkImportPost200Response) GetObject() map[string]interface{}`
+`func (o *BulkHistoryReportResponse) GetObject() BulkHistoryReportObject`
 
 GetObject returns the Object field if non-nil, zero value otherwise.
 
 ### GetObjectOk
 
-`func (o *BulkImportPost200Response) GetObjectOk() (*map[string]interface{}, bool)`
+`func (o *BulkHistoryReportResponse) GetObjectOk() (*BulkHistoryReportObject, bool)`
 
 GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObject
 
-`func (o *BulkImportPost200Response) SetObject(v map[string]interface{})`
+`func (o *BulkHistoryReportResponse) SetObject(v BulkHistoryReportObject)`
 
 SetObject sets Object field to given value.
 
 ### HasObject
 
-`func (o *BulkImportPost200Response) HasObject() bool`
+`func (o *BulkHistoryReportResponse) HasObject() bool`
 
 HasObject returns a boolean if a field has been set.
 
-### SetObjectNil
-
-`func (o *BulkImportPost200Response) SetObjectNil(b bool)`
-
- SetObjectNil sets the value for Object to be an explicit nil
-
-### UnsetObject
-`func (o *BulkImportPost200Response) UnsetObject()`
-
-UnsetObject ensures that no value is present for Object, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetQuotePost
 
-> GetQuotePost200Response GetQuotePost(ctx).Input(input).Execute()
+> QuoteResponse GetQuotePost(ctx).Input(input).Execute()
 
 Get a shipping cost quote
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object containing the order details.
+	input := "input_example" // string | A stringified JSON object of type QuoteRequest.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -38,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `QuotesAPI.GetQuotePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetQuotePost`: GetQuotePost200Response
+	// response from `GetQuotePost`: QuoteResponse
 	fmt.Fprintf(os.Stdout, "Response from `QuotesAPI.GetQuotePost`: %v\n", resp)
 }
 ```
@@ -54,11 +54,11 @@ Other parameters are passed through a pointer to a apiGetQuotePostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object containing the order details. | 
+ **input** | **string** | A stringified JSON object of type QuoteRequest. | 
 
 ### Return type
 
-[**GetQuotePost200Response**](GetQuotePost200Response.md)
+[**QuoteResponse**](QuoteResponse.md)
 
 ### Authorization
 

@@ -20,11 +20,6 @@ var _ MappedNullable = &FinancialInfo{}
 // FinancialInfo struct for FinancialInfo
 type FinancialInfo struct {
 	DeliveryCharge *string `json:"delivery_charge,omitempty"`
-	InsuranceCharge *string `json:"insurance_charge,omitempty"`
-	VatCharge *string `json:"vat_charge,omitempty"`
-	PackCharge *string `json:"pack_charge,omitempty"`
-	ExtraCharge *string `json:"extra_charge,omitempty"`
-	CodValue *int32 `json:"cod_value,omitempty"`
 	TotalCharge *int32 `json:"total_charge,omitempty"`
 }
 
@@ -77,166 +72,6 @@ func (o *FinancialInfo) SetDeliveryCharge(v string) {
 	o.DeliveryCharge = &v
 }
 
-// GetInsuranceCharge returns the InsuranceCharge field value if set, zero value otherwise.
-func (o *FinancialInfo) GetInsuranceCharge() string {
-	if o == nil || IsNil(o.InsuranceCharge) {
-		var ret string
-		return ret
-	}
-	return *o.InsuranceCharge
-}
-
-// GetInsuranceChargeOk returns a tuple with the InsuranceCharge field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinancialInfo) GetInsuranceChargeOk() (*string, bool) {
-	if o == nil || IsNil(o.InsuranceCharge) {
-		return nil, false
-	}
-	return o.InsuranceCharge, true
-}
-
-// HasInsuranceCharge returns a boolean if a field has been set.
-func (o *FinancialInfo) HasInsuranceCharge() bool {
-	if o != nil && !IsNil(o.InsuranceCharge) {
-		return true
-	}
-
-	return false
-}
-
-// SetInsuranceCharge gets a reference to the given string and assigns it to the InsuranceCharge field.
-func (o *FinancialInfo) SetInsuranceCharge(v string) {
-	o.InsuranceCharge = &v
-}
-
-// GetVatCharge returns the VatCharge field value if set, zero value otherwise.
-func (o *FinancialInfo) GetVatCharge() string {
-	if o == nil || IsNil(o.VatCharge) {
-		var ret string
-		return ret
-	}
-	return *o.VatCharge
-}
-
-// GetVatChargeOk returns a tuple with the VatCharge field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinancialInfo) GetVatChargeOk() (*string, bool) {
-	if o == nil || IsNil(o.VatCharge) {
-		return nil, false
-	}
-	return o.VatCharge, true
-}
-
-// HasVatCharge returns a boolean if a field has been set.
-func (o *FinancialInfo) HasVatCharge() bool {
-	if o != nil && !IsNil(o.VatCharge) {
-		return true
-	}
-
-	return false
-}
-
-// SetVatCharge gets a reference to the given string and assigns it to the VatCharge field.
-func (o *FinancialInfo) SetVatCharge(v string) {
-	o.VatCharge = &v
-}
-
-// GetPackCharge returns the PackCharge field value if set, zero value otherwise.
-func (o *FinancialInfo) GetPackCharge() string {
-	if o == nil || IsNil(o.PackCharge) {
-		var ret string
-		return ret
-	}
-	return *o.PackCharge
-}
-
-// GetPackChargeOk returns a tuple with the PackCharge field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinancialInfo) GetPackChargeOk() (*string, bool) {
-	if o == nil || IsNil(o.PackCharge) {
-		return nil, false
-	}
-	return o.PackCharge, true
-}
-
-// HasPackCharge returns a boolean if a field has been set.
-func (o *FinancialInfo) HasPackCharge() bool {
-	if o != nil && !IsNil(o.PackCharge) {
-		return true
-	}
-
-	return false
-}
-
-// SetPackCharge gets a reference to the given string and assigns it to the PackCharge field.
-func (o *FinancialInfo) SetPackCharge(v string) {
-	o.PackCharge = &v
-}
-
-// GetExtraCharge returns the ExtraCharge field value if set, zero value otherwise.
-func (o *FinancialInfo) GetExtraCharge() string {
-	if o == nil || IsNil(o.ExtraCharge) {
-		var ret string
-		return ret
-	}
-	return *o.ExtraCharge
-}
-
-// GetExtraChargeOk returns a tuple with the ExtraCharge field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinancialInfo) GetExtraChargeOk() (*string, bool) {
-	if o == nil || IsNil(o.ExtraCharge) {
-		return nil, false
-	}
-	return o.ExtraCharge, true
-}
-
-// HasExtraCharge returns a boolean if a field has been set.
-func (o *FinancialInfo) HasExtraCharge() bool {
-	if o != nil && !IsNil(o.ExtraCharge) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtraCharge gets a reference to the given string and assigns it to the ExtraCharge field.
-func (o *FinancialInfo) SetExtraCharge(v string) {
-	o.ExtraCharge = &v
-}
-
-// GetCodValue returns the CodValue field value if set, zero value otherwise.
-func (o *FinancialInfo) GetCodValue() int32 {
-	if o == nil || IsNil(o.CodValue) {
-		var ret int32
-		return ret
-	}
-	return *o.CodValue
-}
-
-// GetCodValueOk returns a tuple with the CodValue field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinancialInfo) GetCodValueOk() (*int32, bool) {
-	if o == nil || IsNil(o.CodValue) {
-		return nil, false
-	}
-	return o.CodValue, true
-}
-
-// HasCodValue returns a boolean if a field has been set.
-func (o *FinancialInfo) HasCodValue() bool {
-	if o != nil && !IsNil(o.CodValue) {
-		return true
-	}
-
-	return false
-}
-
-// SetCodValue gets a reference to the given int32 and assigns it to the CodValue field.
-func (o *FinancialInfo) SetCodValue(v int32) {
-	o.CodValue = &v
-}
-
 // GetTotalCharge returns the TotalCharge field value if set, zero value otherwise.
 func (o *FinancialInfo) GetTotalCharge() int32 {
 	if o == nil || IsNil(o.TotalCharge) {
@@ -281,21 +116,6 @@ func (o FinancialInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DeliveryCharge) {
 		toSerialize["delivery_charge"] = o.DeliveryCharge
-	}
-	if !IsNil(o.InsuranceCharge) {
-		toSerialize["insurance_charge"] = o.InsuranceCharge
-	}
-	if !IsNil(o.VatCharge) {
-		toSerialize["vat_charge"] = o.VatCharge
-	}
-	if !IsNil(o.PackCharge) {
-		toSerialize["pack_charge"] = o.PackCharge
-	}
-	if !IsNil(o.ExtraCharge) {
-		toSerialize["extra_charge"] = o.ExtraCharge
-	}
-	if !IsNil(o.CodValue) {
-		toSerialize["cod_value"] = o.CodValue
 	}
 	if !IsNil(o.TotalCharge) {
 		toSerialize["total_charge"] = o.TotalCharge

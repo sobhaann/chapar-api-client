@@ -14,34 +14,34 @@ import (
 	"encoding/json"
 )
 
-// checks if the QuoteData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &QuoteData{}
+// checks if the QuoteObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &QuoteObject{}
 
-// QuoteData struct for QuoteData
-type QuoteData struct {
+// QuoteObject struct for QuoteObject
+type QuoteObject struct {
 	Price *int32 `json:"price,omitempty"`
 	Deadline *string `json:"deadline,omitempty"`
 }
 
-// NewQuoteData instantiates a new QuoteData object
+// NewQuoteObject instantiates a new QuoteObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQuoteData() *QuoteData {
-	this := QuoteData{}
+func NewQuoteObject() *QuoteObject {
+	this := QuoteObject{}
 	return &this
 }
 
-// NewQuoteDataWithDefaults instantiates a new QuoteData object
+// NewQuoteObjectWithDefaults instantiates a new QuoteObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewQuoteDataWithDefaults() *QuoteData {
-	this := QuoteData{}
+func NewQuoteObjectWithDefaults() *QuoteObject {
+	this := QuoteObject{}
 	return &this
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
-func (o *QuoteData) GetPrice() int32 {
+func (o *QuoteObject) GetPrice() int32 {
 	if o == nil || IsNil(o.Price) {
 		var ret int32
 		return ret
@@ -51,7 +51,7 @@ func (o *QuoteData) GetPrice() int32 {
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *QuoteData) GetPriceOk() (*int32, bool) {
+func (o *QuoteObject) GetPriceOk() (*int32, bool) {
 	if o == nil || IsNil(o.Price) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *QuoteData) GetPriceOk() (*int32, bool) {
 }
 
 // HasPrice returns a boolean if a field has been set.
-func (o *QuoteData) HasPrice() bool {
+func (o *QuoteObject) HasPrice() bool {
 	if o != nil && !IsNil(o.Price) {
 		return true
 	}
@@ -68,12 +68,12 @@ func (o *QuoteData) HasPrice() bool {
 }
 
 // SetPrice gets a reference to the given int32 and assigns it to the Price field.
-func (o *QuoteData) SetPrice(v int32) {
+func (o *QuoteObject) SetPrice(v int32) {
 	o.Price = &v
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
-func (o *QuoteData) GetDeadline() string {
+func (o *QuoteObject) GetDeadline() string {
 	if o == nil || IsNil(o.Deadline) {
 		var ret string
 		return ret
@@ -83,7 +83,7 @@ func (o *QuoteData) GetDeadline() string {
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *QuoteData) GetDeadlineOk() (*string, bool) {
+func (o *QuoteObject) GetDeadlineOk() (*string, bool) {
 	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *QuoteData) GetDeadlineOk() (*string, bool) {
 }
 
 // HasDeadline returns a boolean if a field has been set.
-func (o *QuoteData) HasDeadline() bool {
+func (o *QuoteObject) HasDeadline() bool {
 	if o != nil && !IsNil(o.Deadline) {
 		return true
 	}
@@ -100,11 +100,11 @@ func (o *QuoteData) HasDeadline() bool {
 }
 
 // SetDeadline gets a reference to the given string and assigns it to the Deadline field.
-func (o *QuoteData) SetDeadline(v string) {
+func (o *QuoteObject) SetDeadline(v string) {
 	o.Deadline = &v
 }
 
-func (o QuoteData) MarshalJSON() ([]byte, error) {
+func (o QuoteObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -112,7 +112,7 @@ func (o QuoteData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o QuoteData) ToMap() (map[string]interface{}, error) {
+func (o QuoteObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
@@ -123,38 +123,38 @@ func (o QuoteData) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableQuoteData struct {
-	value *QuoteData
+type NullableQuoteObject struct {
+	value *QuoteObject
 	isSet bool
 }
 
-func (v NullableQuoteData) Get() *QuoteData {
+func (v NullableQuoteObject) Get() *QuoteObject {
 	return v.value
 }
 
-func (v *NullableQuoteData) Set(val *QuoteData) {
+func (v *NullableQuoteObject) Set(val *QuoteObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableQuoteData) IsSet() bool {
+func (v NullableQuoteObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableQuoteData) Unset() {
+func (v *NullableQuoteObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableQuoteData(val *QuoteData) *NullableQuoteData {
-	return &NullableQuoteData{value: val, isSet: true}
+func NewNullableQuoteObject(val *QuoteObject) *NullableQuoteObject {
+	return &NullableQuoteObject{value: val, isSet: true}
 }
 
-func (v NullableQuoteData) MarshalJSON() ([]byte, error) {
+func (v NullableQuoteObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableQuoteData) UnmarshalJSON(src []byte) error {
+func (v *NullableQuoteObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

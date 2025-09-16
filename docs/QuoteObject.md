@@ -1,4 +1,4 @@
-# QuoteData
+# QuoteObject
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewQuoteData
+### NewQuoteObject
 
-`func NewQuoteData() *QuoteData`
+`func NewQuoteObject() *QuoteObject`
 
-NewQuoteData instantiates a new QuoteData object
+NewQuoteObject instantiates a new QuoteObject object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewQuoteDataWithDefaults
+### NewQuoteObjectWithDefaults
 
-`func NewQuoteDataWithDefaults() *QuoteData`
+`func NewQuoteObjectWithDefaults() *QuoteObject`
 
-NewQuoteDataWithDefaults instantiates a new QuoteData object
+NewQuoteObjectWithDefaults instantiates a new QuoteObject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPrice
 
-`func (o *QuoteData) GetPrice() int32`
+`func (o *QuoteObject) GetPrice() int32`
 
 GetPrice returns the Price field if non-nil, zero value otherwise.
 
 ### GetPriceOk
 
-`func (o *QuoteData) GetPriceOk() (*int32, bool)`
+`func (o *QuoteObject) GetPriceOk() (*int32, bool)`
 
 GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrice
 
-`func (o *QuoteData) SetPrice(v int32)`
+`func (o *QuoteObject) SetPrice(v int32)`
 
 SetPrice sets Price field to given value.
 
 ### HasPrice
 
-`func (o *QuoteData) HasPrice() bool`
+`func (o *QuoteObject) HasPrice() bool`
 
 HasPrice returns a boolean if a field has been set.
 
 ### GetDeadline
 
-`func (o *QuoteData) GetDeadline() string`
+`func (o *QuoteObject) GetDeadline() string`
 
 GetDeadline returns the Deadline field if non-nil, zero value otherwise.
 
 ### GetDeadlineOk
 
-`func (o *QuoteData) GetDeadlineOk() (*string, bool)`
+`func (o *QuoteObject) GetDeadlineOk() (*string, bool)`
 
 GetDeadlineOk returns a tuple with the Deadline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeadline
 
-`func (o *QuoteData) SetDeadline(v string)`
+`func (o *QuoteObject) SetDeadline(v string)`
 
 SetDeadline sets Deadline field to given value.
 
 ### HasDeadline
 
-`func (o *QuoteData) HasDeadline() bool`
+`func (o *QuoteObject) HasDeadline() bool`
 
 HasDeadline returns a boolean if a field has been set.
 

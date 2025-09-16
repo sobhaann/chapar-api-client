@@ -14,35 +14,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the BulkImportPost200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BulkImportPost200Response{}
+// checks if the QuoteResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &QuoteResponse{}
 
-// BulkImportPost200Response struct for BulkImportPost200Response
-type BulkImportPost200Response struct {
+// QuoteResponse struct for QuoteResponse
+type QuoteResponse struct {
 	Success *bool `json:"success,omitempty"`
 	Message NullableString `json:"message,omitempty"`
-	Object map[string]interface{} `json:"object,omitempty"`
+	Object *QuoteObject `json:"object,omitempty"`
 }
 
-// NewBulkImportPost200Response instantiates a new BulkImportPost200Response object
+// NewQuoteResponse instantiates a new QuoteResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkImportPost200Response() *BulkImportPost200Response {
-	this := BulkImportPost200Response{}
+func NewQuoteResponse() *QuoteResponse {
+	this := QuoteResponse{}
 	return &this
 }
 
-// NewBulkImportPost200ResponseWithDefaults instantiates a new BulkImportPost200Response object
+// NewQuoteResponseWithDefaults instantiates a new QuoteResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBulkImportPost200ResponseWithDefaults() *BulkImportPost200Response {
-	this := BulkImportPost200Response{}
+func NewQuoteResponseWithDefaults() *QuoteResponse {
+	this := QuoteResponse{}
 	return &this
 }
 
 // GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *BulkImportPost200Response) GetSuccess() bool {
+func (o *QuoteResponse) GetSuccess() bool {
 	if o == nil || IsNil(o.Success) {
 		var ret bool
 		return ret
@@ -52,7 +52,7 @@ func (o *BulkImportPost200Response) GetSuccess() bool {
 
 // GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkImportPost200Response) GetSuccessOk() (*bool, bool) {
+func (o *QuoteResponse) GetSuccessOk() (*bool, bool) {
 	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *BulkImportPost200Response) GetSuccessOk() (*bool, bool) {
 }
 
 // HasSuccess returns a boolean if a field has been set.
-func (o *BulkImportPost200Response) HasSuccess() bool {
+func (o *QuoteResponse) HasSuccess() bool {
 	if o != nil && !IsNil(o.Success) {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *BulkImportPost200Response) HasSuccess() bool {
 }
 
 // SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *BulkImportPost200Response) SetSuccess(v bool) {
+func (o *QuoteResponse) SetSuccess(v bool) {
 	o.Success = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BulkImportPost200Response) GetMessage() string {
+func (o *QuoteResponse) GetMessage() string {
 	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *BulkImportPost200Response) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BulkImportPost200Response) GetMessageOk() (*string, bool) {
+func (o *QuoteResponse) GetMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *BulkImportPost200Response) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *BulkImportPost200Response) HasMessage() bool {
+func (o *QuoteResponse) HasMessage() bool {
 	if o != nil && o.Message.IsSet() {
 		return true
 	}
@@ -102,40 +102,39 @@ func (o *BulkImportPost200Response) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given NullableString and assigns it to the Message field.
-func (o *BulkImportPost200Response) SetMessage(v string) {
+func (o *QuoteResponse) SetMessage(v string) {
 	o.Message.Set(&v)
 }
 // SetMessageNil sets the value for Message to be an explicit nil
-func (o *BulkImportPost200Response) SetMessageNil() {
+func (o *QuoteResponse) SetMessageNil() {
 	o.Message.Set(nil)
 }
 
 // UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *BulkImportPost200Response) UnsetMessage() {
+func (o *QuoteResponse) UnsetMessage() {
 	o.Message.Unset()
 }
 
-// GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BulkImportPost200Response) GetObject() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// GetObject returns the Object field value if set, zero value otherwise.
+func (o *QuoteResponse) GetObject() QuoteObject {
+	if o == nil || IsNil(o.Object) {
+		var ret QuoteObject
 		return ret
 	}
-	return o.Object
+	return *o.Object
 }
 
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BulkImportPost200Response) GetObjectOk() (map[string]interface{}, bool) {
+func (o *QuoteResponse) GetObjectOk() (*QuoteObject, bool) {
 	if o == nil || IsNil(o.Object) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Object, true
 }
 
 // HasObject returns a boolean if a field has been set.
-func (o *BulkImportPost200Response) HasObject() bool {
+func (o *QuoteResponse) HasObject() bool {
 	if o != nil && !IsNil(o.Object) {
 		return true
 	}
@@ -143,12 +142,12 @@ func (o *BulkImportPost200Response) HasObject() bool {
 	return false
 }
 
-// SetObject gets a reference to the given map[string]interface{} and assigns it to the Object field.
-func (o *BulkImportPost200Response) SetObject(v map[string]interface{}) {
-	o.Object = v
+// SetObject gets a reference to the given QuoteObject and assigns it to the Object field.
+func (o *QuoteResponse) SetObject(v QuoteObject) {
+	o.Object = &v
 }
 
-func (o BulkImportPost200Response) MarshalJSON() ([]byte, error) {
+func (o QuoteResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -156,7 +155,7 @@ func (o BulkImportPost200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o BulkImportPost200Response) ToMap() (map[string]interface{}, error) {
+func (o QuoteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Success) {
 		toSerialize["success"] = o.Success
@@ -164,44 +163,44 @@ func (o BulkImportPost200Response) ToMap() (map[string]interface{}, error) {
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-	if o.Object != nil {
+	if !IsNil(o.Object) {
 		toSerialize["object"] = o.Object
 	}
 	return toSerialize, nil
 }
 
-type NullableBulkImportPost200Response struct {
-	value *BulkImportPost200Response
+type NullableQuoteResponse struct {
+	value *QuoteResponse
 	isSet bool
 }
 
-func (v NullableBulkImportPost200Response) Get() *BulkImportPost200Response {
+func (v NullableQuoteResponse) Get() *QuoteResponse {
 	return v.value
 }
 
-func (v *NullableBulkImportPost200Response) Set(val *BulkImportPost200Response) {
+func (v *NullableQuoteResponse) Set(val *QuoteResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBulkImportPost200Response) IsSet() bool {
+func (v NullableQuoteResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBulkImportPost200Response) Unset() {
+func (v *NullableQuoteResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBulkImportPost200Response(val *BulkImportPost200Response) *NullableBulkImportPost200Response {
-	return &NullableBulkImportPost200Response{value: val, isSet: true}
+func NewNullableQuoteResponse(val *QuoteResponse) *NullableQuoteResponse {
+	return &NullableQuoteResponse{value: val, isSet: true}
 }
 
-func (v NullableBulkImportPost200Response) MarshalJSON() ([]byte, error) {
+func (v NullableQuoteResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBulkImportPost200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableQuoteResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

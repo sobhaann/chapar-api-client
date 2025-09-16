@@ -14,33 +14,33 @@ import (
 	"encoding/json"
 )
 
-// checks if the BulkHistoryReportData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BulkHistoryReportData{}
+// checks if the BulkHistoryReportObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BulkHistoryReportObject{}
 
-// BulkHistoryReportData struct for BulkHistoryReportData
-type BulkHistoryReportData struct {
+// BulkHistoryReportObject struct for BulkHistoryReportObject
+type BulkHistoryReportObject struct {
 	History []BulkHistoryEvent `json:"history,omitempty"`
 }
 
-// NewBulkHistoryReportData instantiates a new BulkHistoryReportData object
+// NewBulkHistoryReportObject instantiates a new BulkHistoryReportObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkHistoryReportData() *BulkHistoryReportData {
-	this := BulkHistoryReportData{}
+func NewBulkHistoryReportObject() *BulkHistoryReportObject {
+	this := BulkHistoryReportObject{}
 	return &this
 }
 
-// NewBulkHistoryReportDataWithDefaults instantiates a new BulkHistoryReportData object
+// NewBulkHistoryReportObjectWithDefaults instantiates a new BulkHistoryReportObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBulkHistoryReportDataWithDefaults() *BulkHistoryReportData {
-	this := BulkHistoryReportData{}
+func NewBulkHistoryReportObjectWithDefaults() *BulkHistoryReportObject {
+	this := BulkHistoryReportObject{}
 	return &this
 }
 
 // GetHistory returns the History field value if set, zero value otherwise.
-func (o *BulkHistoryReportData) GetHistory() []BulkHistoryEvent {
+func (o *BulkHistoryReportObject) GetHistory() []BulkHistoryEvent {
 	if o == nil || IsNil(o.History) {
 		var ret []BulkHistoryEvent
 		return ret
@@ -50,7 +50,7 @@ func (o *BulkHistoryReportData) GetHistory() []BulkHistoryEvent {
 
 // GetHistoryOk returns a tuple with the History field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkHistoryReportData) GetHistoryOk() ([]BulkHistoryEvent, bool) {
+func (o *BulkHistoryReportObject) GetHistoryOk() ([]BulkHistoryEvent, bool) {
 	if o == nil || IsNil(o.History) {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *BulkHistoryReportData) GetHistoryOk() ([]BulkHistoryEvent, bool) {
 }
 
 // HasHistory returns a boolean if a field has been set.
-func (o *BulkHistoryReportData) HasHistory() bool {
+func (o *BulkHistoryReportObject) HasHistory() bool {
 	if o != nil && !IsNil(o.History) {
 		return true
 	}
@@ -67,11 +67,11 @@ func (o *BulkHistoryReportData) HasHistory() bool {
 }
 
 // SetHistory gets a reference to the given []BulkHistoryEvent and assigns it to the History field.
-func (o *BulkHistoryReportData) SetHistory(v []BulkHistoryEvent) {
+func (o *BulkHistoryReportObject) SetHistory(v []BulkHistoryEvent) {
 	o.History = v
 }
 
-func (o BulkHistoryReportData) MarshalJSON() ([]byte, error) {
+func (o BulkHistoryReportObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -79,7 +79,7 @@ func (o BulkHistoryReportData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o BulkHistoryReportData) ToMap() (map[string]interface{}, error) {
+func (o BulkHistoryReportObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.History) {
 		toSerialize["history"] = o.History
@@ -87,38 +87,38 @@ func (o BulkHistoryReportData) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableBulkHistoryReportData struct {
-	value *BulkHistoryReportData
+type NullableBulkHistoryReportObject struct {
+	value *BulkHistoryReportObject
 	isSet bool
 }
 
-func (v NullableBulkHistoryReportData) Get() *BulkHistoryReportData {
+func (v NullableBulkHistoryReportObject) Get() *BulkHistoryReportObject {
 	return v.value
 }
 
-func (v *NullableBulkHistoryReportData) Set(val *BulkHistoryReportData) {
+func (v *NullableBulkHistoryReportObject) Set(val *BulkHistoryReportObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBulkHistoryReportData) IsSet() bool {
+func (v NullableBulkHistoryReportObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBulkHistoryReportData) Unset() {
+func (v *NullableBulkHistoryReportObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBulkHistoryReportData(val *BulkHistoryReportData) *NullableBulkHistoryReportData {
-	return &NullableBulkHistoryReportData{value: val, isSet: true}
+func NewNullableBulkHistoryReportObject(val *BulkHistoryReportObject) *NullableBulkHistoryReportObject {
+	return &NullableBulkHistoryReportObject{value: val, isSet: true}
 }
 
-func (v NullableBulkHistoryReportData) MarshalJSON() ([]byte, error) {
+func (v NullableBulkHistoryReportObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBulkHistoryReportData) UnmarshalJSON(src []byte) error {
+func (v *NullableBulkHistoryReportObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

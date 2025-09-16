@@ -14,36 +14,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the HistoryReportData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HistoryReportData{}
+// checks if the HistoryReportObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HistoryReportObject{}
 
-// HistoryReportData struct for HistoryReportData
-type HistoryReportData struct {
+// HistoryReportObject struct for HistoryReportObject
+type HistoryReportObject struct {
 	Cn *ConsignmentNote `json:"cn,omitempty"`
 	Receiver *ReceiverInfo `json:"receiver,omitempty"`
 	Financial *FinancialInfo `json:"financial,omitempty"`
 	History []HistoryEvent `json:"history,omitempty"`
 }
 
-// NewHistoryReportData instantiates a new HistoryReportData object
+// NewHistoryReportObject instantiates a new HistoryReportObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHistoryReportData() *HistoryReportData {
-	this := HistoryReportData{}
+func NewHistoryReportObject() *HistoryReportObject {
+	this := HistoryReportObject{}
 	return &this
 }
 
-// NewHistoryReportDataWithDefaults instantiates a new HistoryReportData object
+// NewHistoryReportObjectWithDefaults instantiates a new HistoryReportObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHistoryReportDataWithDefaults() *HistoryReportData {
-	this := HistoryReportData{}
+func NewHistoryReportObjectWithDefaults() *HistoryReportObject {
+	this := HistoryReportObject{}
 	return &this
 }
 
 // GetCn returns the Cn field value if set, zero value otherwise.
-func (o *HistoryReportData) GetCn() ConsignmentNote {
+func (o *HistoryReportObject) GetCn() ConsignmentNote {
 	if o == nil || IsNil(o.Cn) {
 		var ret ConsignmentNote
 		return ret
@@ -53,7 +53,7 @@ func (o *HistoryReportData) GetCn() ConsignmentNote {
 
 // GetCnOk returns a tuple with the Cn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportData) GetCnOk() (*ConsignmentNote, bool) {
+func (o *HistoryReportObject) GetCnOk() (*ConsignmentNote, bool) {
 	if o == nil || IsNil(o.Cn) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *HistoryReportData) GetCnOk() (*ConsignmentNote, bool) {
 }
 
 // HasCn returns a boolean if a field has been set.
-func (o *HistoryReportData) HasCn() bool {
+func (o *HistoryReportObject) HasCn() bool {
 	if o != nil && !IsNil(o.Cn) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *HistoryReportData) HasCn() bool {
 }
 
 // SetCn gets a reference to the given ConsignmentNote and assigns it to the Cn field.
-func (o *HistoryReportData) SetCn(v ConsignmentNote) {
+func (o *HistoryReportObject) SetCn(v ConsignmentNote) {
 	o.Cn = &v
 }
 
 // GetReceiver returns the Receiver field value if set, zero value otherwise.
-func (o *HistoryReportData) GetReceiver() ReceiverInfo {
+func (o *HistoryReportObject) GetReceiver() ReceiverInfo {
 	if o == nil || IsNil(o.Receiver) {
 		var ret ReceiverInfo
 		return ret
@@ -85,7 +85,7 @@ func (o *HistoryReportData) GetReceiver() ReceiverInfo {
 
 // GetReceiverOk returns a tuple with the Receiver field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportData) GetReceiverOk() (*ReceiverInfo, bool) {
+func (o *HistoryReportObject) GetReceiverOk() (*ReceiverInfo, bool) {
 	if o == nil || IsNil(o.Receiver) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *HistoryReportData) GetReceiverOk() (*ReceiverInfo, bool) {
 }
 
 // HasReceiver returns a boolean if a field has been set.
-func (o *HistoryReportData) HasReceiver() bool {
+func (o *HistoryReportObject) HasReceiver() bool {
 	if o != nil && !IsNil(o.Receiver) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *HistoryReportData) HasReceiver() bool {
 }
 
 // SetReceiver gets a reference to the given ReceiverInfo and assigns it to the Receiver field.
-func (o *HistoryReportData) SetReceiver(v ReceiverInfo) {
+func (o *HistoryReportObject) SetReceiver(v ReceiverInfo) {
 	o.Receiver = &v
 }
 
 // GetFinancial returns the Financial field value if set, zero value otherwise.
-func (o *HistoryReportData) GetFinancial() FinancialInfo {
+func (o *HistoryReportObject) GetFinancial() FinancialInfo {
 	if o == nil || IsNil(o.Financial) {
 		var ret FinancialInfo
 		return ret
@@ -117,7 +117,7 @@ func (o *HistoryReportData) GetFinancial() FinancialInfo {
 
 // GetFinancialOk returns a tuple with the Financial field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportData) GetFinancialOk() (*FinancialInfo, bool) {
+func (o *HistoryReportObject) GetFinancialOk() (*FinancialInfo, bool) {
 	if o == nil || IsNil(o.Financial) {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *HistoryReportData) GetFinancialOk() (*FinancialInfo, bool) {
 }
 
 // HasFinancial returns a boolean if a field has been set.
-func (o *HistoryReportData) HasFinancial() bool {
+func (o *HistoryReportObject) HasFinancial() bool {
 	if o != nil && !IsNil(o.Financial) {
 		return true
 	}
@@ -134,12 +134,12 @@ func (o *HistoryReportData) HasFinancial() bool {
 }
 
 // SetFinancial gets a reference to the given FinancialInfo and assigns it to the Financial field.
-func (o *HistoryReportData) SetFinancial(v FinancialInfo) {
+func (o *HistoryReportObject) SetFinancial(v FinancialInfo) {
 	o.Financial = &v
 }
 
 // GetHistory returns the History field value if set, zero value otherwise.
-func (o *HistoryReportData) GetHistory() []HistoryEvent {
+func (o *HistoryReportObject) GetHistory() []HistoryEvent {
 	if o == nil || IsNil(o.History) {
 		var ret []HistoryEvent
 		return ret
@@ -149,7 +149,7 @@ func (o *HistoryReportData) GetHistory() []HistoryEvent {
 
 // GetHistoryOk returns a tuple with the History field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoryReportData) GetHistoryOk() ([]HistoryEvent, bool) {
+func (o *HistoryReportObject) GetHistoryOk() ([]HistoryEvent, bool) {
 	if o == nil || IsNil(o.History) {
 		return nil, false
 	}
@@ -157,7 +157,7 @@ func (o *HistoryReportData) GetHistoryOk() ([]HistoryEvent, bool) {
 }
 
 // HasHistory returns a boolean if a field has been set.
-func (o *HistoryReportData) HasHistory() bool {
+func (o *HistoryReportObject) HasHistory() bool {
 	if o != nil && !IsNil(o.History) {
 		return true
 	}
@@ -166,11 +166,11 @@ func (o *HistoryReportData) HasHistory() bool {
 }
 
 // SetHistory gets a reference to the given []HistoryEvent and assigns it to the History field.
-func (o *HistoryReportData) SetHistory(v []HistoryEvent) {
+func (o *HistoryReportObject) SetHistory(v []HistoryEvent) {
 	o.History = v
 }
 
-func (o HistoryReportData) MarshalJSON() ([]byte, error) {
+func (o HistoryReportObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -178,7 +178,7 @@ func (o HistoryReportData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o HistoryReportData) ToMap() (map[string]interface{}, error) {
+func (o HistoryReportObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Cn) {
 		toSerialize["cn"] = o.Cn
@@ -195,38 +195,38 @@ func (o HistoryReportData) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableHistoryReportData struct {
-	value *HistoryReportData
+type NullableHistoryReportObject struct {
+	value *HistoryReportObject
 	isSet bool
 }
 
-func (v NullableHistoryReportData) Get() *HistoryReportData {
+func (v NullableHistoryReportObject) Get() *HistoryReportObject {
 	return v.value
 }
 
-func (v *NullableHistoryReportData) Set(val *HistoryReportData) {
+func (v *NullableHistoryReportObject) Set(val *HistoryReportObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHistoryReportData) IsSet() bool {
+func (v NullableHistoryReportObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHistoryReportData) Unset() {
+func (v *NullableHistoryReportObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHistoryReportData(val *HistoryReportData) *NullableHistoryReportData {
-	return &NullableHistoryReportData{value: val, isSet: true}
+func NewNullableHistoryReportObject(val *HistoryReportObject) *NullableHistoryReportObject {
+	return &NullableHistoryReportObject{value: val, isSet: true}
 }
 
-func (v NullableHistoryReportData) MarshalJSON() ([]byte, error) {
+func (v NullableHistoryReportObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHistoryReportData) UnmarshalJSON(src []byte) error {
+func (v *NullableHistoryReportObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

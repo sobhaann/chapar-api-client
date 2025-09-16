@@ -28,13 +28,13 @@ type ApiGetQuotePostRequest struct {
 	input *string
 }
 
-// A stringified JSON object containing the order details.
+// A stringified JSON object of type QuoteRequest.
 func (r ApiGetQuotePostRequest) Input(input string) ApiGetQuotePostRequest {
 	r.input = &input
 	return r
 }
 
-func (r ApiGetQuotePostRequest) Execute() (*GetQuotePost200Response, *http.Response, error) {
+func (r ApiGetQuotePostRequest) Execute() (*QuoteResponse, *http.Response, error) {
 	return r.ApiService.GetQuotePostExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *QuotesAPIService) GetQuotePost(ctx context.Context) ApiGetQuotePostRequ
 }
 
 // Execute executes the request
-//  @return GetQuotePost200Response
-func (a *QuotesAPIService) GetQuotePostExecute(r ApiGetQuotePostRequest) (*GetQuotePost200Response, *http.Response, error) {
+//  @return QuoteResponse
+func (a *QuotesAPIService) GetQuotePostExecute(r ApiGetQuotePostRequest) (*QuoteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetQuotePost200Response
+		localVarReturnValue  *QuoteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QuotesAPIService.GetQuotePost")
@@ -94,7 +94,7 @@ func (a *QuotesAPIService) GetQuotePostExecute(r ApiGetQuotePostRequest) (*GetQu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "form", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -130,38 +130,6 @@ func (a *QuotesAPIService) GetQuotePostExecute(r ApiGetQuotePostRequest) (*GetQu
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
