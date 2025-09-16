@@ -37,8 +37,9 @@ docs/ShipmentsAPI.md
 docs/StateItem.md
 docs/TrackingAPI.md
 docs/TrackingHistoryItem.md
-docs/TrackingObject.md
-docs/TrackingObjectOrder.md
+docs/TrackingObjects.md
+docs/TrackingObjectsOrder.md
+docs/TrackingObjectsOrderGeo.md
 docs/TrackingResponse.md
 git_push.sh
 go.mod
@@ -68,8 +69,9 @@ model_quote_object_order.go
 model_quote_response.go
 model_state_item.go
 model_tracking_history_item.go
-model_tracking_object.go
-model_tracking_object_order.go
+model_tracking_objects.go
+model_tracking_objects_order.go
+model_tracking_objects_order_geo.go
 model_tracking_response.go
 response.go
 test/api_locations_test.go
