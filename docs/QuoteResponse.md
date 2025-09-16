@@ -1,117 +1,117 @@
-# GetQuotePost200Response
+# QuoteResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Success** | Pointer to **bool** |  | [optional] 
-**Data** | Pointer to [**QuoteData**](QuoteData.md) |  | [optional] 
 **Message** | Pointer to **NullableString** |  | [optional] 
+**Object** | Pointer to [**QuoteObject**](QuoteObject.md) |  | [optional] 
 
 ## Methods
 
-### NewGetQuotePost200Response
+### NewQuoteResponse
 
-`func NewGetQuotePost200Response() *GetQuotePost200Response`
+`func NewQuoteResponse() *QuoteResponse`
 
-NewGetQuotePost200Response instantiates a new GetQuotePost200Response object
+NewQuoteResponse instantiates a new QuoteResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGetQuotePost200ResponseWithDefaults
+### NewQuoteResponseWithDefaults
 
-`func NewGetQuotePost200ResponseWithDefaults() *GetQuotePost200Response`
+`func NewQuoteResponseWithDefaults() *QuoteResponse`
 
-NewGetQuotePost200ResponseWithDefaults instantiates a new GetQuotePost200Response object
+NewQuoteResponseWithDefaults instantiates a new QuoteResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetSuccess
 
-`func (o *GetQuotePost200Response) GetSuccess() bool`
+`func (o *QuoteResponse) GetSuccess() bool`
 
 GetSuccess returns the Success field if non-nil, zero value otherwise.
 
 ### GetSuccessOk
 
-`func (o *GetQuotePost200Response) GetSuccessOk() (*bool, bool)`
+`func (o *QuoteResponse) GetSuccessOk() (*bool, bool)`
 
 GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccess
 
-`func (o *GetQuotePost200Response) SetSuccess(v bool)`
+`func (o *QuoteResponse) SetSuccess(v bool)`
 
 SetSuccess sets Success field to given value.
 
 ### HasSuccess
 
-`func (o *GetQuotePost200Response) HasSuccess() bool`
+`func (o *QuoteResponse) HasSuccess() bool`
 
 HasSuccess returns a boolean if a field has been set.
 
-### GetData
-
-`func (o *GetQuotePost200Response) GetData() QuoteData`
-
-GetData returns the Data field if non-nil, zero value otherwise.
-
-### GetDataOk
-
-`func (o *GetQuotePost200Response) GetDataOk() (*QuoteData, bool)`
-
-GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetData
-
-`func (o *GetQuotePost200Response) SetData(v QuoteData)`
-
-SetData sets Data field to given value.
-
-### HasData
-
-`func (o *GetQuotePost200Response) HasData() bool`
-
-HasData returns a boolean if a field has been set.
-
 ### GetMessage
 
-`func (o *GetQuotePost200Response) GetMessage() string`
+`func (o *QuoteResponse) GetMessage() string`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *GetQuotePost200Response) GetMessageOk() (*string, bool)`
+`func (o *QuoteResponse) GetMessageOk() (*string, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *GetQuotePost200Response) SetMessage(v string)`
+`func (o *QuoteResponse) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *GetQuotePost200Response) HasMessage() bool`
+`func (o *QuoteResponse) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 
 ### SetMessageNil
 
-`func (o *GetQuotePost200Response) SetMessageNil(b bool)`
+`func (o *QuoteResponse) SetMessageNil(b bool)`
 
  SetMessageNil sets the value for Message to be an explicit nil
 
 ### UnsetMessage
-`func (o *GetQuotePost200Response) UnsetMessage()`
+`func (o *QuoteResponse) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+### GetObject
+
+`func (o *QuoteResponse) GetObject() QuoteObject`
+
+GetObject returns the Object field if non-nil, zero value otherwise.
+
+### GetObjectOk
+
+`func (o *QuoteResponse) GetObjectOk() (*QuoteObject, bool)`
+
+GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObject
+
+`func (o *QuoteResponse) SetObject(v QuoteObject)`
+
+SetObject sets Object field to given value.
+
+### HasObject
+
+`func (o *QuoteResponse) HasObject() bool`
+
+HasObject returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

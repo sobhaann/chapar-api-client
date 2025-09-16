@@ -27,6 +27,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_get_quote_post_request"
         required: true
@@ -35,25 +39,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_get_quote_post_200_response"
-          description: Successful response with quote data.
+                $ref: "#/components/schemas/QuoteResponse"
+          description: Successful response with quote data
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
       security:
       - ApiKeyAuth: []
@@ -68,6 +60,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_bulk_import_post_request"
         required: true
@@ -79,22 +75,10 @@ paths:
                 $ref: "#/components/schemas/_bulk_import_post_200_response"
           description: Generic successful operation.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
       security:
       - ApiKeyAuth: []
@@ -110,6 +94,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_tracking_post_request"
         required: true
@@ -121,22 +109,10 @@ paths:
                 $ref: "#/components/schemas/_bulk_import_post_200_response"
           description: Generic successful operation.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
       security:
       - ApiKeyAuth: []
@@ -151,6 +127,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_history_report_post_request"
         required: true
@@ -159,26 +139,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_history_report_post_200_response"
+                $ref: "#/components/schemas/HistoryReportResponse"
           description: Successful history report response.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
+      security:
+      - ApiKeyAuth: []
       summary: Get a history report for shipments
       tags:
       - Tracking
@@ -189,6 +159,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_bulk_history_report_post_request"
         required: true
@@ -197,26 +171,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_bulk_history_report_post_200_response"
+                $ref: "#/components/schemas/BulkHistoryReportResponse"
           description: Successful bulk history report response.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
+      security:
+      - ApiKeyAuth: []
       summary: Get a bulk history report
       tags:
       - Tracking
@@ -227,6 +191,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_cancel_pickup_post_request"
         required: true
@@ -238,23 +206,13 @@ paths:
                 $ref: "#/components/schemas/_bulk_import_post_200_response"
           description: Generic successful operation.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
+      security:
+      - ApiKeyAuth: []
       summary: Cancel a scheduled pickup
       tags:
       - Shipments
@@ -267,20 +225,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_get_state_get_200_response"
+                $ref: "#/components/schemas/GetStateResponse"
           description: Successful state list response.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
+      security:
+      - ApiKeyAuth: []
       summary: Get list of states
       tags:
       - Locations
@@ -291,6 +243,10 @@ paths:
       requestBody:
         content:
           multipart/form-data:
+            encoding:
+              input:
+                contentType: application/json
+                style: form
             schema:
               $ref: "#/components/schemas/_get_city_post_request"
         required: true
@@ -299,90 +255,272 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_get_city_post_200_response"
+                $ref: "#/components/schemas/GetCityResponse"
           description: Successful city list response.
         "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Bad Request. Invalid input parameters.
+        "401":
+          description: Unauthorized. Invalid or missing API key or credentials.
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
           description: Internal server error.
+      security:
+      - ApiKeyAuth: []
       summary: Get list of cities for a state
       tags:
       - Locations
 components:
   responses:
+    BadRequest:
+      description: Bad Request. Invalid input parameters.
+    Unauthorized:
+      description: Unauthorized. Invalid or missing API key or credentials.
+    InternalServerError:
+      description: Internal server error.
     GenericSuccessResponse:
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/_bulk_import_post_200_response"
       description: Generic successful operation.
-    BadRequest:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-      description: Bad Request. Invalid input parameters.
-    Unauthorized:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-      description: Unauthorized. Invalid or missing API key or credentials.
-    InternalServerError:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-      description: Internal server error.
-    QuoteSuccessResponse:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/_get_quote_post_200_response"
-      description: Successful response with quote data.
-    HistoryReportSuccessResponse:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/_history_report_post_200_response"
-      description: Successful history report response.
-    BulkHistoryReportSuccessResponse:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/_bulk_history_report_post_200_response"
-      description: Successful bulk history report response.
-    GetStateSuccessResponse:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/_get_state_get_200_response"
-      description: Successful state list response.
-    GetCitySuccessResponse:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/_get_city_post_200_response"
-      description: Successful city list response.
   schemas:
-    Error:
-      example:
-        message: Invalid input provided.
+    _get_quote_post_request:
       properties:
-        message:
-          description: A human-readable error message.
-          example: Invalid input provided.
+        input:
+          description: A stringified JSON object of type QuoteRequest.
+          example: "{\"order\":{\"origin\":\"10866\",\"destination\":\"10866\",\"\
+            weight\":\"1\",\"value\":\"2000000\",\"method\":\"1\"}}"
           type: string
+      required:
+      - input
       type: object
-    QuoteData:
+    _bulk_import_post_request:
+      properties:
+        input:
+          description: A stringified JSON object of type BulkImportRequest.
+          example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"bulk\"\
+            :[{\"cn\":{...}}]}"
+          type: string
+        signature:
+          format: binary
+          type: string
+      required:
+      - input
+      type: object
+    _tracking_post_request:
+      properties:
+        input:
+          description: A stringified JSON object of type TrackingRequest.
+          example: "{\"order\":{\"reference\":[\"54100006968781101\"],\"lang\":\"\
+            fa\"}}"
+          type: string
+      required:
+      - input
+      type: object
+    _history_report_post_request:
+      properties:
+        input:
+          description: A stringified JSON object of type HistoryReportRequest.
+          example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"date\"\
+            :{\"from\":\"25-09-2017\",\"to\":\"10-10-2017\"},\"maximum_records\":10}"
+          type: string
+      required:
+      - input
+      type: object
+    _bulk_history_report_post_request:
+      properties:
+        input:
+          description: A stringified JSON object of type BulkHistoryReportRequest.
+          example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"bulk\"\
+            :[\"541...1\",\"541...2\"]}"
+          type: string
+      required:
+      - input
+      type: object
+    _cancel_pickup_post_request:
+      properties:
+        input:
+          description: A stringified JSON object of type CancelPickupRequest.
+          example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"consignment_no\"\
+            :\"541...1\",\"reason\":\"Test\"}"
+          type: string
+      required:
+      - input
+      type: object
+    _get_city_post_request:
+      properties:
+        input:
+          description: A stringified JSON object of type GetCityRequest.
+          example: "{\"state\":{\"no\":9}}"
+          type: string
+      required:
+      - input
+      type: object
+    QuoteRequest:
+      properties:
+        order:
+          $ref: "#/components/schemas/OrderDetails"
+      required:
+      - order
+      type: object
+    BulkImportRequest:
+      type: object
+    TrackingRequest:
+      type: object
+    HistoryReportRequest:
+      type: object
+    BulkHistoryReportRequest:
+      type: object
+    CancelPickupRequest:
+      type: object
+    GetCityRequest:
+      type: object
+    OrderDetails:
+      properties:
+        origin:
+          example: "10866"
+          type: string
+        destination:
+          example: "10866"
+          type: string
+        weight:
+          example: "1"
+          type: string
+        value:
+          example: "2000000"
+          type: string
+        method:
+          example: "1"
+          type: string
+        sender_code:
+          example: "1000"
+          nullable: true
+          type: string
+        receiver_code:
+          example: "1000"
+          nullable: true
+          type: string
+        cod:
+          example: "0"
+          nullable: true
+          type: string
+      required:
+      - destination
+      - method
+      - origin
+      - value
+      - weight
+      type: object
+    QuoteResponse:
+      example:
+        success: true
+        message: message
+        object:
+          price: 75000
+          deadline: "2"
+      properties:
+        success:
+          example: true
+          type: boolean
+        message:
+          nullable: true
+          type: string
+        object:
+          $ref: "#/components/schemas/QuoteObject"
+      type: object
+    HistoryReportResponse:
+      example:
+        success: true
+        message: message
+        object:
+          receiver:
+            person: person
+            company: company
+          financial:
+            delivery_charge: delivery_charge
+            total_charge: 0
+          cn:
+            date: date
+            tracking: tracking
+          history:
+          - status_note: status_note
+            status: status
+          - status_note: status_note
+            status: status
+      properties:
+        success:
+          example: true
+          type: boolean
+        message:
+          nullable: true
+          type: string
+        object:
+          $ref: "#/components/schemas/HistoryReportObject"
+      type: object
+    BulkHistoryReportResponse:
+      example:
+        success: true
+        message: message
+        object:
+          history:
+          - tracking: tracking
+            status: status
+          - tracking: tracking
+            status: status
+      properties:
+        success:
+          example: true
+          type: boolean
+        message:
+          nullable: true
+          type: string
+        object:
+          $ref: "#/components/schemas/BulkHistoryReportObject"
+      type: object
+    GetStateResponse:
+      example:
+        success: true
+        message: message
+        object:
+          state:
+          - "false": "1"
+            name: آذربایجان شرقی
+          - "false": "1"
+            name: آذربایجان شرقی
+      properties:
+        success:
+          example: true
+          type: boolean
+        message:
+          nullable: true
+          type: string
+        object:
+          $ref: "#/components/schemas/GetStateObject"
+      type: object
+    GetCityResponse:
+      example:
+        success: true
+        message: message
+        object:
+          objects:
+            city:
+            - "false": "11907"
+              name: آرين شهر
+              state_no: "9"
+            - "false": "11907"
+              name: آرين شهر
+              state_no: "9"
+            selected: "{}"
+      properties:
+        success:
+          example: true
+          type: boolean
+        message:
+          nullable: true
+          type: string
+        object:
+          $ref: "#/components/schemas/GetCityObject"
+      type: object
+    QuoteObject:
       example:
         price: 75000
         deadline: "2"
@@ -394,45 +532,22 @@ components:
           example: "2"
           type: string
       type: object
-    HistoryReportData:
+    HistoryReportObject:
       example:
         receiver:
-          address: تهران تستی برای تست
-          city: تهران
-          person: تست سعید
-          post_code: post_code
-          mobile: "09360950049"
+          person: person
           company: company
-          telephone: "02144444444"
         financial:
-          extra_charge: "0"
-          delivery_charge: "108945"
-          pack_charge: "0"
-          cod_value: 0
-          insurance_charge: "15000"
-          total_charge: 136450
-          vat_charge: "12505"
+          delivery_charge: delivery_charge
+          total_charge: 0
         cn:
-          date: 2020-06-17 14:20:00
-          delivery_date: 2020-06-20 13:58:08
-          payment_term: "0"
-          service: "1"
-          last_status: OK
-          delivery_person: تست سعید
-          weight: "0.001"
-          change_state_url: http://foo.bar.com/on-status-changed
-          tracking: "54100004430041101"
-          value: "0"
-          assinged_pieces: "4"
+          date: date
+          tracking: tracking
         history:
-        - date: 2020-06-20 13:58:08
-          status_note: بار به صورت صحیح و سالم تحویل شد
-          timestamp_date: 1592645288
-          status: OK
-        - date: 2020-06-20 13:58:08
-          status_note: بار به صورت صحیح و سالم تحویل شد
-          timestamp_date: 1592645288
-          status: OK
+        - status_note: status_note
+          status: status
+        - status_note: status_note
+          status: status
       properties:
         cn:
           $ref: "#/components/schemas/ConsignmentNote"
@@ -445,188 +560,20 @@ components:
             $ref: "#/components/schemas/HistoryEvent"
           type: array
       type: object
-    ConsignmentNote:
-      example:
-        date: 2020-06-17 14:20:00
-        delivery_date: 2020-06-20 13:58:08
-        payment_term: "0"
-        service: "1"
-        last_status: OK
-        delivery_person: تست سعید
-        weight: "0.001"
-        change_state_url: http://foo.bar.com/on-status-changed
-        tracking: "54100004430041101"
-        value: "0"
-        assinged_pieces: "4"
-      properties:
-        tracking:
-          example: "54100004430041101"
-          type: string
-        date:
-          example: 2020-06-17 14:20:00
-          type: string
-        assinged_pieces:
-          example: "4"
-          type: string
-        weight:
-          example: "0.001"
-          type: string
-        service:
-          example: "1"
-          type: string
-        value:
-          example: "0"
-          type: string
-        payment_term:
-          example: "0"
-          type: string
-        last_status:
-          example: OK
-          type: string
-        delivery_date:
-          example: 2020-06-20 13:58:08
-          type: string
-        delivery_person:
-          example: تست سعید
-          type: string
-        change_state_url:
-          example: http://foo.bar.com/on-status-changed
-          type: string
-      type: object
-    ReceiverInfo:
-      example:
-        address: تهران تستی برای تست
-        city: تهران
-        person: تست سعید
-        post_code: post_code
-        mobile: "09360950049"
-        company: company
-        telephone: "02144444444"
-      properties:
-        person:
-          example: تست سعید
-          type: string
-        company:
-          nullable: true
-          type: string
-        city:
-          example: تهران
-          type: string
-        telephone:
-          example: "02144444444"
-          type: string
-        mobile:
-          example: "09360950049"
-          type: string
-        address:
-          example: تهران تستی برای تست
-          type: string
-        post_code:
-          nullable: true
-          type: string
-      type: object
-    FinancialInfo:
-      example:
-        extra_charge: "0"
-        delivery_charge: "108945"
-        pack_charge: "0"
-        cod_value: 0
-        insurance_charge: "15000"
-        total_charge: 136450
-        vat_charge: "12505"
-      properties:
-        delivery_charge:
-          example: "108945"
-          type: string
-        insurance_charge:
-          example: "15000"
-          type: string
-        vat_charge:
-          example: "12505"
-          type: string
-        pack_charge:
-          example: "0"
-          type: string
-        extra_charge:
-          example: "0"
-          type: string
-        cod_value:
-          example: 0
-          type: integer
-        total_charge:
-          example: 136450
-          type: integer
-      type: object
-    HistoryEvent:
-      example:
-        date: 2020-06-20 13:58:08
-        status_note: بار به صورت صحیح و سالم تحویل شد
-        timestamp_date: 1592645288
-        status: OK
-      properties:
-        timestamp_date:
-          example: 1592645288
-          type: integer
-        date:
-          example: 2020-06-20 13:58:08
-          type: string
-        status:
-          example: OK
-          type: string
-        status_note:
-          example: بار به صورت صحیح و سالم تحویل شد
-          type: string
-      type: object
-    BulkHistoryReportData:
+    BulkHistoryReportObject:
       example:
         history:
-        - date: 2020-07-19
-          reference: "123"
-          status_note: بار در سیستم ورود اطلاعات شد
-          time: 01:26
-          tracking: "54100004430128101"
-          status: D01
-        - date: 2020-07-19
-          reference: "123"
-          status_note: بار در سیستم ورود اطلاعات شد
-          time: 01:26
-          tracking: "54100004430128101"
-          status: D01
+        - tracking: tracking
+          status: status
+        - tracking: tracking
+          status: status
       properties:
         history:
           items:
             $ref: "#/components/schemas/BulkHistoryEvent"
           type: array
       type: object
-    BulkHistoryEvent:
-      example:
-        date: 2020-07-19
-        reference: "123"
-        status_note: بار در سیستم ورود اطلاعات شد
-        time: 01:26
-        tracking: "54100004430128101"
-        status: D01
-      properties:
-        time:
-          example: 01:26
-          type: string
-        date:
-          example: 2020-07-19
-          type: string
-        status:
-          example: D01
-          type: string
-        status_note:
-          example: بار در سیستم ورود اطلاعات شد
-          type: string
-        tracking:
-          example: "54100004430128101"
-          type: string
-        reference:
-          example: "123"
-          type: string
-      type: object
-    GetStateData:
+    GetStateObject:
       example:
         state:
         - "false": "1"
@@ -639,19 +586,7 @@ components:
             $ref: "#/components/schemas/State"
           type: array
       type: object
-    State:
-      example:
-        "false": "1"
-        name: آذربایجان شرقی
-      properties:
-        "false":
-          example: "1"
-          type: string
-        name:
-          example: آذربایجان شرقی
-          type: string
-      type: object
-    GetCityData:
+    GetCityObject:
       example:
         objects:
           city:
@@ -664,7 +599,70 @@ components:
           selected: "{}"
       properties:
         objects:
-          $ref: "#/components/schemas/GetCityData_objects"
+          $ref: "#/components/schemas/GetCityObject_objects"
+      type: object
+    ConsignmentNote:
+      example:
+        date: date
+        tracking: tracking
+      properties:
+        tracking:
+          type: string
+        date:
+          type: string
+      type: object
+    ReceiverInfo:
+      example:
+        person: person
+        company: company
+      properties:
+        person:
+          type: string
+        company:
+          nullable: true
+          type: string
+      type: object
+    FinancialInfo:
+      example:
+        delivery_charge: delivery_charge
+        total_charge: 0
+      properties:
+        delivery_charge:
+          type: string
+        total_charge:
+          type: integer
+      type: object
+    HistoryEvent:
+      example:
+        status_note: status_note
+        status: status
+      properties:
+        status:
+          type: string
+        status_note:
+          type: string
+      type: object
+    BulkHistoryEvent:
+      example:
+        tracking: tracking
+        status: status
+      properties:
+        status:
+          type: string
+        tracking:
+          type: string
+      type: object
+    State:
+      example:
+        "false": "1"
+        name: آذربایجان شرقی
+      properties:
+        "false":
+          example: "1"
+          type: string
+        name:
+          example: آذربایجان شرقی
+          type: string
       type: object
     City:
       example:
@@ -682,59 +680,11 @@ components:
           example: آرين شهر
           type: string
       type: object
-    _get_quote_post_request:
-      properties:
-        input:
-          description: A stringified JSON object containing the order details.
-          example: "{\"order\":{\"origin\":\"10866\",\"destination\":\"10866\",\"\
-            weight\":\"1\",\"value\":\"2000000\",\"method\":\"1\",\"sender_code\"\
-            :\"1000\",\"receiver_code\":\"1000\",\"cod\":\"0\"}}"
-          type: string
-      required:
-      - input
-      type: object
-    _get_quote_post_200_response:
-      example:
-        data:
-          price: 75000
-          deadline: "2"
-        success: true
-        message: message
-      properties:
-        success:
-          example: true
-          type: boolean
-        data:
-          $ref: "#/components/schemas/QuoteData"
-        message:
-          nullable: true
-          type: string
-      type: object
-    _bulk_import_post_request:
-      properties:
-        input:
-          description: A stringified JSON object containing the bulk shipment data.
-          example: "{\"user\":{\"username\":\"8888\",\"password\":\"8888\"},\"bulk\"\
-            :[{\"cn\":{\"reference\":\"76498\",\"date\":\"9/28/2021\",\"assinged_pieces\"\
-            :0,\"service\":\"1\",\"value\":\"1\",\"payment_term\":0,\"weight\":0.66},\"\
-            sender\":{\"person\":\"Dandanet\",\"company\":\"Dandanet\",\"city_no\"\
-            :\"10866\",\"telephone\":\"02166948060\",\"mobile\":\"09123181638\",\"\
-            address\":\"...\"},\"receiver\":{\"person\":\"Test Receiver\",\"company\"\
-            :\"\",\"city_no\":\"11347\",\"mobile\":\"09352951989\",\"address\":\"\
-            ...\"}}]}"
-          type: string
-        signature:
-          description: An optional signature file for the shipment.
-          format: binary
-          type: string
-      required:
-      - input
-      type: object
     _bulk_import_post_200_response:
       example:
-        data: "{}"
         success: true
         message: Operation completed successfully.
+        object: "{}"
       properties:
         success:
           example: true
@@ -743,184 +693,11 @@ components:
           example: Operation completed successfully.
           nullable: true
           type: string
-        data:
+        object:
           nullable: true
           type: object
       type: object
-    _tracking_post_request:
-      properties:
-        input:
-          description: A stringified JSON object containing the tracking references.
-          example: "{\"order\":{\"reference\":[\"54100006968781101\"],\"lang\":\"\
-            fa\"}}"
-          type: string
-      required:
-      - input
-      type: object
-    _history_report_post_request:
-      properties:
-        input:
-          description: A stringified JSON object for the history report request.
-          example: "{\"user\":{\"username\":\"8888\",\"password\":\"8888\"},\"date\"\
-            :{\"from\":\"25-09-2017\",\"to\":\"10-10-2017\"},\"maximum_records\":10}"
-          type: string
-      required:
-      - input
-      type: object
-    _history_report_post_200_response:
-      example:
-        data:
-          receiver:
-            address: تهران تستی برای تست
-            city: تهران
-            person: تست سعید
-            post_code: post_code
-            mobile: "09360950049"
-            company: company
-            telephone: "02144444444"
-          financial:
-            extra_charge: "0"
-            delivery_charge: "108945"
-            pack_charge: "0"
-            cod_value: 0
-            insurance_charge: "15000"
-            total_charge: 136450
-            vat_charge: "12505"
-          cn:
-            date: 2020-06-17 14:20:00
-            delivery_date: 2020-06-20 13:58:08
-            payment_term: "0"
-            service: "1"
-            last_status: OK
-            delivery_person: تست سعید
-            weight: "0.001"
-            change_state_url: http://foo.bar.com/on-status-changed
-            tracking: "54100004430041101"
-            value: "0"
-            assinged_pieces: "4"
-          history:
-          - date: 2020-06-20 13:58:08
-            status_note: بار به صورت صحیح و سالم تحویل شد
-            timestamp_date: 1592645288
-            status: OK
-          - date: 2020-06-20 13:58:08
-            status_note: بار به صورت صحیح و سالم تحویل شد
-            timestamp_date: 1592645288
-            status: OK
-        success: true
-        message: message
-      properties:
-        success:
-          example: true
-          type: boolean
-        data:
-          $ref: "#/components/schemas/HistoryReportData"
-        message:
-          nullable: true
-          type: string
-      type: object
-    _bulk_history_report_post_request:
-      properties:
-        input:
-          description: A stringified JSON object containing the bulk tracking numbers.
-          example: "{\"user\":{\"username\":\"8888\",\"password\":\"8888\"},\"bulk\"\
-            :[\"54100003992527101\",\"54100003942527101\"]}"
-          type: string
-      required:
-      - input
-      type: object
-    _bulk_history_report_post_200_response:
-      example:
-        data:
-          history:
-          - date: 2020-07-19
-            reference: "123"
-            status_note: بار در سیستم ورود اطلاعات شد
-            time: 01:26
-            tracking: "54100004430128101"
-            status: D01
-          - date: 2020-07-19
-            reference: "123"
-            status_note: بار در سیستم ورود اطلاعات شد
-            time: 01:26
-            tracking: "54100004430128101"
-            status: D01
-        success: true
-        message: message
-      properties:
-        success:
-          example: true
-          type: boolean
-        data:
-          $ref: "#/components/schemas/BulkHistoryReportData"
-        message:
-          nullable: true
-          type: string
-      type: object
-    _cancel_pickup_post_request:
-      properties:
-        input:
-          description: A stringified JSON object for the cancellation request.
-          example: "{\"user\":{\"username\":\"8888\",\"password\":\"8888\"},\"consignment_no\"\
-            :\"54100004430041101\",\"reason\":\"آزمایشی\"}"
-          type: string
-      required:
-      - input
-      type: object
-    _get_state_get_200_response:
-      example:
-        data:
-          state:
-          - "false": "1"
-            name: آذربایجان شرقی
-          - "false": "1"
-            name: آذربایجان شرقی
-        success: true
-        message: message
-      properties:
-        success:
-          example: true
-          type: boolean
-        data:
-          $ref: "#/components/schemas/GetStateData"
-        message:
-          nullable: true
-          type: string
-      type: object
-    _get_city_post_request:
-      properties:
-        input:
-          description: A stringified JSON object containing the state number.
-          example: "{\"state\":{\"no\":9}}"
-          type: string
-      required:
-      - input
-      type: object
-    _get_city_post_200_response:
-      example:
-        data:
-          objects:
-            city:
-            - "false": "11907"
-              name: آرين شهر
-              state_no: "9"
-            - "false": "11907"
-              name: آرين شهر
-              state_no: "9"
-            selected: "{}"
-        success: true
-        message: message
-      properties:
-        success:
-          example: true
-          type: boolean
-        data:
-          $ref: "#/components/schemas/GetCityData"
-        message:
-          nullable: true
-          type: string
-      type: object
-    GetCityData_objects:
+    GetCityObject_objects:
       example:
         city:
         - "false": "11907"

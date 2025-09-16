@@ -19,8 +19,6 @@ var _ MappedNullable = &HistoryEvent{}
 
 // HistoryEvent struct for HistoryEvent
 type HistoryEvent struct {
-	TimestampDate *int32 `json:"timestamp_date,omitempty"`
-	Date *string `json:"date,omitempty"`
 	Status *string `json:"status,omitempty"`
 	StatusNote *string `json:"status_note,omitempty"`
 }
@@ -40,70 +38,6 @@ func NewHistoryEvent() *HistoryEvent {
 func NewHistoryEventWithDefaults() *HistoryEvent {
 	this := HistoryEvent{}
 	return &this
-}
-
-// GetTimestampDate returns the TimestampDate field value if set, zero value otherwise.
-func (o *HistoryEvent) GetTimestampDate() int32 {
-	if o == nil || IsNil(o.TimestampDate) {
-		var ret int32
-		return ret
-	}
-	return *o.TimestampDate
-}
-
-// GetTimestampDateOk returns a tuple with the TimestampDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HistoryEvent) GetTimestampDateOk() (*int32, bool) {
-	if o == nil || IsNil(o.TimestampDate) {
-		return nil, false
-	}
-	return o.TimestampDate, true
-}
-
-// HasTimestampDate returns a boolean if a field has been set.
-func (o *HistoryEvent) HasTimestampDate() bool {
-	if o != nil && !IsNil(o.TimestampDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetTimestampDate gets a reference to the given int32 and assigns it to the TimestampDate field.
-func (o *HistoryEvent) SetTimestampDate(v int32) {
-	o.TimestampDate = &v
-}
-
-// GetDate returns the Date field value if set, zero value otherwise.
-func (o *HistoryEvent) GetDate() string {
-	if o == nil || IsNil(o.Date) {
-		var ret string
-		return ret
-	}
-	return *o.Date
-}
-
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HistoryEvent) GetDateOk() (*string, bool) {
-	if o == nil || IsNil(o.Date) {
-		return nil, false
-	}
-	return o.Date, true
-}
-
-// HasDate returns a boolean if a field has been set.
-func (o *HistoryEvent) HasDate() bool {
-	if o != nil && !IsNil(o.Date) {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given string and assigns it to the Date field.
-func (o *HistoryEvent) SetDate(v string) {
-	o.Date = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -180,12 +114,6 @@ func (o HistoryEvent) MarshalJSON() ([]byte, error) {
 
 func (o HistoryEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TimestampDate) {
-		toSerialize["timestamp_date"] = o.TimestampDate
-	}
-	if !IsNil(o.Date) {
-		toSerialize["date"] = o.Date
-	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}

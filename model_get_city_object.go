@@ -14,35 +14,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetCityData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetCityData{}
+// checks if the GetCityObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetCityObject{}
 
-// GetCityData struct for GetCityData
-type GetCityData struct {
-	Objects *GetCityDataObjects `json:"objects,omitempty"`
+// GetCityObject struct for GetCityObject
+type GetCityObject struct {
+	Objects *GetCityObjectObjects `json:"objects,omitempty"`
 }
 
-// NewGetCityData instantiates a new GetCityData object
+// NewGetCityObject instantiates a new GetCityObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCityData() *GetCityData {
-	this := GetCityData{}
+func NewGetCityObject() *GetCityObject {
+	this := GetCityObject{}
 	return &this
 }
 
-// NewGetCityDataWithDefaults instantiates a new GetCityData object
+// NewGetCityObjectWithDefaults instantiates a new GetCityObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetCityDataWithDefaults() *GetCityData {
-	this := GetCityData{}
+func NewGetCityObjectWithDefaults() *GetCityObject {
+	this := GetCityObject{}
 	return &this
 }
 
 // GetObjects returns the Objects field value if set, zero value otherwise.
-func (o *GetCityData) GetObjects() GetCityDataObjects {
+func (o *GetCityObject) GetObjects() GetCityObjectObjects {
 	if o == nil || IsNil(o.Objects) {
-		var ret GetCityDataObjects
+		var ret GetCityObjectObjects
 		return ret
 	}
 	return *o.Objects
@@ -50,7 +50,7 @@ func (o *GetCityData) GetObjects() GetCityDataObjects {
 
 // GetObjectsOk returns a tuple with the Objects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetCityData) GetObjectsOk() (*GetCityDataObjects, bool) {
+func (o *GetCityObject) GetObjectsOk() (*GetCityObjectObjects, bool) {
 	if o == nil || IsNil(o.Objects) {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *GetCityData) GetObjectsOk() (*GetCityDataObjects, bool) {
 }
 
 // HasObjects returns a boolean if a field has been set.
-func (o *GetCityData) HasObjects() bool {
+func (o *GetCityObject) HasObjects() bool {
 	if o != nil && !IsNil(o.Objects) {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *GetCityData) HasObjects() bool {
 	return false
 }
 
-// SetObjects gets a reference to the given GetCityDataObjects and assigns it to the Objects field.
-func (o *GetCityData) SetObjects(v GetCityDataObjects) {
+// SetObjects gets a reference to the given GetCityObjectObjects and assigns it to the Objects field.
+func (o *GetCityObject) SetObjects(v GetCityObjectObjects) {
 	o.Objects = &v
 }
 
-func (o GetCityData) MarshalJSON() ([]byte, error) {
+func (o GetCityObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -79,7 +79,7 @@ func (o GetCityData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetCityData) ToMap() (map[string]interface{}, error) {
+func (o GetCityObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Objects) {
 		toSerialize["objects"] = o.Objects
@@ -87,38 +87,38 @@ func (o GetCityData) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableGetCityData struct {
-	value *GetCityData
+type NullableGetCityObject struct {
+	value *GetCityObject
 	isSet bool
 }
 
-func (v NullableGetCityData) Get() *GetCityData {
+func (v NullableGetCityObject) Get() *GetCityObject {
 	return v.value
 }
 
-func (v *NullableGetCityData) Set(val *GetCityData) {
+func (v *NullableGetCityObject) Set(val *GetCityObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetCityData) IsSet() bool {
+func (v NullableGetCityObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetCityData) Unset() {
+func (v *NullableGetCityObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetCityData(val *GetCityData) *NullableGetCityData {
-	return &NullableGetCityData{value: val, isSet: true}
+func NewNullableGetCityObject(val *GetCityObject) *NullableGetCityObject {
+	return &NullableGetCityObject{value: val, isSet: true}
 }
 
-func (v NullableGetCityData) MarshalJSON() ([]byte, error) {
+func (v NullableGetCityObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetCityData) UnmarshalJSON(src []byte) error {
+func (v *NullableGetCityObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

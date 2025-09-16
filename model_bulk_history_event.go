@@ -19,12 +19,8 @@ var _ MappedNullable = &BulkHistoryEvent{}
 
 // BulkHistoryEvent struct for BulkHistoryEvent
 type BulkHistoryEvent struct {
-	Time *string `json:"time,omitempty"`
-	Date *string `json:"date,omitempty"`
 	Status *string `json:"status,omitempty"`
-	StatusNote *string `json:"status_note,omitempty"`
 	Tracking *string `json:"tracking,omitempty"`
-	Reference *string `json:"reference,omitempty"`
 }
 
 // NewBulkHistoryEvent instantiates a new BulkHistoryEvent object
@@ -42,70 +38,6 @@ func NewBulkHistoryEvent() *BulkHistoryEvent {
 func NewBulkHistoryEventWithDefaults() *BulkHistoryEvent {
 	this := BulkHistoryEvent{}
 	return &this
-}
-
-// GetTime returns the Time field value if set, zero value otherwise.
-func (o *BulkHistoryEvent) GetTime() string {
-	if o == nil || IsNil(o.Time) {
-		var ret string
-		return ret
-	}
-	return *o.Time
-}
-
-// GetTimeOk returns a tuple with the Time field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkHistoryEvent) GetTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.Time) {
-		return nil, false
-	}
-	return o.Time, true
-}
-
-// HasTime returns a boolean if a field has been set.
-func (o *BulkHistoryEvent) HasTime() bool {
-	if o != nil && !IsNil(o.Time) {
-		return true
-	}
-
-	return false
-}
-
-// SetTime gets a reference to the given string and assigns it to the Time field.
-func (o *BulkHistoryEvent) SetTime(v string) {
-	o.Time = &v
-}
-
-// GetDate returns the Date field value if set, zero value otherwise.
-func (o *BulkHistoryEvent) GetDate() string {
-	if o == nil || IsNil(o.Date) {
-		var ret string
-		return ret
-	}
-	return *o.Date
-}
-
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkHistoryEvent) GetDateOk() (*string, bool) {
-	if o == nil || IsNil(o.Date) {
-		return nil, false
-	}
-	return o.Date, true
-}
-
-// HasDate returns a boolean if a field has been set.
-func (o *BulkHistoryEvent) HasDate() bool {
-	if o != nil && !IsNil(o.Date) {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given string and assigns it to the Date field.
-func (o *BulkHistoryEvent) SetDate(v string) {
-	o.Date = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -140,38 +72,6 @@ func (o *BulkHistoryEvent) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetStatusNote returns the StatusNote field value if set, zero value otherwise.
-func (o *BulkHistoryEvent) GetStatusNote() string {
-	if o == nil || IsNil(o.StatusNote) {
-		var ret string
-		return ret
-	}
-	return *o.StatusNote
-}
-
-// GetStatusNoteOk returns a tuple with the StatusNote field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkHistoryEvent) GetStatusNoteOk() (*string, bool) {
-	if o == nil || IsNil(o.StatusNote) {
-		return nil, false
-	}
-	return o.StatusNote, true
-}
-
-// HasStatusNote returns a boolean if a field has been set.
-func (o *BulkHistoryEvent) HasStatusNote() bool {
-	if o != nil && !IsNil(o.StatusNote) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatusNote gets a reference to the given string and assigns it to the StatusNote field.
-func (o *BulkHistoryEvent) SetStatusNote(v string) {
-	o.StatusNote = &v
-}
-
 // GetTracking returns the Tracking field value if set, zero value otherwise.
 func (o *BulkHistoryEvent) GetTracking() string {
 	if o == nil || IsNil(o.Tracking) {
@@ -204,38 +104,6 @@ func (o *BulkHistoryEvent) SetTracking(v string) {
 	o.Tracking = &v
 }
 
-// GetReference returns the Reference field value if set, zero value otherwise.
-func (o *BulkHistoryEvent) GetReference() string {
-	if o == nil || IsNil(o.Reference) {
-		var ret string
-		return ret
-	}
-	return *o.Reference
-}
-
-// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BulkHistoryEvent) GetReferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.Reference) {
-		return nil, false
-	}
-	return o.Reference, true
-}
-
-// HasReference returns a boolean if a field has been set.
-func (o *BulkHistoryEvent) HasReference() bool {
-	if o != nil && !IsNil(o.Reference) {
-		return true
-	}
-
-	return false
-}
-
-// SetReference gets a reference to the given string and assigns it to the Reference field.
-func (o *BulkHistoryEvent) SetReference(v string) {
-	o.Reference = &v
-}
-
 func (o BulkHistoryEvent) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -246,23 +114,11 @@ func (o BulkHistoryEvent) MarshalJSON() ([]byte, error) {
 
 func (o BulkHistoryEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Time) {
-		toSerialize["time"] = o.Time
-	}
-	if !IsNil(o.Date) {
-		toSerialize["date"] = o.Date
-	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.StatusNote) {
-		toSerialize["status_note"] = o.StatusNote
-	}
 	if !IsNil(o.Tracking) {
 		toSerialize["tracking"] = o.Tracking
-	}
-	if !IsNil(o.Reference) {
-		toSerialize["reference"] = o.Reference
 	}
 	return toSerialize, nil
 }

@@ -28,13 +28,13 @@ type ApiGetCityPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object containing the state number.
+// A stringified JSON object of type GetCityRequest.
 func (r ApiGetCityPostRequest) Input(input string) ApiGetCityPostRequest {
 	r.input = &input
 	return r
 }
 
-func (r ApiGetCityPostRequest) Execute() (*GetCityPost200Response, *http.Response, error) {
+func (r ApiGetCityPostRequest) Execute() (*GetCityResponse, *http.Response, error) {
 	return r.ApiService.GetCityPostExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *LocationsAPIService) GetCityPost(ctx context.Context) ApiGetCityPostReq
 }
 
 // Execute executes the request
-//  @return GetCityPost200Response
-func (a *LocationsAPIService) GetCityPostExecute(r ApiGetCityPostRequest) (*GetCityPost200Response, *http.Response, error) {
+//  @return GetCityResponse
+func (a *LocationsAPIService) GetCityPostExecute(r ApiGetCityPostRequest) (*GetCityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetCityPost200Response
+		localVarReturnValue  *GetCityResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocationsAPIService.GetCityPost")
@@ -94,7 +94,21 @@ func (a *LocationsAPIService) GetCityPostExecute(r ApiGetCityPostRequest) (*GetC
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "form", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["APP-AUTH"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -117,27 +131,6 @@ func (a *LocationsAPIService) GetCityPostExecute(r ApiGetCityPostRequest) (*GetC
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -158,7 +151,7 @@ type ApiGetStateGetRequest struct {
 	ApiService *LocationsAPIService
 }
 
-func (r ApiGetStateGetRequest) Execute() (*GetStateGet200Response, *http.Response, error) {
+func (r ApiGetStateGetRequest) Execute() (*GetStateResponse, *http.Response, error) {
 	return r.ApiService.GetStateGetExecute(r)
 }
 
@@ -178,13 +171,13 @@ func (a *LocationsAPIService) GetStateGet(ctx context.Context) ApiGetStateGetReq
 }
 
 // Execute executes the request
-//  @return GetStateGet200Response
-func (a *LocationsAPIService) GetStateGetExecute(r ApiGetStateGetRequest) (*GetStateGet200Response, *http.Response, error) {
+//  @return GetStateResponse
+func (a *LocationsAPIService) GetStateGetExecute(r ApiGetStateGetRequest) (*GetStateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetStateGet200Response
+		localVarReturnValue  *GetStateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocationsAPIService.GetStateGet")
@@ -215,6 +208,20 @@ func (a *LocationsAPIService) GetStateGetExecute(r ApiGetStateGetRequest) (*GetS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["APP-AUTH"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -236,27 +243,6 @@ func (a *LocationsAPIService) GetStateGetExecute(r ApiGetStateGetRequest) (*GetS
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

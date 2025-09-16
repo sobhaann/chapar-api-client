@@ -14,35 +14,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetStateGet200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetStateGet200Response{}
+// checks if the GetCityResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetCityResponse{}
 
-// GetStateGet200Response struct for GetStateGet200Response
-type GetStateGet200Response struct {
+// GetCityResponse struct for GetCityResponse
+type GetCityResponse struct {
 	Success *bool `json:"success,omitempty"`
-	Data *GetStateData `json:"data,omitempty"`
 	Message NullableString `json:"message,omitempty"`
+	Object *GetCityObject `json:"object,omitempty"`
 }
 
-// NewGetStateGet200Response instantiates a new GetStateGet200Response object
+// NewGetCityResponse instantiates a new GetCityResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetStateGet200Response() *GetStateGet200Response {
-	this := GetStateGet200Response{}
+func NewGetCityResponse() *GetCityResponse {
+	this := GetCityResponse{}
 	return &this
 }
 
-// NewGetStateGet200ResponseWithDefaults instantiates a new GetStateGet200Response object
+// NewGetCityResponseWithDefaults instantiates a new GetCityResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetStateGet200ResponseWithDefaults() *GetStateGet200Response {
-	this := GetStateGet200Response{}
+func NewGetCityResponseWithDefaults() *GetCityResponse {
+	this := GetCityResponse{}
 	return &this
 }
 
 // GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *GetStateGet200Response) GetSuccess() bool {
+func (o *GetCityResponse) GetSuccess() bool {
 	if o == nil || IsNil(o.Success) {
 		var ret bool
 		return ret
@@ -52,7 +52,7 @@ func (o *GetStateGet200Response) GetSuccess() bool {
 
 // GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetStateGet200Response) GetSuccessOk() (*bool, bool) {
+func (o *GetCityResponse) GetSuccessOk() (*bool, bool) {
 	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *GetStateGet200Response) GetSuccessOk() (*bool, bool) {
 }
 
 // HasSuccess returns a boolean if a field has been set.
-func (o *GetStateGet200Response) HasSuccess() bool {
+func (o *GetCityResponse) HasSuccess() bool {
 	if o != nil && !IsNil(o.Success) {
 		return true
 	}
@@ -69,44 +69,12 @@ func (o *GetStateGet200Response) HasSuccess() bool {
 }
 
 // SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *GetStateGet200Response) SetSuccess(v bool) {
+func (o *GetCityResponse) SetSuccess(v bool) {
 	o.Success = &v
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
-func (o *GetStateGet200Response) GetData() GetStateData {
-	if o == nil || IsNil(o.Data) {
-		var ret GetStateData
-		return ret
-	}
-	return *o.Data
-}
-
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetStateGet200Response) GetDataOk() (*GetStateData, bool) {
-	if o == nil || IsNil(o.Data) {
-		return nil, false
-	}
-	return o.Data, true
-}
-
-// HasData returns a boolean if a field has been set.
-func (o *GetStateGet200Response) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given GetStateData and assigns it to the Data field.
-func (o *GetStateGet200Response) SetData(v GetStateData) {
-	o.Data = &v
-}
-
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetStateGet200Response) GetMessage() string {
+func (o *GetCityResponse) GetMessage() string {
 	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
@@ -117,7 +85,7 @@ func (o *GetStateGet200Response) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetStateGet200Response) GetMessageOk() (*string, bool) {
+func (o *GetCityResponse) GetMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,7 +93,7 @@ func (o *GetStateGet200Response) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *GetStateGet200Response) HasMessage() bool {
+func (o *GetCityResponse) HasMessage() bool {
 	if o != nil && o.Message.IsSet() {
 		return true
 	}
@@ -134,20 +102,52 @@ func (o *GetStateGet200Response) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given NullableString and assigns it to the Message field.
-func (o *GetStateGet200Response) SetMessage(v string) {
+func (o *GetCityResponse) SetMessage(v string) {
 	o.Message.Set(&v)
 }
 // SetMessageNil sets the value for Message to be an explicit nil
-func (o *GetStateGet200Response) SetMessageNil() {
+func (o *GetCityResponse) SetMessageNil() {
 	o.Message.Set(nil)
 }
 
 // UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *GetStateGet200Response) UnsetMessage() {
+func (o *GetCityResponse) UnsetMessage() {
 	o.Message.Unset()
 }
 
-func (o GetStateGet200Response) MarshalJSON() ([]byte, error) {
+// GetObject returns the Object field value if set, zero value otherwise.
+func (o *GetCityResponse) GetObject() GetCityObject {
+	if o == nil || IsNil(o.Object) {
+		var ret GetCityObject
+		return ret
+	}
+	return *o.Object
+}
+
+// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCityResponse) GetObjectOk() (*GetCityObject, bool) {
+	if o == nil || IsNil(o.Object) {
+		return nil, false
+	}
+	return o.Object, true
+}
+
+// HasObject returns a boolean if a field has been set.
+func (o *GetCityResponse) HasObject() bool {
+	if o != nil && !IsNil(o.Object) {
+		return true
+	}
+
+	return false
+}
+
+// SetObject gets a reference to the given GetCityObject and assigns it to the Object field.
+func (o *GetCityResponse) SetObject(v GetCityObject) {
+	o.Object = &v
+}
+
+func (o GetCityResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -155,52 +155,52 @@ func (o GetStateGet200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetStateGet200Response) ToMap() (map[string]interface{}, error) {
+func (o GetCityResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Success) {
 		toSerialize["success"] = o.Success
 	}
-	if !IsNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
+	}
+	if !IsNil(o.Object) {
+		toSerialize["object"] = o.Object
 	}
 	return toSerialize, nil
 }
 
-type NullableGetStateGet200Response struct {
-	value *GetStateGet200Response
+type NullableGetCityResponse struct {
+	value *GetCityResponse
 	isSet bool
 }
 
-func (v NullableGetStateGet200Response) Get() *GetStateGet200Response {
+func (v NullableGetCityResponse) Get() *GetCityResponse {
 	return v.value
 }
 
-func (v *NullableGetStateGet200Response) Set(val *GetStateGet200Response) {
+func (v *NullableGetCityResponse) Set(val *GetCityResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetStateGet200Response) IsSet() bool {
+func (v NullableGetCityResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetStateGet200Response) Unset() {
+func (v *NullableGetCityResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetStateGet200Response(val *GetStateGet200Response) *NullableGetStateGet200Response {
-	return &NullableGetStateGet200Response{value: val, isSet: true}
+func NewNullableGetCityResponse(val *GetCityResponse) *NullableGetCityResponse {
+	return &NullableGetCityResponse{value: val, isSet: true}
 }
 
-func (v NullableGetStateGet200Response) MarshalJSON() ([]byte, error) {
+func (v NullableGetCityResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetStateGet200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableGetCityResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -14,35 +14,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetQuotePost200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetQuotePost200Response{}
+// checks if the HistoryReportResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HistoryReportResponse{}
 
-// GetQuotePost200Response struct for GetQuotePost200Response
-type GetQuotePost200Response struct {
+// HistoryReportResponse struct for HistoryReportResponse
+type HistoryReportResponse struct {
 	Success *bool `json:"success,omitempty"`
-	Data *QuoteData `json:"data,omitempty"`
 	Message NullableString `json:"message,omitempty"`
+	Object *HistoryReportObject `json:"object,omitempty"`
 }
 
-// NewGetQuotePost200Response instantiates a new GetQuotePost200Response object
+// NewHistoryReportResponse instantiates a new HistoryReportResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetQuotePost200Response() *GetQuotePost200Response {
-	this := GetQuotePost200Response{}
+func NewHistoryReportResponse() *HistoryReportResponse {
+	this := HistoryReportResponse{}
 	return &this
 }
 
-// NewGetQuotePost200ResponseWithDefaults instantiates a new GetQuotePost200Response object
+// NewHistoryReportResponseWithDefaults instantiates a new HistoryReportResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetQuotePost200ResponseWithDefaults() *GetQuotePost200Response {
-	this := GetQuotePost200Response{}
+func NewHistoryReportResponseWithDefaults() *HistoryReportResponse {
+	this := HistoryReportResponse{}
 	return &this
 }
 
 // GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *GetQuotePost200Response) GetSuccess() bool {
+func (o *HistoryReportResponse) GetSuccess() bool {
 	if o == nil || IsNil(o.Success) {
 		var ret bool
 		return ret
@@ -52,7 +52,7 @@ func (o *GetQuotePost200Response) GetSuccess() bool {
 
 // GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetQuotePost200Response) GetSuccessOk() (*bool, bool) {
+func (o *HistoryReportResponse) GetSuccessOk() (*bool, bool) {
 	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *GetQuotePost200Response) GetSuccessOk() (*bool, bool) {
 }
 
 // HasSuccess returns a boolean if a field has been set.
-func (o *GetQuotePost200Response) HasSuccess() bool {
+func (o *HistoryReportResponse) HasSuccess() bool {
 	if o != nil && !IsNil(o.Success) {
 		return true
 	}
@@ -69,44 +69,12 @@ func (o *GetQuotePost200Response) HasSuccess() bool {
 }
 
 // SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *GetQuotePost200Response) SetSuccess(v bool) {
+func (o *HistoryReportResponse) SetSuccess(v bool) {
 	o.Success = &v
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
-func (o *GetQuotePost200Response) GetData() QuoteData {
-	if o == nil || IsNil(o.Data) {
-		var ret QuoteData
-		return ret
-	}
-	return *o.Data
-}
-
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetQuotePost200Response) GetDataOk() (*QuoteData, bool) {
-	if o == nil || IsNil(o.Data) {
-		return nil, false
-	}
-	return o.Data, true
-}
-
-// HasData returns a boolean if a field has been set.
-func (o *GetQuotePost200Response) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given QuoteData and assigns it to the Data field.
-func (o *GetQuotePost200Response) SetData(v QuoteData) {
-	o.Data = &v
-}
-
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetQuotePost200Response) GetMessage() string {
+func (o *HistoryReportResponse) GetMessage() string {
 	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
@@ -117,7 +85,7 @@ func (o *GetQuotePost200Response) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetQuotePost200Response) GetMessageOk() (*string, bool) {
+func (o *HistoryReportResponse) GetMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,7 +93,7 @@ func (o *GetQuotePost200Response) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *GetQuotePost200Response) HasMessage() bool {
+func (o *HistoryReportResponse) HasMessage() bool {
 	if o != nil && o.Message.IsSet() {
 		return true
 	}
@@ -134,20 +102,52 @@ func (o *GetQuotePost200Response) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given NullableString and assigns it to the Message field.
-func (o *GetQuotePost200Response) SetMessage(v string) {
+func (o *HistoryReportResponse) SetMessage(v string) {
 	o.Message.Set(&v)
 }
 // SetMessageNil sets the value for Message to be an explicit nil
-func (o *GetQuotePost200Response) SetMessageNil() {
+func (o *HistoryReportResponse) SetMessageNil() {
 	o.Message.Set(nil)
 }
 
 // UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *GetQuotePost200Response) UnsetMessage() {
+func (o *HistoryReportResponse) UnsetMessage() {
 	o.Message.Unset()
 }
 
-func (o GetQuotePost200Response) MarshalJSON() ([]byte, error) {
+// GetObject returns the Object field value if set, zero value otherwise.
+func (o *HistoryReportResponse) GetObject() HistoryReportObject {
+	if o == nil || IsNil(o.Object) {
+		var ret HistoryReportObject
+		return ret
+	}
+	return *o.Object
+}
+
+// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HistoryReportResponse) GetObjectOk() (*HistoryReportObject, bool) {
+	if o == nil || IsNil(o.Object) {
+		return nil, false
+	}
+	return o.Object, true
+}
+
+// HasObject returns a boolean if a field has been set.
+func (o *HistoryReportResponse) HasObject() bool {
+	if o != nil && !IsNil(o.Object) {
+		return true
+	}
+
+	return false
+}
+
+// SetObject gets a reference to the given HistoryReportObject and assigns it to the Object field.
+func (o *HistoryReportResponse) SetObject(v HistoryReportObject) {
+	o.Object = &v
+}
+
+func (o HistoryReportResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -155,52 +155,52 @@ func (o GetQuotePost200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetQuotePost200Response) ToMap() (map[string]interface{}, error) {
+func (o HistoryReportResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Success) {
 		toSerialize["success"] = o.Success
 	}
-	if !IsNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
+	}
+	if !IsNil(o.Object) {
+		toSerialize["object"] = o.Object
 	}
 	return toSerialize, nil
 }
 
-type NullableGetQuotePost200Response struct {
-	value *GetQuotePost200Response
+type NullableHistoryReportResponse struct {
+	value *HistoryReportResponse
 	isSet bool
 }
 
-func (v NullableGetQuotePost200Response) Get() *GetQuotePost200Response {
+func (v NullableHistoryReportResponse) Get() *HistoryReportResponse {
 	return v.value
 }
 
-func (v *NullableGetQuotePost200Response) Set(val *GetQuotePost200Response) {
+func (v *NullableHistoryReportResponse) Set(val *HistoryReportResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetQuotePost200Response) IsSet() bool {
+func (v NullableHistoryReportResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetQuotePost200Response) Unset() {
+func (v *NullableHistoryReportResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetQuotePost200Response(val *GetQuotePost200Response) *NullableGetQuotePost200Response {
-	return &NullableGetQuotePost200Response{value: val, isSet: true}
+func NewNullableHistoryReportResponse(val *HistoryReportResponse) *NullableHistoryReportResponse {
+	return &NullableHistoryReportResponse{value: val, isSet: true}
 }
 
-func (v NullableGetQuotePost200Response) MarshalJSON() ([]byte, error) {
+func (v NullableHistoryReportResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetQuotePost200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableHistoryReportResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

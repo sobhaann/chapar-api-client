@@ -28,13 +28,13 @@ type ApiBulkHistoryReportPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object containing the bulk tracking numbers.
+// A stringified JSON object of type BulkHistoryReportRequest.
 func (r ApiBulkHistoryReportPostRequest) Input(input string) ApiBulkHistoryReportPostRequest {
 	r.input = &input
 	return r
 }
 
-func (r ApiBulkHistoryReportPostRequest) Execute() (*BulkHistoryReportPost200Response, *http.Response, error) {
+func (r ApiBulkHistoryReportPostRequest) Execute() (*BulkHistoryReportResponse, *http.Response, error) {
 	return r.ApiService.BulkHistoryReportPostExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *TrackingAPIService) BulkHistoryReportPost(ctx context.Context) ApiBulkH
 }
 
 // Execute executes the request
-//  @return BulkHistoryReportPost200Response
-func (a *TrackingAPIService) BulkHistoryReportPostExecute(r ApiBulkHistoryReportPostRequest) (*BulkHistoryReportPost200Response, *http.Response, error) {
+//  @return BulkHistoryReportResponse
+func (a *TrackingAPIService) BulkHistoryReportPostExecute(r ApiBulkHistoryReportPostRequest) (*BulkHistoryReportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkHistoryReportPost200Response
+		localVarReturnValue  *BulkHistoryReportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrackingAPIService.BulkHistoryReportPost")
@@ -94,7 +94,21 @@ func (a *TrackingAPIService) BulkHistoryReportPostExecute(r ApiBulkHistoryReport
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "form", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["APP-AUTH"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -117,38 +131,6 @@ func (a *TrackingAPIService) BulkHistoryReportPostExecute(r ApiBulkHistoryReport
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -170,13 +152,13 @@ type ApiHistoryReportPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object for the history report request.
+// A stringified JSON object of type HistoryReportRequest.
 func (r ApiHistoryReportPostRequest) Input(input string) ApiHistoryReportPostRequest {
 	r.input = &input
 	return r
 }
 
-func (r ApiHistoryReportPostRequest) Execute() (*HistoryReportPost200Response, *http.Response, error) {
+func (r ApiHistoryReportPostRequest) Execute() (*HistoryReportResponse, *http.Response, error) {
 	return r.ApiService.HistoryReportPostExecute(r)
 }
 
@@ -196,13 +178,13 @@ func (a *TrackingAPIService) HistoryReportPost(ctx context.Context) ApiHistoryRe
 }
 
 // Execute executes the request
-//  @return HistoryReportPost200Response
-func (a *TrackingAPIService) HistoryReportPostExecute(r ApiHistoryReportPostRequest) (*HistoryReportPost200Response, *http.Response, error) {
+//  @return HistoryReportResponse
+func (a *TrackingAPIService) HistoryReportPostExecute(r ApiHistoryReportPostRequest) (*HistoryReportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *HistoryReportPost200Response
+		localVarReturnValue  *HistoryReportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrackingAPIService.HistoryReportPost")
@@ -236,7 +218,21 @@ func (a *TrackingAPIService) HistoryReportPostExecute(r ApiHistoryReportPostRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "form", "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["APP-AUTH"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -259,38 +255,6 @@ func (a *TrackingAPIService) HistoryReportPostExecute(r ApiHistoryReportPostRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -312,7 +276,7 @@ type ApiTrackingPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object containing the tracking references.
+// A stringified JSON object of type TrackingRequest.
 func (r ApiTrackingPostRequest) Input(input string) ApiTrackingPostRequest {
 	r.input = &input
 	return r
@@ -378,7 +342,7 @@ func (a *TrackingAPIService) TrackingPostExecute(r ApiTrackingPostRequest) (*Bul
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "input", r.input, "form", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -414,38 +378,6 @@ func (a *TrackingAPIService) TrackingPostExecute(r ApiTrackingPostRequest) (*Bul
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

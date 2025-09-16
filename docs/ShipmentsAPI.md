@@ -30,8 +30,8 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object containing the bulk shipment data.
-	signature := os.NewFile(1234, "some_file") // *os.File | An optional signature file for the shipment. (optional)
+	input := "input_example" // string | A stringified JSON object of type BulkImportRequest.
+	signature := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -56,8 +56,8 @@ Other parameters are passed through a pointer to a apiBulkImportPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object containing the bulk shipment data. | 
- **signature** | ***os.File** | An optional signature file for the shipment. | 
+ **input** | **string** | A stringified JSON object of type BulkImportRequest. | 
+ **signature** | ***os.File** |  | 
 
 ### Return type
 
@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the cancellation request.
+	input := "input_example" // string | A stringified JSON object of type CancelPickupRequest.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -123,7 +123,7 @@ Other parameters are passed through a pointer to a apiCancelPickupPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the cancellation request. | 
+ **input** | **string** | A stringified JSON object of type CancelPickupRequest. | 
 
 ### Return type
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

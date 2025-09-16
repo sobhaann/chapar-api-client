@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## BulkHistoryReportPost
 
-> BulkHistoryReportPost200Response BulkHistoryReportPost(ctx).Input(input).Execute()
+> BulkHistoryReportResponse BulkHistoryReportPost(ctx).Input(input).Execute()
 
 Get a bulk history report
 
@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object containing the bulk tracking numbers.
+	input := "input_example" // string | A stringified JSON object of type BulkHistoryReportRequest.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TrackingAPI.BulkHistoryReportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BulkHistoryReportPost`: BulkHistoryReportPost200Response
+	// response from `BulkHistoryReportPost`: BulkHistoryReportResponse
 	fmt.Fprintf(os.Stdout, "Response from `TrackingAPI.BulkHistoryReportPost`: %v\n", resp)
 }
 ```
@@ -56,15 +56,15 @@ Other parameters are passed through a pointer to a apiBulkHistoryReportPostReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object containing the bulk tracking numbers. | 
+ **input** | **string** | A stringified JSON object of type BulkHistoryReportRequest. | 
 
 ### Return type
 
-[**BulkHistoryReportPost200Response**](BulkHistoryReportPost200Response.md)
+[**BulkHistoryReportResponse**](BulkHistoryReportResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -78,7 +78,7 @@ No authorization required
 
 ## HistoryReportPost
 
-> HistoryReportPost200Response HistoryReportPost(ctx).Input(input).Execute()
+> HistoryReportResponse HistoryReportPost(ctx).Input(input).Execute()
 
 Get a history report for shipments
 
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the history report request.
+	input := "input_example" // string | A stringified JSON object of type HistoryReportRequest.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -106,7 +106,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TrackingAPI.HistoryReportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HistoryReportPost`: HistoryReportPost200Response
+	// response from `HistoryReportPost`: HistoryReportResponse
 	fmt.Fprintf(os.Stdout, "Response from `TrackingAPI.HistoryReportPost`: %v\n", resp)
 }
 ```
@@ -122,15 +122,15 @@ Other parameters are passed through a pointer to a apiHistoryReportPostRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the history report request. | 
+ **input** | **string** | A stringified JSON object of type HistoryReportRequest. | 
 
 ### Return type
 
-[**HistoryReportPost200Response**](HistoryReportPost200Response.md)
+[**HistoryReportResponse**](HistoryReportResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -163,7 +163,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object containing the tracking references.
+	input := "input_example" // string | A stringified JSON object of type TrackingRequest.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -188,7 +188,7 @@ Other parameters are passed through a pointer to a apiTrackingPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object containing the tracking references. | 
+ **input** | **string** | A stringified JSON object of type TrackingRequest. | 
 
 ### Return type
 
