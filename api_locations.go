@@ -28,7 +28,7 @@ type ApiGetCityPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object of type GetCityRequest.
+// A stringified JSON object for the get city request.
 func (r ApiGetCityPostRequest) Input(input string) ApiGetCityPostRequest {
 	r.input = &input
 	return r

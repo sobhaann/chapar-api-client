@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Person** | Pointer to **string** |  | [optional] 
+**Person** | **string** |  | 
 **Company** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewReceiverInfo
 
-`func NewReceiverInfo() *ReceiverInfo`
+`func NewReceiverInfo(person string, ) *ReceiverInfo`
 
 NewReceiverInfo instantiates a new ReceiverInfo object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetPerson sets Person field to given value.
 
-### HasPerson
-
-`func (o *ReceiverInfo) HasPerson() bool`
-
-HasPerson returns a boolean if a field has been set.
 
 ### GetCompany
 

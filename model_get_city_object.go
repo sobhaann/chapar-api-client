@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the GetCityObject type satisfies the MappedNullable interface at compile time
@@ -19,15 +21,19 @@ var _ MappedNullable = &GetCityObject{}
 
 // GetCityObject struct for GetCityObject
 type GetCityObject struct {
-	Objects *GetCityObjectObjects `json:"objects,omitempty"`
+	City []City `json:"city"`
+	Selected map[string]interface{} `json:"selected,omitempty"`
 }
+
+type _GetCityObject GetCityObject
 
 // NewGetCityObject instantiates a new GetCityObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCityObject() *GetCityObject {
+func NewGetCityObject(city []City) *GetCityObject {
 	this := GetCityObject{}
+	this.City = city
 	return &this
 }
 
@@ -39,36 +45,61 @@ func NewGetCityObjectWithDefaults() *GetCityObject {
 	return &this
 }
 
-// GetObjects returns the Objects field value if set, zero value otherwise.
-func (o *GetCityObject) GetObjects() GetCityObjectObjects {
-	if o == nil || IsNil(o.Objects) {
-		var ret GetCityObjectObjects
+// GetCity returns the City field value
+func (o *GetCityObject) GetCity() []City {
+	if o == nil {
+		var ret []City
 		return ret
 	}
-	return *o.Objects
+
+	return o.City
 }
 
-// GetObjectsOk returns a tuple with the Objects field value if set, nil otherwise
+// GetCityOk returns a tuple with the City field value
 // and a boolean to check if the value has been set.
-func (o *GetCityObject) GetObjectsOk() (*GetCityObjectObjects, bool) {
-	if o == nil || IsNil(o.Objects) {
+func (o *GetCityObject) GetCityOk() ([]City, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Objects, true
+	return o.City, true
 }
 
-// HasObjects returns a boolean if a field has been set.
-func (o *GetCityObject) HasObjects() bool {
-	if o != nil && !IsNil(o.Objects) {
+// SetCity sets field value
+func (o *GetCityObject) SetCity(v []City) {
+	o.City = v
+}
+
+// GetSelected returns the Selected field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetCityObject) GetSelected() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Selected
+}
+
+// GetSelectedOk returns a tuple with the Selected field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetCityObject) GetSelectedOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Selected) {
+		return map[string]interface{}{}, false
+	}
+	return o.Selected, true
+}
+
+// HasSelected returns a boolean if a field has been set.
+func (o *GetCityObject) HasSelected() bool {
+	if o != nil && !IsNil(o.Selected) {
 		return true
 	}
 
 	return false
 }
 
-// SetObjects gets a reference to the given GetCityObjectObjects and assigns it to the Objects field.
-func (o *GetCityObject) SetObjects(v GetCityObjectObjects) {
-	o.Objects = &v
+// SetSelected gets a reference to the given map[string]interface{} and assigns it to the Selected field.
+func (o *GetCityObject) SetSelected(v map[string]interface{}) {
+	o.Selected = v
 }
 
 func (o GetCityObject) MarshalJSON() ([]byte, error) {
@@ -81,10 +112,48 @@ func (o GetCityObject) MarshalJSON() ([]byte, error) {
 
 func (o GetCityObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Objects) {
-		toSerialize["objects"] = o.Objects
+	toSerialize["city"] = o.City
+	if o.Selected != nil {
+		toSerialize["selected"] = o.Selected
 	}
 	return toSerialize, nil
+}
+
+func (o *GetCityObject) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"city",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGetCityObject := _GetCityObject{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGetCityObject)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetCityObject(varGetCityObject)
+
+	return err
 }
 
 type NullableGetCityObject struct {

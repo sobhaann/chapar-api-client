@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**History** | Pointer to [**[]BulkHistoryEvent**](BulkHistoryEvent.md) |  | [optional] 
+**History** | [**[]BulkHistoryEvent**](BulkHistoryEvent.md) |  | 
 
 ## Methods
 
 ### NewBulkHistoryReportObject
 
-`func NewBulkHistoryReportObject() *BulkHistoryReportObject`
+`func NewBulkHistoryReportObject(history []BulkHistoryEvent, ) *BulkHistoryReportObject`
 
 NewBulkHistoryReportObject instantiates a new BulkHistoryReportObject object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetHistory sets History field to given value.
 
-### HasHistory
-
-`func (o *BulkHistoryReportObject) HasHistory() bool`
-
-HasHistory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

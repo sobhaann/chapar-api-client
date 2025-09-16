@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** |  | [optional] 
-**StatusNote** | Pointer to **string** |  | [optional] 
+**Status** | **string** |  | 
+**StatusNote** | **string** |  | 
 
 ## Methods
 
 ### NewHistoryEvent
 
-`func NewHistoryEvent() *HistoryEvent`
+`func NewHistoryEvent(status string, statusNote string, ) *HistoryEvent`
 
 NewHistoryEvent instantiates a new HistoryEvent object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *HistoryEvent) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetStatusNote
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetStatusNote sets StatusNote field to given value.
 
-### HasStatusNote
-
-`func (o *HistoryEvent) HasStatusNote() bool`
-
-HasStatusNote returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

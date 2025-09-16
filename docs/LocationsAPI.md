@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type GetCityRequest.
+	input := "input_example" // string | A stringified JSON object for the get city request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -55,7 +55,7 @@ Other parameters are passed through a pointer to a apiGetCityPostRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type GetCityRequest. | 
+ **input** | **string** | A stringified JSON object for the get city request. | 
 
 ### Return type
 

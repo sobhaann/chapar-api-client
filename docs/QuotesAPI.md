@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type QuoteRequest.
+	input := "input_example" // string | A stringified JSON object for the quote request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiGetQuotePostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type QuoteRequest. | 
+ **input** | **string** | A stringified JSON object for the quote request. | 
 
 ### Return type
 

@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the FinancialInfo type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,20 @@ var _ MappedNullable = &FinancialInfo{}
 
 // FinancialInfo struct for FinancialInfo
 type FinancialInfo struct {
-	DeliveryCharge *string `json:"delivery_charge,omitempty"`
-	TotalCharge *int32 `json:"total_charge,omitempty"`
+	DeliveryCharge string `json:"delivery_charge"`
+	TotalCharge int32 `json:"total_charge"`
 }
+
+type _FinancialInfo FinancialInfo
 
 // NewFinancialInfo instantiates a new FinancialInfo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFinancialInfo() *FinancialInfo {
+func NewFinancialInfo(deliveryCharge string, totalCharge int32) *FinancialInfo {
 	this := FinancialInfo{}
+	this.DeliveryCharge = deliveryCharge
+	this.TotalCharge = totalCharge
 	return &this
 }
 
@@ -40,68 +46,52 @@ func NewFinancialInfoWithDefaults() *FinancialInfo {
 	return &this
 }
 
-// GetDeliveryCharge returns the DeliveryCharge field value if set, zero value otherwise.
+// GetDeliveryCharge returns the DeliveryCharge field value
 func (o *FinancialInfo) GetDeliveryCharge() string {
-	if o == nil || IsNil(o.DeliveryCharge) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DeliveryCharge
+
+	return o.DeliveryCharge
 }
 
-// GetDeliveryChargeOk returns a tuple with the DeliveryCharge field value if set, nil otherwise
+// GetDeliveryChargeOk returns a tuple with the DeliveryCharge field value
 // and a boolean to check if the value has been set.
 func (o *FinancialInfo) GetDeliveryChargeOk() (*string, bool) {
-	if o == nil || IsNil(o.DeliveryCharge) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeliveryCharge, true
+	return &o.DeliveryCharge, true
 }
 
-// HasDeliveryCharge returns a boolean if a field has been set.
-func (o *FinancialInfo) HasDeliveryCharge() bool {
-	if o != nil && !IsNil(o.DeliveryCharge) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeliveryCharge gets a reference to the given string and assigns it to the DeliveryCharge field.
+// SetDeliveryCharge sets field value
 func (o *FinancialInfo) SetDeliveryCharge(v string) {
-	o.DeliveryCharge = &v
+	o.DeliveryCharge = v
 }
 
-// GetTotalCharge returns the TotalCharge field value if set, zero value otherwise.
+// GetTotalCharge returns the TotalCharge field value
 func (o *FinancialInfo) GetTotalCharge() int32 {
-	if o == nil || IsNil(o.TotalCharge) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCharge
+
+	return o.TotalCharge
 }
 
-// GetTotalChargeOk returns a tuple with the TotalCharge field value if set, nil otherwise
+// GetTotalChargeOk returns a tuple with the TotalCharge field value
 // and a boolean to check if the value has been set.
 func (o *FinancialInfo) GetTotalChargeOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCharge) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCharge, true
+	return &o.TotalCharge, true
 }
 
-// HasTotalCharge returns a boolean if a field has been set.
-func (o *FinancialInfo) HasTotalCharge() bool {
-	if o != nil && !IsNil(o.TotalCharge) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCharge gets a reference to the given int32 and assigns it to the TotalCharge field.
+// SetTotalCharge sets field value
 func (o *FinancialInfo) SetTotalCharge(v int32) {
-	o.TotalCharge = &v
+	o.TotalCharge = v
 }
 
 func (o FinancialInfo) MarshalJSON() ([]byte, error) {
@@ -114,13 +104,47 @@ func (o FinancialInfo) MarshalJSON() ([]byte, error) {
 
 func (o FinancialInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DeliveryCharge) {
-		toSerialize["delivery_charge"] = o.DeliveryCharge
-	}
-	if !IsNil(o.TotalCharge) {
-		toSerialize["total_charge"] = o.TotalCharge
-	}
+	toSerialize["delivery_charge"] = o.DeliveryCharge
+	toSerialize["total_charge"] = o.TotalCharge
 	return toSerialize, nil
+}
+
+func (o *FinancialInfo) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"delivery_charge",
+		"total_charge",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFinancialInfo := _FinancialInfo{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFinancialInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FinancialInfo(varFinancialInfo)
+
+	return err
 }
 
 type NullableFinancialInfo struct {

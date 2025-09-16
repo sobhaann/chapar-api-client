@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** |  | [optional] 
-**Tracking** | Pointer to **string** |  | [optional] 
+**Status** | **string** |  | 
+**Tracking** | **string** |  | 
 
 ## Methods
 
 ### NewBulkHistoryEvent
 
-`func NewBulkHistoryEvent() *BulkHistoryEvent`
+`func NewBulkHistoryEvent(status string, tracking string, ) *BulkHistoryEvent`
 
 NewBulkHistoryEvent instantiates a new BulkHistoryEvent object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *BulkHistoryEvent) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetTracking
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetTracking sets Tracking field to given value.
 
-### HasTracking
-
-`func (o *BulkHistoryEvent) HasTracking() bool`
-
-HasTracking returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

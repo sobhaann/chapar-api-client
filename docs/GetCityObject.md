@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Objects** | Pointer to [**GetCityObjectObjects**](GetCityObjectObjects.md) |  | [optional] 
+**City** | [**[]City**](City.md) |  | 
+**Selected** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewGetCityObject
 
-`func NewGetCityObject() *GetCityObject`
+`func NewGetCityObject(city []City, ) *GetCityObject`
 
 NewGetCityObject instantiates a new GetCityObject object
 This constructor will assign default values to properties that have it defined,
@@ -25,31 +26,61 @@ NewGetCityObjectWithDefaults instantiates a new GetCityObject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetObjects
+### GetCity
 
-`func (o *GetCityObject) GetObjects() GetCityObjectObjects`
+`func (o *GetCityObject) GetCity() []City`
 
-GetObjects returns the Objects field if non-nil, zero value otherwise.
+GetCity returns the City field if non-nil, zero value otherwise.
 
-### GetObjectsOk
+### GetCityOk
 
-`func (o *GetCityObject) GetObjectsOk() (*GetCityObjectObjects, bool)`
+`func (o *GetCityObject) GetCityOk() (*[]City, bool)`
 
-GetObjectsOk returns a tuple with the Objects field if it's non-nil, zero value otherwise
+GetCityOk returns a tuple with the City field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetObjects
+### SetCity
 
-`func (o *GetCityObject) SetObjects(v GetCityObjectObjects)`
+`func (o *GetCityObject) SetCity(v []City)`
 
-SetObjects sets Objects field to given value.
+SetCity sets City field to given value.
 
-### HasObjects
 
-`func (o *GetCityObject) HasObjects() bool`
+### GetSelected
 
-HasObjects returns a boolean if a field has been set.
+`func (o *GetCityObject) GetSelected() map[string]interface{}`
 
+GetSelected returns the Selected field if non-nil, zero value otherwise.
+
+### GetSelectedOk
+
+`func (o *GetCityObject) GetSelectedOk() (*map[string]interface{}, bool)`
+
+GetSelectedOk returns a tuple with the Selected field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelected
+
+`func (o *GetCityObject) SetSelected(v map[string]interface{})`
+
+SetSelected sets Selected field to given value.
+
+### HasSelected
+
+`func (o *GetCityObject) HasSelected() bool`
+
+HasSelected returns a boolean if a field has been set.
+
+### SetSelectedNil
+
+`func (o *GetCityObject) SetSelectedNil(b bool)`
+
+ SetSelectedNil sets the value for Selected to be an explicit nil
+
+### UnsetSelected
+`func (o *GetCityObject) UnsetSelected()`
+
+UnsetSelected ensures that no value is present for Selected, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

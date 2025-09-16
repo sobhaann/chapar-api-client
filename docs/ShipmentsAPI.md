@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type BulkImportRequest.
+	input := "input_example" // string | A stringified JSON object for the bulk import request.
 	signature := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiBulkImportPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type BulkImportRequest. | 
+ **input** | **string** | A stringified JSON object for the bulk import request. | 
  **signature** | ***os.File** |  | 
 
 ### Return type
@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type CancelPickupRequest.
+	input := "input_example" // string | A stringified JSON object for the cancel pickup request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -123,7 +123,7 @@ Other parameters are passed through a pointer to a apiCancelPickupPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type CancelPickupRequest. | 
+ **input** | **string** | A stringified JSON object for the cancel pickup request. | 
 
 ### Return type
 

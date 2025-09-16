@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BulkImportPost200Response type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,20 @@ var _ MappedNullable = &BulkImportPost200Response{}
 
 // BulkImportPost200Response struct for BulkImportPost200Response
 type BulkImportPost200Response struct {
-	Success *bool `json:"success,omitempty"`
+	Result bool `json:"result"`
 	Message NullableString `json:"message,omitempty"`
-	Object map[string]interface{} `json:"object,omitempty"`
+	Objects map[string]interface{} `json:"objects,omitempty"`
 }
+
+type _BulkImportPost200Response BulkImportPost200Response
 
 // NewBulkImportPost200Response instantiates a new BulkImportPost200Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkImportPost200Response() *BulkImportPost200Response {
+func NewBulkImportPost200Response(result bool) *BulkImportPost200Response {
 	this := BulkImportPost200Response{}
+	this.Result = result
 	return &this
 }
 
@@ -41,36 +46,28 @@ func NewBulkImportPost200ResponseWithDefaults() *BulkImportPost200Response {
 	return &this
 }
 
-// GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *BulkImportPost200Response) GetSuccess() bool {
-	if o == nil || IsNil(o.Success) {
+// GetResult returns the Result field value
+func (o *BulkImportPost200Response) GetResult() bool {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Success
+
+	return o.Result
 }
 
-// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
+// GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
-func (o *BulkImportPost200Response) GetSuccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.Success) {
+func (o *BulkImportPost200Response) GetResultOk() (*bool, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Success, true
+	return &o.Result, true
 }
 
-// HasSuccess returns a boolean if a field has been set.
-func (o *BulkImportPost200Response) HasSuccess() bool {
-	if o != nil && !IsNil(o.Success) {
-		return true
-	}
-
-	return false
-}
-
-// SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *BulkImportPost200Response) SetSuccess(v bool) {
-	o.Success = &v
+// SetResult sets field value
+func (o *BulkImportPost200Response) SetResult(v bool) {
+	o.Result = v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -115,37 +112,37 @@ func (o *BulkImportPost200Response) UnsetMessage() {
 	o.Message.Unset()
 }
 
-// GetObject returns the Object field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BulkImportPost200Response) GetObject() map[string]interface{} {
+// GetObjects returns the Objects field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BulkImportPost200Response) GetObjects() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Object
+	return o.Objects
 }
 
-// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
+// GetObjectsOk returns a tuple with the Objects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BulkImportPost200Response) GetObjectOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Object) {
+func (o *BulkImportPost200Response) GetObjectsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Objects) {
 		return map[string]interface{}{}, false
 	}
-	return o.Object, true
+	return o.Objects, true
 }
 
-// HasObject returns a boolean if a field has been set.
-func (o *BulkImportPost200Response) HasObject() bool {
-	if o != nil && !IsNil(o.Object) {
+// HasObjects returns a boolean if a field has been set.
+func (o *BulkImportPost200Response) HasObjects() bool {
+	if o != nil && !IsNil(o.Objects) {
 		return true
 	}
 
 	return false
 }
 
-// SetObject gets a reference to the given map[string]interface{} and assigns it to the Object field.
-func (o *BulkImportPost200Response) SetObject(v map[string]interface{}) {
-	o.Object = v
+// SetObjects gets a reference to the given map[string]interface{} and assigns it to the Objects field.
+func (o *BulkImportPost200Response) SetObjects(v map[string]interface{}) {
+	o.Objects = v
 }
 
 func (o BulkImportPost200Response) MarshalJSON() ([]byte, error) {
@@ -158,16 +155,51 @@ func (o BulkImportPost200Response) MarshalJSON() ([]byte, error) {
 
 func (o BulkImportPost200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Success) {
-		toSerialize["success"] = o.Success
-	}
+	toSerialize["result"] = o.Result
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-	if o.Object != nil {
-		toSerialize["object"] = o.Object
+	if o.Objects != nil {
+		toSerialize["objects"] = o.Objects
 	}
 	return toSerialize, nil
+}
+
+func (o *BulkImportPost200Response) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"result",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBulkImportPost200Response := _BulkImportPost200Response{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBulkImportPost200Response)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BulkImportPost200Response(varBulkImportPost200Response)
+
+	return err
 }
 
 type NullableBulkImportPost200Response struct {

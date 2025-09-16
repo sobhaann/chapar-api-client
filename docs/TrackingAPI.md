@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type BulkHistoryReportRequest.
+	input := "input_example" // string | A stringified JSON object for the bulk history report request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiBulkHistoryReportPostReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type BulkHistoryReportRequest. | 
+ **input** | **string** | A stringified JSON object for the bulk history report request. | 
 
 ### Return type
 
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type HistoryReportRequest.
+	input := "input_example" // string | A stringified JSON object for the history report request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -122,7 +122,7 @@ Other parameters are passed through a pointer to a apiHistoryReportPostRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type HistoryReportRequest. | 
+ **input** | **string** | A stringified JSON object for the history report request. | 
 
 ### Return type
 
@@ -163,7 +163,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object of type TrackingRequest.
+	input := "input_example" // string | A stringified JSON object for the tracking request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -188,7 +188,7 @@ Other parameters are passed through a pointer to a apiTrackingPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object of type TrackingRequest. | 
+ **input** | **string** | A stringified JSON object for the tracking request. | 
 
 ### Return type
 

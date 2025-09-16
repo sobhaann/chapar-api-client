@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cn** | Pointer to [**ConsignmentNote**](ConsignmentNote.md) |  | [optional] 
-**Receiver** | Pointer to [**ReceiverInfo**](ReceiverInfo.md) |  | [optional] 
-**Financial** | Pointer to [**FinancialInfo**](FinancialInfo.md) |  | [optional] 
-**History** | Pointer to [**[]HistoryEvent**](HistoryEvent.md) |  | [optional] 
+**Cn** | [**ConsignmentNote**](ConsignmentNote.md) |  | 
+**Receiver** | [**ReceiverInfo**](ReceiverInfo.md) |  | 
+**Financial** | [**FinancialInfo**](FinancialInfo.md) |  | 
+**History** | [**[]HistoryEvent**](HistoryEvent.md) |  | 
 
 ## Methods
 
 ### NewHistoryReportObject
 
-`func NewHistoryReportObject() *HistoryReportObject`
+`func NewHistoryReportObject(cn ConsignmentNote, receiver ReceiverInfo, financial FinancialInfo, history []HistoryEvent, ) *HistoryReportObject`
 
 NewHistoryReportObject instantiates a new HistoryReportObject object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetCn sets Cn field to given value.
 
-### HasCn
-
-`func (o *HistoryReportObject) HasCn() bool`
-
-HasCn returns a boolean if a field has been set.
 
 ### GetReceiver
 
@@ -72,11 +67,6 @@ and a boolean to check if the value has been set.
 
 SetReceiver sets Receiver field to given value.
 
-### HasReceiver
-
-`func (o *HistoryReportObject) HasReceiver() bool`
-
-HasReceiver returns a boolean if a field has been set.
 
 ### GetFinancial
 
@@ -97,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetFinancial sets Financial field to given value.
 
-### HasFinancial
-
-`func (o *HistoryReportObject) HasFinancial() bool`
-
-HasFinancial returns a boolean if a field has been set.
 
 ### GetHistory
 
@@ -122,11 +107,6 @@ and a boolean to check if the value has been set.
 
 SetHistory sets History field to given value.
 
-### HasHistory
-
-`func (o *HistoryReportObject) HasHistory() bool`
-
-HasHistory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

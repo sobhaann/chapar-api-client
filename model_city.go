@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the City type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,21 @@ var _ MappedNullable = &City{}
 
 // City struct for City
 type City struct {
-	StateNo *string `json:"state_no,omitempty"`
+	StateNo string `json:"state_no"`
 	False *string `json:"false,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 }
+
+type _City City
 
 // NewCity instantiates a new City object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCity() *City {
+func NewCity(stateNo string, name string) *City {
 	this := City{}
+	this.StateNo = stateNo
+	this.Name = name
 	return &this
 }
 
@@ -41,36 +47,28 @@ func NewCityWithDefaults() *City {
 	return &this
 }
 
-// GetStateNo returns the StateNo field value if set, zero value otherwise.
+// GetStateNo returns the StateNo field value
 func (o *City) GetStateNo() string {
-	if o == nil || IsNil(o.StateNo) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.StateNo
+
+	return o.StateNo
 }
 
-// GetStateNoOk returns a tuple with the StateNo field value if set, nil otherwise
+// GetStateNoOk returns a tuple with the StateNo field value
 // and a boolean to check if the value has been set.
 func (o *City) GetStateNoOk() (*string, bool) {
-	if o == nil || IsNil(o.StateNo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StateNo, true
+	return &o.StateNo, true
 }
 
-// HasStateNo returns a boolean if a field has been set.
-func (o *City) HasStateNo() bool {
-	if o != nil && !IsNil(o.StateNo) {
-		return true
-	}
-
-	return false
-}
-
-// SetStateNo gets a reference to the given string and assigns it to the StateNo field.
+// SetStateNo sets field value
 func (o *City) SetStateNo(v string) {
-	o.StateNo = &v
+	o.StateNo = v
 }
 
 // GetFalse returns the False field value if set, zero value otherwise.
@@ -105,36 +103,28 @@ func (o *City) SetFalse(v string) {
 	o.False = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *City) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *City) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *City) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *City) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 func (o City) MarshalJSON() ([]byte, error) {
@@ -147,16 +137,50 @@ func (o City) MarshalJSON() ([]byte, error) {
 
 func (o City) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StateNo) {
-		toSerialize["state_no"] = o.StateNo
-	}
+	toSerialize["state_no"] = o.StateNo
 	if !IsNil(o.False) {
 		toSerialize["false"] = o.False
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	return toSerialize, nil
+}
+
+func (o *City) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"state_no",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCity := _City{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = City(varCity)
+
+	return err
 }
 
 type NullableCity struct {

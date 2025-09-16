@@ -28,7 +28,7 @@ type ApiBulkHistoryReportPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object of type BulkHistoryReportRequest.
+// A stringified JSON object for the bulk history report request.
 func (r ApiBulkHistoryReportPostRequest) Input(input string) ApiBulkHistoryReportPostRequest {
 	r.input = &input
 	return r
@@ -152,7 +152,7 @@ type ApiHistoryReportPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object of type HistoryReportRequest.
+// A stringified JSON object for the history report request.
 func (r ApiHistoryReportPostRequest) Input(input string) ApiHistoryReportPostRequest {
 	r.input = &input
 	return r
@@ -276,7 +276,7 @@ type ApiTrackingPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object of type TrackingRequest.
+// A stringified JSON object for the tracking request.
 func (r ApiTrackingPostRequest) Input(input string) ApiTrackingPostRequest {
 	r.input = &input
 	return r

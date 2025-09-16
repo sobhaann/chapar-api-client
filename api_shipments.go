@@ -30,7 +30,7 @@ type ApiBulkImportPostRequest struct {
 	signature *os.File
 }
 
-// A stringified JSON object of type BulkImportRequest.
+// A stringified JSON object for the bulk import request.
 func (r ApiBulkImportPostRequest) Input(input string) ApiBulkImportPostRequest {
 	r.input = &input
 	return r
@@ -174,7 +174,7 @@ type ApiCancelPickupPostRequest struct {
 	input *string
 }
 
-// A stringified JSON object of type CancelPickupRequest.
+// A stringified JSON object for the cancel pickup request.
 func (r ApiCancelPickupPostRequest) Input(input string) ApiCancelPickupPostRequest {
 	r.input = &input
 	return r

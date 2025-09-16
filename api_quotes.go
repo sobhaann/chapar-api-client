@@ -28,7 +28,7 @@ type ApiGetQuotePostRequest struct {
 	input *string
 }
 
-// A stringified JSON object of type QuoteRequest.
+// A stringified JSON object for the quote request.
 func (r ApiGetQuotePostRequest) Input(input string) ApiGetQuotePostRequest {
 	r.input = &input
 	return r

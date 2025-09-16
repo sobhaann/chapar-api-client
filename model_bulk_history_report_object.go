@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BulkHistoryReportObject type satisfies the MappedNullable interface at compile time
@@ -19,15 +21,18 @@ var _ MappedNullable = &BulkHistoryReportObject{}
 
 // BulkHistoryReportObject struct for BulkHistoryReportObject
 type BulkHistoryReportObject struct {
-	History []BulkHistoryEvent `json:"history,omitempty"`
+	History []BulkHistoryEvent `json:"history"`
 }
+
+type _BulkHistoryReportObject BulkHistoryReportObject
 
 // NewBulkHistoryReportObject instantiates a new BulkHistoryReportObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkHistoryReportObject() *BulkHistoryReportObject {
+func NewBulkHistoryReportObject(history []BulkHistoryEvent) *BulkHistoryReportObject {
 	this := BulkHistoryReportObject{}
+	this.History = history
 	return &this
 }
 
@@ -39,34 +44,26 @@ func NewBulkHistoryReportObjectWithDefaults() *BulkHistoryReportObject {
 	return &this
 }
 
-// GetHistory returns the History field value if set, zero value otherwise.
+// GetHistory returns the History field value
 func (o *BulkHistoryReportObject) GetHistory() []BulkHistoryEvent {
-	if o == nil || IsNil(o.History) {
+	if o == nil {
 		var ret []BulkHistoryEvent
 		return ret
 	}
+
 	return o.History
 }
 
-// GetHistoryOk returns a tuple with the History field value if set, nil otherwise
+// GetHistoryOk returns a tuple with the History field value
 // and a boolean to check if the value has been set.
 func (o *BulkHistoryReportObject) GetHistoryOk() ([]BulkHistoryEvent, bool) {
-	if o == nil || IsNil(o.History) {
+	if o == nil {
 		return nil, false
 	}
 	return o.History, true
 }
 
-// HasHistory returns a boolean if a field has been set.
-func (o *BulkHistoryReportObject) HasHistory() bool {
-	if o != nil && !IsNil(o.History) {
-		return true
-	}
-
-	return false
-}
-
-// SetHistory gets a reference to the given []BulkHistoryEvent and assigns it to the History field.
+// SetHistory sets field value
 func (o *BulkHistoryReportObject) SetHistory(v []BulkHistoryEvent) {
 	o.History = v
 }
@@ -81,10 +78,45 @@ func (o BulkHistoryReportObject) MarshalJSON() ([]byte, error) {
 
 func (o BulkHistoryReportObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.History) {
-		toSerialize["history"] = o.History
-	}
+	toSerialize["history"] = o.History
 	return toSerialize, nil
+}
+
+func (o *BulkHistoryReportObject) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"history",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBulkHistoryReportObject := _BulkHistoryReportObject{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBulkHistoryReportObject)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BulkHistoryReportObject(varBulkHistoryReportObject)
+
+	return err
 }
 
 type NullableBulkHistoryReportObject struct {

@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConsignmentNote type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,20 @@ var _ MappedNullable = &ConsignmentNote{}
 
 // ConsignmentNote struct for ConsignmentNote
 type ConsignmentNote struct {
-	Tracking *string `json:"tracking,omitempty"`
-	Date *string `json:"date,omitempty"`
+	Tracking string `json:"tracking"`
+	Date string `json:"date"`
 }
+
+type _ConsignmentNote ConsignmentNote
 
 // NewConsignmentNote instantiates a new ConsignmentNote object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsignmentNote() *ConsignmentNote {
+func NewConsignmentNote(tracking string, date string) *ConsignmentNote {
 	this := ConsignmentNote{}
+	this.Tracking = tracking
+	this.Date = date
 	return &this
 }
 
@@ -40,68 +46,52 @@ func NewConsignmentNoteWithDefaults() *ConsignmentNote {
 	return &this
 }
 
-// GetTracking returns the Tracking field value if set, zero value otherwise.
+// GetTracking returns the Tracking field value
 func (o *ConsignmentNote) GetTracking() string {
-	if o == nil || IsNil(o.Tracking) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Tracking
+
+	return o.Tracking
 }
 
-// GetTrackingOk returns a tuple with the Tracking field value if set, nil otherwise
+// GetTrackingOk returns a tuple with the Tracking field value
 // and a boolean to check if the value has been set.
 func (o *ConsignmentNote) GetTrackingOk() (*string, bool) {
-	if o == nil || IsNil(o.Tracking) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tracking, true
+	return &o.Tracking, true
 }
 
-// HasTracking returns a boolean if a field has been set.
-func (o *ConsignmentNote) HasTracking() bool {
-	if o != nil && !IsNil(o.Tracking) {
-		return true
-	}
-
-	return false
-}
-
-// SetTracking gets a reference to the given string and assigns it to the Tracking field.
+// SetTracking sets field value
 func (o *ConsignmentNote) SetTracking(v string) {
-	o.Tracking = &v
+	o.Tracking = v
 }
 
-// GetDate returns the Date field value if set, zero value otherwise.
+// GetDate returns the Date field value
 func (o *ConsignmentNote) GetDate() string {
-	if o == nil || IsNil(o.Date) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Date
+
+	return o.Date
 }
 
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
+// GetDateOk returns a tuple with the Date field value
 // and a boolean to check if the value has been set.
 func (o *ConsignmentNote) GetDateOk() (*string, bool) {
-	if o == nil || IsNil(o.Date) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Date, true
+	return &o.Date, true
 }
 
-// HasDate returns a boolean if a field has been set.
-func (o *ConsignmentNote) HasDate() bool {
-	if o != nil && !IsNil(o.Date) {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given string and assigns it to the Date field.
+// SetDate sets field value
 func (o *ConsignmentNote) SetDate(v string) {
-	o.Date = &v
+	o.Date = v
 }
 
 func (o ConsignmentNote) MarshalJSON() ([]byte, error) {
@@ -114,13 +104,47 @@ func (o ConsignmentNote) MarshalJSON() ([]byte, error) {
 
 func (o ConsignmentNote) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Tracking) {
-		toSerialize["tracking"] = o.Tracking
-	}
-	if !IsNil(o.Date) {
-		toSerialize["date"] = o.Date
-	}
+	toSerialize["tracking"] = o.Tracking
+	toSerialize["date"] = o.Date
 	return toSerialize, nil
+}
+
+func (o *ConsignmentNote) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"tracking",
+		"date",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConsignmentNote := _ConsignmentNote{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConsignmentNote)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConsignmentNote(varConsignmentNote)
+
+	return err
 }
 
 type NullableConsignmentNote struct {

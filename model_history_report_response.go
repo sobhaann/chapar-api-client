@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the HistoryReportResponse type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,21 @@ var _ MappedNullable = &HistoryReportResponse{}
 
 // HistoryReportResponse struct for HistoryReportResponse
 type HistoryReportResponse struct {
-	Success *bool `json:"success,omitempty"`
+	Result bool `json:"result"`
 	Message NullableString `json:"message,omitempty"`
-	Object *HistoryReportObject `json:"object,omitempty"`
+	Objects HistoryReportObject `json:"objects"`
 }
+
+type _HistoryReportResponse HistoryReportResponse
 
 // NewHistoryReportResponse instantiates a new HistoryReportResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHistoryReportResponse() *HistoryReportResponse {
+func NewHistoryReportResponse(result bool, objects HistoryReportObject) *HistoryReportResponse {
 	this := HistoryReportResponse{}
+	this.Result = result
+	this.Objects = objects
 	return &this
 }
 
@@ -41,36 +47,28 @@ func NewHistoryReportResponseWithDefaults() *HistoryReportResponse {
 	return &this
 }
 
-// GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *HistoryReportResponse) GetSuccess() bool {
-	if o == nil || IsNil(o.Success) {
+// GetResult returns the Result field value
+func (o *HistoryReportResponse) GetResult() bool {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Success
+
+	return o.Result
 }
 
-// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
+// GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
-func (o *HistoryReportResponse) GetSuccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.Success) {
+func (o *HistoryReportResponse) GetResultOk() (*bool, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Success, true
+	return &o.Result, true
 }
 
-// HasSuccess returns a boolean if a field has been set.
-func (o *HistoryReportResponse) HasSuccess() bool {
-	if o != nil && !IsNil(o.Success) {
-		return true
-	}
-
-	return false
-}
-
-// SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *HistoryReportResponse) SetSuccess(v bool) {
-	o.Success = &v
+// SetResult sets field value
+func (o *HistoryReportResponse) SetResult(v bool) {
+	o.Result = v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -115,36 +113,28 @@ func (o *HistoryReportResponse) UnsetMessage() {
 	o.Message.Unset()
 }
 
-// GetObject returns the Object field value if set, zero value otherwise.
-func (o *HistoryReportResponse) GetObject() HistoryReportObject {
-	if o == nil || IsNil(o.Object) {
+// GetObjects returns the Objects field value
+func (o *HistoryReportResponse) GetObjects() HistoryReportObject {
+	if o == nil {
 		var ret HistoryReportObject
 		return ret
 	}
-	return *o.Object
+
+	return o.Objects
 }
 
-// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
+// GetObjectsOk returns a tuple with the Objects field value
 // and a boolean to check if the value has been set.
-func (o *HistoryReportResponse) GetObjectOk() (*HistoryReportObject, bool) {
-	if o == nil || IsNil(o.Object) {
+func (o *HistoryReportResponse) GetObjectsOk() (*HistoryReportObject, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Object, true
+	return &o.Objects, true
 }
 
-// HasObject returns a boolean if a field has been set.
-func (o *HistoryReportResponse) HasObject() bool {
-	if o != nil && !IsNil(o.Object) {
-		return true
-	}
-
-	return false
-}
-
-// SetObject gets a reference to the given HistoryReportObject and assigns it to the Object field.
-func (o *HistoryReportResponse) SetObject(v HistoryReportObject) {
-	o.Object = &v
+// SetObjects sets field value
+func (o *HistoryReportResponse) SetObjects(v HistoryReportObject) {
+	o.Objects = v
 }
 
 func (o HistoryReportResponse) MarshalJSON() ([]byte, error) {
@@ -157,16 +147,50 @@ func (o HistoryReportResponse) MarshalJSON() ([]byte, error) {
 
 func (o HistoryReportResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Success) {
-		toSerialize["success"] = o.Success
-	}
+	toSerialize["result"] = o.Result
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-	if !IsNil(o.Object) {
-		toSerialize["object"] = o.Object
-	}
+	toSerialize["objects"] = o.Objects
 	return toSerialize, nil
+}
+
+func (o *HistoryReportResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"result",
+		"objects",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHistoryReportResponse := _HistoryReportResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHistoryReportResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HistoryReportResponse(varHistoryReportResponse)
+
+	return err
 }
 
 type NullableHistoryReportResponse struct {

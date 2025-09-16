@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to **bool** |  | [optional] 
+**Result** | **bool** |  | 
 **Message** | Pointer to **NullableString** |  | [optional] 
-**Object** | Pointer to [**GetCityObject**](GetCityObject.md) |  | [optional] 
+**Objects** | [**GetCityObject**](GetCityObject.md) |  | 
 
 ## Methods
 
 ### NewGetCityResponse
 
-`func NewGetCityResponse() *GetCityResponse`
+`func NewGetCityResponse(result bool, objects GetCityObject, ) *GetCityResponse`
 
 NewGetCityResponse instantiates a new GetCityResponse object
 This constructor will assign default values to properties that have it defined,
@@ -27,30 +27,25 @@ NewGetCityResponseWithDefaults instantiates a new GetCityResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSuccess
+### GetResult
 
-`func (o *GetCityResponse) GetSuccess() bool`
+`func (o *GetCityResponse) GetResult() bool`
 
-GetSuccess returns the Success field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetSuccessOk
+### GetResultOk
 
-`func (o *GetCityResponse) GetSuccessOk() (*bool, bool)`
+`func (o *GetCityResponse) GetResultOk() (*bool, bool)`
 
-GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuccess
+### SetResult
 
-`func (o *GetCityResponse) SetSuccess(v bool)`
+`func (o *GetCityResponse) SetResult(v bool)`
 
-SetSuccess sets Success field to given value.
+SetResult sets Result field to given value.
 
-### HasSuccess
-
-`func (o *GetCityResponse) HasSuccess() bool`
-
-HasSuccess returns a boolean if a field has been set.
 
 ### GetMessage
 
@@ -87,30 +82,25 @@ HasMessage returns a boolean if a field has been set.
 `func (o *GetCityResponse) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
-### GetObject
+### GetObjects
 
-`func (o *GetCityResponse) GetObject() GetCityObject`
+`func (o *GetCityResponse) GetObjects() GetCityObject`
 
-GetObject returns the Object field if non-nil, zero value otherwise.
+GetObjects returns the Objects field if non-nil, zero value otherwise.
 
-### GetObjectOk
+### GetObjectsOk
 
-`func (o *GetCityResponse) GetObjectOk() (*GetCityObject, bool)`
+`func (o *GetCityResponse) GetObjectsOk() (*GetCityObject, bool)`
 
-GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+GetObjectsOk returns a tuple with the Objects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetObject
+### SetObjects
 
-`func (o *GetCityResponse) SetObject(v GetCityObject)`
+`func (o *GetCityResponse) SetObjects(v GetCityObject)`
 
-SetObject sets Object field to given value.
+SetObjects sets Objects field to given value.
 
-### HasObject
-
-`func (o *GetCityResponse) HasObject() bool`
-
-HasObject returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

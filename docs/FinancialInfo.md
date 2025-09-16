@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeliveryCharge** | Pointer to **string** |  | [optional] 
-**TotalCharge** | Pointer to **int32** |  | [optional] 
+**DeliveryCharge** | **string** |  | 
+**TotalCharge** | **int32** |  | 
 
 ## Methods
 
 ### NewFinancialInfo
 
-`func NewFinancialInfo() *FinancialInfo`
+`func NewFinancialInfo(deliveryCharge string, totalCharge int32, ) *FinancialInfo`
 
 NewFinancialInfo instantiates a new FinancialInfo object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDeliveryCharge sets DeliveryCharge field to given value.
 
-### HasDeliveryCharge
-
-`func (o *FinancialInfo) HasDeliveryCharge() bool`
-
-HasDeliveryCharge returns a boolean if a field has been set.
 
 ### GetTotalCharge
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetTotalCharge sets TotalCharge field to given value.
 
-### HasTotalCharge
-
-`func (o *FinancialInfo) HasTotalCharge() bool`
-
-HasTotalCharge returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

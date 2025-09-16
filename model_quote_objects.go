@@ -16,59 +16,59 @@ import (
 	"fmt"
 )
 
-// checks if the GetStateObject type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetStateObject{}
+// checks if the QuoteObjects type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &QuoteObjects{}
 
-// GetStateObject struct for GetStateObject
-type GetStateObject struct {
-	State []State `json:"state"`
+// QuoteObjects struct for QuoteObjects
+type QuoteObjects struct {
+	Order QuoteOrderDetails `json:"order"`
 }
 
-type _GetStateObject GetStateObject
+type _QuoteObjects QuoteObjects
 
-// NewGetStateObject instantiates a new GetStateObject object
+// NewQuoteObjects instantiates a new QuoteObjects object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetStateObject(state []State) *GetStateObject {
-	this := GetStateObject{}
-	this.State = state
+func NewQuoteObjects(order QuoteOrderDetails) *QuoteObjects {
+	this := QuoteObjects{}
+	this.Order = order
 	return &this
 }
 
-// NewGetStateObjectWithDefaults instantiates a new GetStateObject object
+// NewQuoteObjectsWithDefaults instantiates a new QuoteObjects object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetStateObjectWithDefaults() *GetStateObject {
-	this := GetStateObject{}
+func NewQuoteObjectsWithDefaults() *QuoteObjects {
+	this := QuoteObjects{}
 	return &this
 }
 
-// GetState returns the State field value
-func (o *GetStateObject) GetState() []State {
+// GetOrder returns the Order field value
+func (o *QuoteObjects) GetOrder() QuoteOrderDetails {
 	if o == nil {
-		var ret []State
+		var ret QuoteOrderDetails
 		return ret
 	}
 
-	return o.State
+	return o.Order
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
-func (o *GetStateObject) GetStateOk() ([]State, bool) {
+func (o *QuoteObjects) GetOrderOk() (*QuoteOrderDetails, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return &o.Order, true
 }
 
-// SetState sets field value
-func (o *GetStateObject) SetState(v []State) {
-	o.State = v
+// SetOrder sets field value
+func (o *QuoteObjects) SetOrder(v QuoteOrderDetails) {
+	o.Order = v
 }
 
-func (o GetStateObject) MarshalJSON() ([]byte, error) {
+func (o QuoteObjects) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -76,18 +76,18 @@ func (o GetStateObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetStateObject) ToMap() (map[string]interface{}, error) {
+func (o QuoteObjects) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["state"] = o.State
+	toSerialize["order"] = o.Order
 	return toSerialize, nil
 }
 
-func (o *GetStateObject) UnmarshalJSON(data []byte) (err error) {
+func (o *QuoteObjects) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"state",
+		"order",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -104,53 +104,53 @@ func (o *GetStateObject) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varGetStateObject := _GetStateObject{}
+	varQuoteObjects := _QuoteObjects{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGetStateObject)
+	err = decoder.Decode(&varQuoteObjects)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GetStateObject(varGetStateObject)
+	*o = QuoteObjects(varQuoteObjects)
 
 	return err
 }
 
-type NullableGetStateObject struct {
-	value *GetStateObject
+type NullableQuoteObjects struct {
+	value *QuoteObjects
 	isSet bool
 }
 
-func (v NullableGetStateObject) Get() *GetStateObject {
+func (v NullableQuoteObjects) Get() *QuoteObjects {
 	return v.value
 }
 
-func (v *NullableGetStateObject) Set(val *GetStateObject) {
+func (v *NullableQuoteObjects) Set(val *QuoteObjects) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetStateObject) IsSet() bool {
+func (v NullableQuoteObjects) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetStateObject) Unset() {
+func (v *NullableQuoteObjects) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetStateObject(val *GetStateObject) *NullableGetStateObject {
-	return &NullableGetStateObject{value: val, isSet: true}
+func NewNullableQuoteObjects(val *QuoteObjects) *NullableQuoteObjects {
+	return &NullableQuoteObjects{value: val, isSet: true}
 }
 
-func (v NullableGetStateObject) MarshalJSON() ([]byte, error) {
+func (v NullableQuoteObjects) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetStateObject) UnmarshalJSON(src []byte) error {
+func (v *NullableQuoteObjects) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

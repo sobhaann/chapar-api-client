@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to **bool** |  | [optional] 
+**Result** | **bool** |  | 
 **Message** | Pointer to **NullableString** |  | [optional] 
-**Object** | Pointer to [**BulkHistoryReportObject**](BulkHistoryReportObject.md) |  | [optional] 
+**Objects** | [**BulkHistoryReportObject**](BulkHistoryReportObject.md) |  | 
 
 ## Methods
 
 ### NewBulkHistoryReportResponse
 
-`func NewBulkHistoryReportResponse() *BulkHistoryReportResponse`
+`func NewBulkHistoryReportResponse(result bool, objects BulkHistoryReportObject, ) *BulkHistoryReportResponse`
 
 NewBulkHistoryReportResponse instantiates a new BulkHistoryReportResponse object
 This constructor will assign default values to properties that have it defined,
@@ -27,30 +27,25 @@ NewBulkHistoryReportResponseWithDefaults instantiates a new BulkHistoryReportRes
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSuccess
+### GetResult
 
-`func (o *BulkHistoryReportResponse) GetSuccess() bool`
+`func (o *BulkHistoryReportResponse) GetResult() bool`
 
-GetSuccess returns the Success field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetSuccessOk
+### GetResultOk
 
-`func (o *BulkHistoryReportResponse) GetSuccessOk() (*bool, bool)`
+`func (o *BulkHistoryReportResponse) GetResultOk() (*bool, bool)`
 
-GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuccess
+### SetResult
 
-`func (o *BulkHistoryReportResponse) SetSuccess(v bool)`
+`func (o *BulkHistoryReportResponse) SetResult(v bool)`
 
-SetSuccess sets Success field to given value.
+SetResult sets Result field to given value.
 
-### HasSuccess
-
-`func (o *BulkHistoryReportResponse) HasSuccess() bool`
-
-HasSuccess returns a boolean if a field has been set.
 
 ### GetMessage
 
@@ -87,30 +82,25 @@ HasMessage returns a boolean if a field has been set.
 `func (o *BulkHistoryReportResponse) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
-### GetObject
+### GetObjects
 
-`func (o *BulkHistoryReportResponse) GetObject() BulkHistoryReportObject`
+`func (o *BulkHistoryReportResponse) GetObjects() BulkHistoryReportObject`
 
-GetObject returns the Object field if non-nil, zero value otherwise.
+GetObjects returns the Objects field if non-nil, zero value otherwise.
 
-### GetObjectOk
+### GetObjectsOk
 
-`func (o *BulkHistoryReportResponse) GetObjectOk() (*BulkHistoryReportObject, bool)`
+`func (o *BulkHistoryReportResponse) GetObjectsOk() (*BulkHistoryReportObject, bool)`
 
-GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+GetObjectsOk returns a tuple with the Objects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetObject
+### SetObjects
 
-`func (o *BulkHistoryReportResponse) SetObject(v BulkHistoryReportObject)`
+`func (o *BulkHistoryReportResponse) SetObjects(v BulkHistoryReportObject)`
 
-SetObject sets Object field to given value.
+SetObjects sets Objects field to given value.
 
-### HasObject
-
-`func (o *BulkHistoryReportResponse) HasObject() bool`
-
-HasObject returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

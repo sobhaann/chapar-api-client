@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ReceiverInfo type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,19 @@ var _ MappedNullable = &ReceiverInfo{}
 
 // ReceiverInfo struct for ReceiverInfo
 type ReceiverInfo struct {
-	Person *string `json:"person,omitempty"`
+	Person string `json:"person"`
 	Company NullableString `json:"company,omitempty"`
 }
+
+type _ReceiverInfo ReceiverInfo
 
 // NewReceiverInfo instantiates a new ReceiverInfo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReceiverInfo() *ReceiverInfo {
+func NewReceiverInfo(person string) *ReceiverInfo {
 	this := ReceiverInfo{}
+	this.Person = person
 	return &this
 }
 
@@ -40,36 +45,28 @@ func NewReceiverInfoWithDefaults() *ReceiverInfo {
 	return &this
 }
 
-// GetPerson returns the Person field value if set, zero value otherwise.
+// GetPerson returns the Person field value
 func (o *ReceiverInfo) GetPerson() string {
-	if o == nil || IsNil(o.Person) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Person
+
+	return o.Person
 }
 
-// GetPersonOk returns a tuple with the Person field value if set, nil otherwise
+// GetPersonOk returns a tuple with the Person field value
 // and a boolean to check if the value has been set.
 func (o *ReceiverInfo) GetPersonOk() (*string, bool) {
-	if o == nil || IsNil(o.Person) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Person, true
+	return &o.Person, true
 }
 
-// HasPerson returns a boolean if a field has been set.
-func (o *ReceiverInfo) HasPerson() bool {
-	if o != nil && !IsNil(o.Person) {
-		return true
-	}
-
-	return false
-}
-
-// SetPerson gets a reference to the given string and assigns it to the Person field.
+// SetPerson sets field value
 func (o *ReceiverInfo) SetPerson(v string) {
-	o.Person = &v
+	o.Person = v
 }
 
 // GetCompany returns the Company field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -124,13 +121,48 @@ func (o ReceiverInfo) MarshalJSON() ([]byte, error) {
 
 func (o ReceiverInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Person) {
-		toSerialize["person"] = o.Person
-	}
+	toSerialize["person"] = o.Person
 	if o.Company.IsSet() {
 		toSerialize["company"] = o.Company.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *ReceiverInfo) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"person",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varReceiverInfo := _ReceiverInfo{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varReceiverInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ReceiverInfo(varReceiverInfo)
+
+	return err
 }
 
 type NullableReceiverInfo struct {

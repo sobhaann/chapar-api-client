@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the HistoryEvent type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,20 @@ var _ MappedNullable = &HistoryEvent{}
 
 // HistoryEvent struct for HistoryEvent
 type HistoryEvent struct {
-	Status *string `json:"status,omitempty"`
-	StatusNote *string `json:"status_note,omitempty"`
+	Status string `json:"status"`
+	StatusNote string `json:"status_note"`
 }
+
+type _HistoryEvent HistoryEvent
 
 // NewHistoryEvent instantiates a new HistoryEvent object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHistoryEvent() *HistoryEvent {
+func NewHistoryEvent(status string, statusNote string) *HistoryEvent {
 	this := HistoryEvent{}
+	this.Status = status
+	this.StatusNote = statusNote
 	return &this
 }
 
@@ -40,68 +46,52 @@ func NewHistoryEventWithDefaults() *HistoryEvent {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *HistoryEvent) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *HistoryEvent) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *HistoryEvent) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus sets field value
 func (o *HistoryEvent) SetStatus(v string) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetStatusNote returns the StatusNote field value if set, zero value otherwise.
+// GetStatusNote returns the StatusNote field value
 func (o *HistoryEvent) GetStatusNote() string {
-	if o == nil || IsNil(o.StatusNote) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.StatusNote
+
+	return o.StatusNote
 }
 
-// GetStatusNoteOk returns a tuple with the StatusNote field value if set, nil otherwise
+// GetStatusNoteOk returns a tuple with the StatusNote field value
 // and a boolean to check if the value has been set.
 func (o *HistoryEvent) GetStatusNoteOk() (*string, bool) {
-	if o == nil || IsNil(o.StatusNote) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StatusNote, true
+	return &o.StatusNote, true
 }
 
-// HasStatusNote returns a boolean if a field has been set.
-func (o *HistoryEvent) HasStatusNote() bool {
-	if o != nil && !IsNil(o.StatusNote) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatusNote gets a reference to the given string and assigns it to the StatusNote field.
+// SetStatusNote sets field value
 func (o *HistoryEvent) SetStatusNote(v string) {
-	o.StatusNote = &v
+	o.StatusNote = v
 }
 
 func (o HistoryEvent) MarshalJSON() ([]byte, error) {
@@ -114,13 +104,47 @@ func (o HistoryEvent) MarshalJSON() ([]byte, error) {
 
 func (o HistoryEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.StatusNote) {
-		toSerialize["status_note"] = o.StatusNote
-	}
+	toSerialize["status"] = o.Status
+	toSerialize["status_note"] = o.StatusNote
 	return toSerialize, nil
+}
+
+func (o *HistoryEvent) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"status_note",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHistoryEvent := _HistoryEvent{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHistoryEvent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HistoryEvent(varHistoryEvent)
+
+	return err
 }
 
 type NullableHistoryEvent struct {

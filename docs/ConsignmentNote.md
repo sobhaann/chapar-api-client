@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tracking** | Pointer to **string** |  | [optional] 
-**Date** | Pointer to **string** |  | [optional] 
+**Tracking** | **string** |  | 
+**Date** | **string** |  | 
 
 ## Methods
 
 ### NewConsignmentNote
 
-`func NewConsignmentNote() *ConsignmentNote`
+`func NewConsignmentNote(tracking string, date string, ) *ConsignmentNote`
 
 NewConsignmentNote instantiates a new ConsignmentNote object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetTracking sets Tracking field to given value.
 
-### HasTracking
-
-`func (o *ConsignmentNote) HasTracking() bool`
-
-HasTracking returns a boolean if a field has been set.
 
 ### GetDate
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetDate sets Date field to given value.
 
-### HasDate
-
-`func (o *ConsignmentNote) HasDate() bool`
-
-HasDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

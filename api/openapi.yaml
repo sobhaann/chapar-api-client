@@ -286,7 +286,7 @@ components:
     _get_quote_post_request:
       properties:
         input:
-          description: A stringified JSON object of type QuoteRequest.
+          description: A stringified JSON object for the quote request.
           example: "{\"order\":{\"origin\":\"10866\",\"destination\":\"10866\",\"\
             weight\":\"1\",\"value\":\"2000000\",\"method\":\"1\"}}"
           type: string
@@ -296,7 +296,7 @@ components:
     _bulk_import_post_request:
       properties:
         input:
-          description: A stringified JSON object of type BulkImportRequest.
+          description: A stringified JSON object for the bulk import request.
           example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"bulk\"\
             :[{\"cn\":{...}}]}"
           type: string
@@ -309,7 +309,7 @@ components:
     _tracking_post_request:
       properties:
         input:
-          description: A stringified JSON object of type TrackingRequest.
+          description: A stringified JSON object for the tracking request.
           example: "{\"order\":{\"reference\":[\"54100006968781101\"],\"lang\":\"\
             fa\"}}"
           type: string
@@ -319,7 +319,7 @@ components:
     _history_report_post_request:
       properties:
         input:
-          description: A stringified JSON object of type HistoryReportRequest.
+          description: A stringified JSON object for the history report request.
           example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"date\"\
             :{\"from\":\"25-09-2017\",\"to\":\"10-10-2017\"},\"maximum_records\":10}"
           type: string
@@ -329,7 +329,7 @@ components:
     _bulk_history_report_post_request:
       properties:
         input:
-          description: A stringified JSON object of type BulkHistoryReportRequest.
+          description: A stringified JSON object for the bulk history report request.
           example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"bulk\"\
             :[\"541...1\",\"541...2\"]}"
           type: string
@@ -339,7 +339,7 @@ components:
     _cancel_pickup_post_request:
       properties:
         input:
-          description: A stringified JSON object of type CancelPickupRequest.
+          description: A stringified JSON object for the cancel pickup request.
           example: "{\"user\":{\"username\":\"test\",\"password\":\"1234\"},\"consignment_no\"\
             :\"541...1\",\"reason\":\"Test\"}"
           type: string
@@ -349,7 +349,7 @@ components:
     _get_city_post_request:
       properties:
         input:
-          description: A stringified JSON object of type GetCityRequest.
+          description: A stringified JSON object for the get city request.
           example: "{\"state\":{\"no\":9}}"
           type: string
       required:
@@ -357,26 +357,42 @@ components:
       type: object
     QuoteResponse:
       example:
-        success: true
+        result: true
+        objects:
+          order:
+            method_no: 205
+            quote: 689400
+            method_name: درون شهری
+            price:
+              fld_Total_Cost: 689400
+              price_list: "6243"
+              fld_Charge_Cost: 70000
+              fld_Lab_Cost: 0
+              zone: A
+              fld_Manual_VAT: 9000
+              fld_Manual_Cost: "590400"
+              fld_Pack_Cost: 0
+              fld_Manual_Insurance: 20000
+              min_ins: "5000000"
+            currency: IRR
         message: message
-        object:
-          price: 75000
-          deadline: "2"
       properties:
-        success:
+        result:
           example: true
           type: boolean
         message:
           nullable: true
           type: string
-        object:
-          $ref: "#/components/schemas/QuoteObject"
+        objects:
+          $ref: "#/components/schemas/QuoteObjects"
+      required:
+      - objects
+      - result
       type: object
     HistoryReportResponse:
       example:
-        success: true
-        message: message
-        object:
+        result: true
+        objects:
           receiver:
             person: person
             company: company
@@ -391,91 +407,209 @@ components:
             status: status
           - status_note: status_note
             status: status
+        message: message
       properties:
-        success:
+        result:
           example: true
           type: boolean
         message:
           nullable: true
           type: string
-        object:
+        objects:
           $ref: "#/components/schemas/HistoryReportObject"
+      required:
+      - objects
+      - result
       type: object
     BulkHistoryReportResponse:
       example:
-        success: true
-        message: message
-        object:
+        result: true
+        objects:
           history:
           - tracking: tracking
             status: status
           - tracking: tracking
             status: status
+        message: message
       properties:
-        success:
+        result:
           example: true
           type: boolean
         message:
           nullable: true
           type: string
-        object:
+        objects:
           $ref: "#/components/schemas/BulkHistoryReportObject"
+      required:
+      - objects
+      - result
       type: object
     GetStateResponse:
       example:
-        success: true
-        message: message
-        object:
+        result: true
+        objects:
           state:
           - "false": "1"
             name: آذربایجان شرقی
           - "false": "1"
             name: آذربایجان شرقی
+        message: message
       properties:
-        success:
+        result:
           example: true
           type: boolean
         message:
           nullable: true
           type: string
-        object:
+        objects:
           $ref: "#/components/schemas/GetStateObject"
+      required:
+      - objects
+      - result
       type: object
     GetCityResponse:
       example:
-        success: true
+        result: true
+        objects:
+          city:
+          - "false": "11907"
+            name: آرين شهر
+            state_no: "9"
+          - "false": "11907"
+            name: آرين شهر
+            state_no: "9"
+          selected: "{}"
         message: message
-        object:
-          objects:
-            city:
-            - "false": "11907"
-              name: آرين شهر
-              state_no: "9"
-            - "false": "11907"
-              name: آرين شهر
-              state_no: "9"
-            selected: "{}"
       properties:
-        success:
+        result:
           example: true
           type: boolean
         message:
           nullable: true
           type: string
-        object:
+        objects:
           $ref: "#/components/schemas/GetCityObject"
+      required:
+      - objects
+      - result
       type: object
-    QuoteObject:
+    QuoteObjects:
       example:
-        price: 75000
-        deadline: "2"
+        order:
+          method_no: 205
+          quote: 689400
+          method_name: درون شهری
+          price:
+            fld_Total_Cost: 689400
+            price_list: "6243"
+            fld_Charge_Cost: 70000
+            fld_Lab_Cost: 0
+            zone: A
+            fld_Manual_VAT: 9000
+            fld_Manual_Cost: "590400"
+            fld_Pack_Cost: 0
+            fld_Manual_Insurance: 20000
+            min_ins: "5000000"
+          currency: IRR
       properties:
+        order:
+          $ref: "#/components/schemas/QuoteOrderDetails"
+      required:
+      - order
+      type: object
+    QuoteOrderDetails:
+      example:
+        method_no: 205
+        quote: 689400
+        method_name: درون شهری
         price:
-          example: 75000
+          fld_Total_Cost: 689400
+          price_list: "6243"
+          fld_Charge_Cost: 70000
+          fld_Lab_Cost: 0
+          zone: A
+          fld_Manual_VAT: 9000
+          fld_Manual_Cost: "590400"
+          fld_Pack_Cost: 0
+          fld_Manual_Insurance: 20000
+          min_ins: "5000000"
+        currency: IRR
+      properties:
+        quote:
+          example: 689400
           type: integer
-        deadline:
-          example: "2"
+        price:
+          $ref: "#/components/schemas/PriceDetails"
+        currency:
+          example: IRR
           type: string
+        method_no:
+          example: 205
+          type: integer
+        method_name:
+          example: درون شهری
+          type: string
+      required:
+      - currency
+      - method_name
+      - method_no
+      - price
+      - quote
+      type: object
+    PriceDetails:
+      example:
+        fld_Total_Cost: 689400
+        price_list: "6243"
+        fld_Charge_Cost: 70000
+        fld_Lab_Cost: 0
+        zone: A
+        fld_Manual_VAT: 9000
+        fld_Manual_Cost: "590400"
+        fld_Pack_Cost: 0
+        fld_Manual_Insurance: 20000
+        min_ins: "5000000"
+      properties:
+        zone:
+          example: A
+          type: string
+        fld_Manual_Cost:
+          example: "590400"
+          type: string
+        fld_Pack_Cost:
+          example: 0
+          type: integer
+        fld_Charge_Cost:
+          example: 70000
+          type: integer
+        fld_Manual_Insurance:
+          example: 20000
+          type: integer
+        fld_Lab_Cost:
+          example: 0
+          type: integer
+        fld_Manual_VAT:
+          example: 9000
+          type: integer
+        fld_Total_Cost:
+          example: 689400
+          type: integer
+        price_list:
+          example: "6243"
+          type: string
+        min_ins:
+          example: "5000000"
+          type: string
+      required:
+      - fld_Charge_Cost
+      - fld_Lab_Cost
+      - fld_Manual_Cost
+      - fld_Manual_Insurance
+      - fld_Manual_VAT
+      - fld_Pack_Cost
+      - fld_Total_Cost
+      - min_ins
+      - price_list
+      - zone
       type: object
     HistoryReportObject:
       example:
@@ -504,6 +638,11 @@ components:
           items:
             $ref: "#/components/schemas/HistoryEvent"
           type: array
+      required:
+      - cn
+      - financial
+      - history
+      - receiver
       type: object
     BulkHistoryReportObject:
       example:
@@ -517,6 +656,8 @@ components:
           items:
             $ref: "#/components/schemas/BulkHistoryEvent"
           type: array
+      required:
+      - history
       type: object
     GetStateObject:
       example:
@@ -530,119 +671,10 @@ components:
           items:
             $ref: "#/components/schemas/State"
           type: array
+      required:
+      - state
       type: object
     GetCityObject:
-      example:
-        objects:
-          city:
-          - "false": "11907"
-            name: آرين شهر
-            state_no: "9"
-          - "false": "11907"
-            name: آرين شهر
-            state_no: "9"
-          selected: "{}"
-      properties:
-        objects:
-          $ref: "#/components/schemas/GetCityObject_objects"
-      type: object
-    ConsignmentNote:
-      example:
-        date: date
-        tracking: tracking
-      properties:
-        tracking:
-          type: string
-        date:
-          type: string
-      type: object
-    ReceiverInfo:
-      example:
-        person: person
-        company: company
-      properties:
-        person:
-          type: string
-        company:
-          nullable: true
-          type: string
-      type: object
-    FinancialInfo:
-      example:
-        delivery_charge: delivery_charge
-        total_charge: 0
-      properties:
-        delivery_charge:
-          type: string
-        total_charge:
-          type: integer
-      type: object
-    HistoryEvent:
-      example:
-        status_note: status_note
-        status: status
-      properties:
-        status:
-          type: string
-        status_note:
-          type: string
-      type: object
-    BulkHistoryEvent:
-      example:
-        tracking: tracking
-        status: status
-      properties:
-        status:
-          type: string
-        tracking:
-          type: string
-      type: object
-    State:
-      example:
-        "false": "1"
-        name: آذربایجان شرقی
-      properties:
-        "false":
-          example: "1"
-          type: string
-        name:
-          example: آذربایجان شرقی
-          type: string
-      type: object
-    City:
-      example:
-        "false": "11907"
-        name: آرين شهر
-        state_no: "9"
-      properties:
-        state_no:
-          example: "9"
-          type: string
-        "false":
-          example: "11907"
-          type: string
-        name:
-          example: آرين شهر
-          type: string
-      type: object
-    _bulk_import_post_200_response:
-      example:
-        success: true
-        message: Operation completed successfully.
-        object: "{}"
-      properties:
-        success:
-          example: true
-          type: boolean
-        message:
-          example: Operation completed successfully.
-          nullable: true
-          type: string
-        object:
-          nullable: true
-          type: object
-      type: object
-    GetCityObject_objects:
       example:
         city:
         - "false": "11907"
@@ -660,6 +692,125 @@ components:
         selected:
           nullable: true
           type: object
+      required:
+      - city
+      type: object
+    ConsignmentNote:
+      example:
+        date: date
+        tracking: tracking
+      properties:
+        tracking:
+          type: string
+        date:
+          type: string
+      required:
+      - date
+      - tracking
+      type: object
+    ReceiverInfo:
+      example:
+        person: person
+        company: company
+      properties:
+        person:
+          type: string
+        company:
+          nullable: true
+          type: string
+      required:
+      - person
+      type: object
+    FinancialInfo:
+      example:
+        delivery_charge: delivery_charge
+        total_charge: 0
+      properties:
+        delivery_charge:
+          type: string
+        total_charge:
+          type: integer
+      required:
+      - delivery_charge
+      - total_charge
+      type: object
+    HistoryEvent:
+      example:
+        status_note: status_note
+        status: status
+      properties:
+        status:
+          type: string
+        status_note:
+          type: string
+      required:
+      - status
+      - status_note
+      type: object
+    BulkHistoryEvent:
+      example:
+        tracking: tracking
+        status: status
+      properties:
+        status:
+          type: string
+        tracking:
+          type: string
+      required:
+      - status
+      - tracking
+      type: object
+    State:
+      example:
+        "false": "1"
+        name: آذربایجان شرقی
+      properties:
+        "false":
+          example: "1"
+          type: string
+        name:
+          example: آذربایجان شرقی
+          type: string
+      required:
+      - name
+      type: object
+    City:
+      example:
+        "false": "11907"
+        name: آرين شهر
+        state_no: "9"
+      properties:
+        state_no:
+          example: "9"
+          type: string
+        "false":
+          example: "11907"
+          type: string
+        name:
+          example: آرين شهر
+          type: string
+      required:
+      - name
+      - state_no
+      type: object
+    _bulk_import_post_200_response:
+      example:
+        result: true
+        objects: "{}"
+        message: Operation completed successfully.
+      properties:
+        result:
+          example: true
+          type: boolean
+        message:
+          example: Operation completed successfully.
+          nullable: true
+          type: string
+        objects:
+          nullable: true
+          type: object
+      required:
+      - result
       type: object
   securitySchemes:
     ApiKeyAuth:

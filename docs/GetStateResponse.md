@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to **bool** |  | [optional] 
+**Result** | **bool** |  | 
 **Message** | Pointer to **NullableString** |  | [optional] 
-**Object** | Pointer to [**GetStateObject**](GetStateObject.md) |  | [optional] 
+**Objects** | [**GetStateObject**](GetStateObject.md) |  | 
 
 ## Methods
 
 ### NewGetStateResponse
 
-`func NewGetStateResponse() *GetStateResponse`
+`func NewGetStateResponse(result bool, objects GetStateObject, ) *GetStateResponse`
 
 NewGetStateResponse instantiates a new GetStateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -27,30 +27,25 @@ NewGetStateResponseWithDefaults instantiates a new GetStateResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSuccess
+### GetResult
 
-`func (o *GetStateResponse) GetSuccess() bool`
+`func (o *GetStateResponse) GetResult() bool`
 
-GetSuccess returns the Success field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetSuccessOk
+### GetResultOk
 
-`func (o *GetStateResponse) GetSuccessOk() (*bool, bool)`
+`func (o *GetStateResponse) GetResultOk() (*bool, bool)`
 
-GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuccess
+### SetResult
 
-`func (o *GetStateResponse) SetSuccess(v bool)`
+`func (o *GetStateResponse) SetResult(v bool)`
 
-SetSuccess sets Success field to given value.
+SetResult sets Result field to given value.
 
-### HasSuccess
-
-`func (o *GetStateResponse) HasSuccess() bool`
-
-HasSuccess returns a boolean if a field has been set.
 
 ### GetMessage
 
@@ -87,30 +82,25 @@ HasMessage returns a boolean if a field has been set.
 `func (o *GetStateResponse) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
-### GetObject
+### GetObjects
 
-`func (o *GetStateResponse) GetObject() GetStateObject`
+`func (o *GetStateResponse) GetObjects() GetStateObject`
 
-GetObject returns the Object field if non-nil, zero value otherwise.
+GetObjects returns the Objects field if non-nil, zero value otherwise.
 
-### GetObjectOk
+### GetObjectsOk
 
-`func (o *GetStateResponse) GetObjectOk() (*GetStateObject, bool)`
+`func (o *GetStateResponse) GetObjectsOk() (*GetStateObject, bool)`
 
-GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+GetObjectsOk returns a tuple with the Objects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetObject
+### SetObjects
 
-`func (o *GetStateResponse) SetObject(v GetStateObject)`
+`func (o *GetStateResponse) SetObjects(v GetStateObject)`
 
-SetObject sets Object field to given value.
+SetObjects sets Objects field to given value.
 
-### HasObject
-
-`func (o *GetStateResponse) HasObject() bool`
-
-HasObject returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BulkHistoryEvent type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,20 @@ var _ MappedNullable = &BulkHistoryEvent{}
 
 // BulkHistoryEvent struct for BulkHistoryEvent
 type BulkHistoryEvent struct {
-	Status *string `json:"status,omitempty"`
-	Tracking *string `json:"tracking,omitempty"`
+	Status string `json:"status"`
+	Tracking string `json:"tracking"`
 }
+
+type _BulkHistoryEvent BulkHistoryEvent
 
 // NewBulkHistoryEvent instantiates a new BulkHistoryEvent object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkHistoryEvent() *BulkHistoryEvent {
+func NewBulkHistoryEvent(status string, tracking string) *BulkHistoryEvent {
 	this := BulkHistoryEvent{}
+	this.Status = status
+	this.Tracking = tracking
 	return &this
 }
 
@@ -40,68 +46,52 @@ func NewBulkHistoryEventWithDefaults() *BulkHistoryEvent {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *BulkHistoryEvent) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *BulkHistoryEvent) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *BulkHistoryEvent) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus sets field value
 func (o *BulkHistoryEvent) SetStatus(v string) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetTracking returns the Tracking field value if set, zero value otherwise.
+// GetTracking returns the Tracking field value
 func (o *BulkHistoryEvent) GetTracking() string {
-	if o == nil || IsNil(o.Tracking) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Tracking
+
+	return o.Tracking
 }
 
-// GetTrackingOk returns a tuple with the Tracking field value if set, nil otherwise
+// GetTrackingOk returns a tuple with the Tracking field value
 // and a boolean to check if the value has been set.
 func (o *BulkHistoryEvent) GetTrackingOk() (*string, bool) {
-	if o == nil || IsNil(o.Tracking) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tracking, true
+	return &o.Tracking, true
 }
 
-// HasTracking returns a boolean if a field has been set.
-func (o *BulkHistoryEvent) HasTracking() bool {
-	if o != nil && !IsNil(o.Tracking) {
-		return true
-	}
-
-	return false
-}
-
-// SetTracking gets a reference to the given string and assigns it to the Tracking field.
+// SetTracking sets field value
 func (o *BulkHistoryEvent) SetTracking(v string) {
-	o.Tracking = &v
+	o.Tracking = v
 }
 
 func (o BulkHistoryEvent) MarshalJSON() ([]byte, error) {
@@ -114,13 +104,47 @@ func (o BulkHistoryEvent) MarshalJSON() ([]byte, error) {
 
 func (o BulkHistoryEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.Tracking) {
-		toSerialize["tracking"] = o.Tracking
-	}
+	toSerialize["status"] = o.Status
+	toSerialize["tracking"] = o.Tracking
 	return toSerialize, nil
+}
+
+func (o *BulkHistoryEvent) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+		"tracking",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBulkHistoryEvent := _BulkHistoryEvent{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBulkHistoryEvent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BulkHistoryEvent(varBulkHistoryEvent)
+
+	return err
 }
 
 type NullableBulkHistoryEvent struct {

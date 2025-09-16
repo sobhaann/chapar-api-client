@@ -12,6 +12,8 @@ package chapar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the QuoteResponse type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,21 @@ var _ MappedNullable = &QuoteResponse{}
 
 // QuoteResponse struct for QuoteResponse
 type QuoteResponse struct {
-	Success *bool `json:"success,omitempty"`
+	Result bool `json:"result"`
 	Message NullableString `json:"message,omitempty"`
-	Object *QuoteObject `json:"object,omitempty"`
+	Objects QuoteObjects `json:"objects"`
 }
+
+type _QuoteResponse QuoteResponse
 
 // NewQuoteResponse instantiates a new QuoteResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQuoteResponse() *QuoteResponse {
+func NewQuoteResponse(result bool, objects QuoteObjects) *QuoteResponse {
 	this := QuoteResponse{}
+	this.Result = result
+	this.Objects = objects
 	return &this
 }
 
@@ -41,36 +47,28 @@ func NewQuoteResponseWithDefaults() *QuoteResponse {
 	return &this
 }
 
-// GetSuccess returns the Success field value if set, zero value otherwise.
-func (o *QuoteResponse) GetSuccess() bool {
-	if o == nil || IsNil(o.Success) {
+// GetResult returns the Result field value
+func (o *QuoteResponse) GetResult() bool {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Success
+
+	return o.Result
 }
 
-// GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
+// GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
-func (o *QuoteResponse) GetSuccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.Success) {
+func (o *QuoteResponse) GetResultOk() (*bool, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Success, true
+	return &o.Result, true
 }
 
-// HasSuccess returns a boolean if a field has been set.
-func (o *QuoteResponse) HasSuccess() bool {
-	if o != nil && !IsNil(o.Success) {
-		return true
-	}
-
-	return false
-}
-
-// SetSuccess gets a reference to the given bool and assigns it to the Success field.
-func (o *QuoteResponse) SetSuccess(v bool) {
-	o.Success = &v
+// SetResult sets field value
+func (o *QuoteResponse) SetResult(v bool) {
+	o.Result = v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -115,36 +113,28 @@ func (o *QuoteResponse) UnsetMessage() {
 	o.Message.Unset()
 }
 
-// GetObject returns the Object field value if set, zero value otherwise.
-func (o *QuoteResponse) GetObject() QuoteObject {
-	if o == nil || IsNil(o.Object) {
-		var ret QuoteObject
+// GetObjects returns the Objects field value
+func (o *QuoteResponse) GetObjects() QuoteObjects {
+	if o == nil {
+		var ret QuoteObjects
 		return ret
 	}
-	return *o.Object
+
+	return o.Objects
 }
 
-// GetObjectOk returns a tuple with the Object field value if set, nil otherwise
+// GetObjectsOk returns a tuple with the Objects field value
 // and a boolean to check if the value has been set.
-func (o *QuoteResponse) GetObjectOk() (*QuoteObject, bool) {
-	if o == nil || IsNil(o.Object) {
+func (o *QuoteResponse) GetObjectsOk() (*QuoteObjects, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Object, true
+	return &o.Objects, true
 }
 
-// HasObject returns a boolean if a field has been set.
-func (o *QuoteResponse) HasObject() bool {
-	if o != nil && !IsNil(o.Object) {
-		return true
-	}
-
-	return false
-}
-
-// SetObject gets a reference to the given QuoteObject and assigns it to the Object field.
-func (o *QuoteResponse) SetObject(v QuoteObject) {
-	o.Object = &v
+// SetObjects sets field value
+func (o *QuoteResponse) SetObjects(v QuoteObjects) {
+	o.Objects = v
 }
 
 func (o QuoteResponse) MarshalJSON() ([]byte, error) {
@@ -157,16 +147,50 @@ func (o QuoteResponse) MarshalJSON() ([]byte, error) {
 
 func (o QuoteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Success) {
-		toSerialize["success"] = o.Success
-	}
+	toSerialize["result"] = o.Result
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-	if !IsNil(o.Object) {
-		toSerialize["object"] = o.Object
-	}
+	toSerialize["objects"] = o.Objects
 	return toSerialize, nil
+}
+
+func (o *QuoteResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"result",
+		"objects",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varQuoteResponse := _QuoteResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varQuoteResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = QuoteResponse(varQuoteResponse)
+
+	return err
 }
 
 type NullableQuoteResponse struct {

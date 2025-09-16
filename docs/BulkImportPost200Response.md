@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to **bool** |  | [optional] 
+**Result** | **bool** |  | 
 **Message** | Pointer to **NullableString** |  | [optional] 
-**Object** | Pointer to **map[string]interface{}** |  | [optional] 
+**Objects** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewBulkImportPost200Response
 
-`func NewBulkImportPost200Response() *BulkImportPost200Response`
+`func NewBulkImportPost200Response(result bool, ) *BulkImportPost200Response`
 
 NewBulkImportPost200Response instantiates a new BulkImportPost200Response object
 This constructor will assign default values to properties that have it defined,
@@ -27,30 +27,25 @@ NewBulkImportPost200ResponseWithDefaults instantiates a new BulkImportPost200Res
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSuccess
+### GetResult
 
-`func (o *BulkImportPost200Response) GetSuccess() bool`
+`func (o *BulkImportPost200Response) GetResult() bool`
 
-GetSuccess returns the Success field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetSuccessOk
+### GetResultOk
 
-`func (o *BulkImportPost200Response) GetSuccessOk() (*bool, bool)`
+`func (o *BulkImportPost200Response) GetResultOk() (*bool, bool)`
 
-GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuccess
+### SetResult
 
-`func (o *BulkImportPost200Response) SetSuccess(v bool)`
+`func (o *BulkImportPost200Response) SetResult(v bool)`
 
-SetSuccess sets Success field to given value.
+SetResult sets Result field to given value.
 
-### HasSuccess
-
-`func (o *BulkImportPost200Response) HasSuccess() bool`
-
-HasSuccess returns a boolean if a field has been set.
 
 ### GetMessage
 
@@ -87,41 +82,41 @@ HasMessage returns a boolean if a field has been set.
 `func (o *BulkImportPost200Response) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
-### GetObject
+### GetObjects
 
-`func (o *BulkImportPost200Response) GetObject() map[string]interface{}`
+`func (o *BulkImportPost200Response) GetObjects() map[string]interface{}`
 
-GetObject returns the Object field if non-nil, zero value otherwise.
+GetObjects returns the Objects field if non-nil, zero value otherwise.
 
-### GetObjectOk
+### GetObjectsOk
 
-`func (o *BulkImportPost200Response) GetObjectOk() (*map[string]interface{}, bool)`
+`func (o *BulkImportPost200Response) GetObjectsOk() (*map[string]interface{}, bool)`
 
-GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+GetObjectsOk returns a tuple with the Objects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetObject
+### SetObjects
 
-`func (o *BulkImportPost200Response) SetObject(v map[string]interface{})`
+`func (o *BulkImportPost200Response) SetObjects(v map[string]interface{})`
 
-SetObject sets Object field to given value.
+SetObjects sets Objects field to given value.
 
-### HasObject
+### HasObjects
 
-`func (o *BulkImportPost200Response) HasObject() bool`
+`func (o *BulkImportPost200Response) HasObjects() bool`
 
-HasObject returns a boolean if a field has been set.
+HasObjects returns a boolean if a field has been set.
 
-### SetObjectNil
+### SetObjectsNil
 
-`func (o *BulkImportPost200Response) SetObjectNil(b bool)`
+`func (o *BulkImportPost200Response) SetObjectsNil(b bool)`
 
- SetObjectNil sets the value for Object to be an explicit nil
+ SetObjectsNil sets the value for Objects to be an explicit nil
 
-### UnsetObject
-`func (o *BulkImportPost200Response) UnsetObject()`
+### UnsetObjects
+`func (o *BulkImportPost200Response) UnsetObjects()`
 
-UnsetObject ensures that no value is present for Object, not even an explicit nil
+UnsetObjects ensures that no value is present for Objects, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

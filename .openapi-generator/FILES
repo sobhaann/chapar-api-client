@@ -16,7 +16,6 @@ docs/City.md
 docs/ConsignmentNote.md
 docs/FinancialInfo.md
 docs/GetCityObject.md
-docs/GetCityObjectObjects.md
 docs/GetCityResponse.md
 docs/GetStateObject.md
 docs/GetStateResponse.md
@@ -24,7 +23,9 @@ docs/HistoryEvent.md
 docs/HistoryReportObject.md
 docs/HistoryReportResponse.md
 docs/LocationsAPI.md
-docs/QuoteObject.md
+docs/PriceDetails.md
+docs/QuoteObjects.md
+docs/QuoteOrderDetails.md
 docs/QuoteResponse.md
 docs/QuotesAPI.md
 docs/ReceiverInfo.md
@@ -42,14 +43,15 @@ model_city.go
 model_consignment_note.go
 model_financial_info.go
 model_get_city_object.go
-model_get_city_object_objects.go
 model_get_city_response.go
 model_get_state_object.go
 model_get_state_response.go
 model_history_event.go
 model_history_report_object.go
 model_history_report_response.go
-model_quote_object.go
+model_price_details.go
+model_quote_objects.go
+model_quote_order_details.go
 model_quote_response.go
 model_receiver_info.go
 model_state.go
