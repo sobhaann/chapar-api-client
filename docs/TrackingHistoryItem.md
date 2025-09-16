@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **TimestampDate** | Pointer to **int32** |  | [optional] 
 **Date** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**Geo** | Pointer to [**Geo**](Geo.md) |  | [optional] 
 **Loc** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -103,31 +102,6 @@ SetStatus sets Status field to given value.
 `func (o *TrackingHistoryItem) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
-### GetGeo
-
-`func (o *TrackingHistoryItem) GetGeo() Geo`
-
-GetGeo returns the Geo field if non-nil, zero value otherwise.
-
-### GetGeoOk
-
-`func (o *TrackingHistoryItem) GetGeoOk() (*Geo, bool)`
-
-GetGeoOk returns a tuple with the Geo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGeo
-
-`func (o *TrackingHistoryItem) SetGeo(v Geo)`
-
-SetGeo sets Geo field to given value.
-
-### HasGeo
-
-`func (o *TrackingHistoryItem) HasGeo() bool`
-
-HasGeo returns a boolean if a field has been set.
 
 ### GetLoc
 

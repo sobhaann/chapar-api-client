@@ -4,16 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cn** | Pointer to [**HistoryConsignmentNote**](HistoryConsignmentNote.md) |  | [optional] 
-**Receiver** | Pointer to [**HistoryContact**](HistoryContact.md) |  | [optional] 
-**Financial** | Pointer to [**Financial**](Financial.md) |  | [optional] 
-**History** | Pointer to [**[]HistoryItem**](HistoryItem.md) |  | [optional] 
+**Result** | **bool** |  | 
+**Message** | Pointer to **NullableString** |  | [optional] 
+**Object** | [**HistoryReportObject**](HistoryReportObject.md) |  | 
 
 ## Methods
 
 ### NewHistoryReportResponse
 
-`func NewHistoryReportResponse() *HistoryReportResponse`
+`func NewHistoryReportResponse(result bool, object HistoryReportObject, ) *HistoryReportResponse`
 
 NewHistoryReportResponse instantiates a new HistoryReportResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,105 +27,80 @@ NewHistoryReportResponseWithDefaults instantiates a new HistoryReportResponse ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCn
+### GetResult
 
-`func (o *HistoryReportResponse) GetCn() HistoryConsignmentNote`
+`func (o *HistoryReportResponse) GetResult() bool`
 
-GetCn returns the Cn field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetCnOk
+### GetResultOk
 
-`func (o *HistoryReportResponse) GetCnOk() (*HistoryConsignmentNote, bool)`
+`func (o *HistoryReportResponse) GetResultOk() (*bool, bool)`
 
-GetCnOk returns a tuple with the Cn field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCn
+### SetResult
 
-`func (o *HistoryReportResponse) SetCn(v HistoryConsignmentNote)`
+`func (o *HistoryReportResponse) SetResult(v bool)`
 
-SetCn sets Cn field to given value.
+SetResult sets Result field to given value.
 
-### HasCn
 
-`func (o *HistoryReportResponse) HasCn() bool`
+### GetMessage
 
-HasCn returns a boolean if a field has been set.
+`func (o *HistoryReportResponse) GetMessage() string`
 
-### GetReceiver
+GetMessage returns the Message field if non-nil, zero value otherwise.
 
-`func (o *HistoryReportResponse) GetReceiver() HistoryContact`
+### GetMessageOk
 
-GetReceiver returns the Receiver field if non-nil, zero value otherwise.
+`func (o *HistoryReportResponse) GetMessageOk() (*string, bool)`
 
-### GetReceiverOk
-
-`func (o *HistoryReportResponse) GetReceiverOk() (*HistoryContact, bool)`
-
-GetReceiverOk returns a tuple with the Receiver field if it's non-nil, zero value otherwise
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReceiver
+### SetMessage
 
-`func (o *HistoryReportResponse) SetReceiver(v HistoryContact)`
+`func (o *HistoryReportResponse) SetMessage(v string)`
 
-SetReceiver sets Receiver field to given value.
+SetMessage sets Message field to given value.
 
-### HasReceiver
+### HasMessage
 
-`func (o *HistoryReportResponse) HasReceiver() bool`
+`func (o *HistoryReportResponse) HasMessage() bool`
 
-HasReceiver returns a boolean if a field has been set.
+HasMessage returns a boolean if a field has been set.
 
-### GetFinancial
+### SetMessageNil
 
-`func (o *HistoryReportResponse) GetFinancial() Financial`
+`func (o *HistoryReportResponse) SetMessageNil(b bool)`
 
-GetFinancial returns the Financial field if non-nil, zero value otherwise.
+ SetMessageNil sets the value for Message to be an explicit nil
 
-### GetFinancialOk
+### UnsetMessage
+`func (o *HistoryReportResponse) UnsetMessage()`
 
-`func (o *HistoryReportResponse) GetFinancialOk() (*Financial, bool)`
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
+### GetObject
 
-GetFinancialOk returns a tuple with the Financial field if it's non-nil, zero value otherwise
+`func (o *HistoryReportResponse) GetObject() HistoryReportObject`
+
+GetObject returns the Object field if non-nil, zero value otherwise.
+
+### GetObjectOk
+
+`func (o *HistoryReportResponse) GetObjectOk() (*HistoryReportObject, bool)`
+
+GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFinancial
+### SetObject
 
-`func (o *HistoryReportResponse) SetFinancial(v Financial)`
+`func (o *HistoryReportResponse) SetObject(v HistoryReportObject)`
 
-SetFinancial sets Financial field to given value.
+SetObject sets Object field to given value.
 
-### HasFinancial
-
-`func (o *HistoryReportResponse) HasFinancial() bool`
-
-HasFinancial returns a boolean if a field has been set.
-
-### GetHistory
-
-`func (o *HistoryReportResponse) GetHistory() []HistoryItem`
-
-GetHistory returns the History field if non-nil, zero value otherwise.
-
-### GetHistoryOk
-
-`func (o *HistoryReportResponse) GetHistoryOk() (*[]HistoryItem, bool)`
-
-GetHistoryOk returns a tuple with the History field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHistory
-
-`func (o *HistoryReportResponse) SetHistory(v []HistoryItem)`
-
-SetHistory sets History field to given value.
-
-### HasHistory
-
-`func (o *HistoryReportResponse) HasHistory() bool`
-
-HasHistory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

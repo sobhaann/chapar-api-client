@@ -4,13 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Order** | Pointer to [**TrackingOrder**](TrackingOrder.md) |  | [optional] 
+**Result** | **bool** |  | 
+**Message** | Pointer to **NullableString** |  | [optional] 
+**Object** | [**TrackingObject**](TrackingObject.md) |  | 
 
 ## Methods
 
 ### NewTrackingResponse
 
-`func NewTrackingResponse() *TrackingResponse`
+`func NewTrackingResponse(result bool, object TrackingObject, ) *TrackingResponse`
 
 NewTrackingResponse instantiates a new TrackingResponse object
 This constructor will assign default values to properties that have it defined,
@@ -25,30 +27,80 @@ NewTrackingResponseWithDefaults instantiates a new TrackingResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetOrder
+### GetResult
 
-`func (o *TrackingResponse) GetOrder() TrackingOrder`
+`func (o *TrackingResponse) GetResult() bool`
 
-GetOrder returns the Order field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetOrderOk
+### GetResultOk
 
-`func (o *TrackingResponse) GetOrderOk() (*TrackingOrder, bool)`
+`func (o *TrackingResponse) GetResultOk() (*bool, bool)`
 
-GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrder
+### SetResult
 
-`func (o *TrackingResponse) SetOrder(v TrackingOrder)`
+`func (o *TrackingResponse) SetResult(v bool)`
 
-SetOrder sets Order field to given value.
+SetResult sets Result field to given value.
 
-### HasOrder
 
-`func (o *TrackingResponse) HasOrder() bool`
+### GetMessage
 
-HasOrder returns a boolean if a field has been set.
+`func (o *TrackingResponse) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *TrackingResponse) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *TrackingResponse) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *TrackingResponse) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *TrackingResponse) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *TrackingResponse) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
+### GetObject
+
+`func (o *TrackingResponse) GetObject() TrackingObject`
+
+GetObject returns the Object field if non-nil, zero value otherwise.
+
+### GetObjectOk
+
+`func (o *TrackingResponse) GetObjectOk() (*TrackingObject, bool)`
+
+GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObject
+
+`func (o *TrackingResponse) SetObject(v TrackingObject)`
+
+SetObject sets Object field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

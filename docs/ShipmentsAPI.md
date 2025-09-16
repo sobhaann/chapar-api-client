@@ -4,16 +4,16 @@ All URIs are relative to *https://app.krch.ir/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BulkImportPost**](ShipmentsAPI.md#BulkImportPost) | **Post** /bulk_import | Import shipments in bulk
+[**BulkImportPost**](ShipmentsAPI.md#BulkImportPost) | **Post** /bulk_import | Import multiple shipments at once
 [**CancelPickupPost**](ShipmentsAPI.md#CancelPickupPost) | **Post** /cancel_pickup | Cancel a scheduled pickup
 
 
 
 ## BulkImportPost
 
-> BulkImportResponse BulkImportPost(ctx).BulkImportRequest(bulkImportRequest).Execute()
+> BulkImportResponse BulkImportPost(ctx).Input(input).Signature(signature).Execute()
 
-Import shipments in bulk
+Import multiple shipments at once
 
 ### Example
 
@@ -28,11 +28,12 @@ import (
 )
 
 func main() {
-	bulkImportRequest := *openapiclient.NewBulkImportRequest() // BulkImportRequest | 
+	input := "input_example" // string | A stringified JSON object containing the bulk shipment data.
+	signature := os.NewFile(1234, "some_file") // *os.File | An optional signature file for the shipment. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ShipmentsAPI.BulkImportPost(context.Background()).BulkImportRequest(bulkImportRequest).Execute()
+	resp, r, err := apiClient.ShipmentsAPI.BulkImportPost(context.Background()).Input(input).Signature(signature).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ShipmentsAPI.BulkImportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +54,8 @@ Other parameters are passed through a pointer to a apiBulkImportPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkImportRequest** | [**BulkImportRequest**](BulkImportRequest.md) |  | 
+ **input** | **string** | A stringified JSON object containing the bulk shipment data. | 
+ **signature** | ***os.File** | An optional signature file for the shipment. | 
 
 ### Return type
 
@@ -61,11 +63,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -75,7 +77,7 @@ No authorization required
 
 ## CancelPickupPost
 
-> GetStateResponse CancelPickupPost(ctx).Input(input).Execute()
+> GenericResponse CancelPickupPost(ctx).Input(input).Execute()
 
 Cancel a scheduled pickup
 
@@ -92,7 +94,7 @@ import (
 )
 
 func main() {
-	input := "{"user":{"username":"test","password":"1234"},"consignment_no":"54100004430041101","reason":"آزمایشی"}" // string | 
+	input := "input_example" // string | A stringified JSON object for the cancellation request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -101,7 +103,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ShipmentsAPI.CancelPickupPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelPickupPost`: GetStateResponse
+	// response from `CancelPickupPost`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `ShipmentsAPI.CancelPickupPost`: %v\n", resp)
 }
 ```
@@ -117,19 +119,19 @@ Other parameters are passed through a pointer to a apiCancelPickupPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** |  | 
+ **input** | **string** | A stringified JSON object for the cancellation request. | 
 
 ### Return type
 
-[**GetStateResponse**](GetStateResponse.md)
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

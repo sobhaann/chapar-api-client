@@ -5,8 +5,8 @@ All URIs are relative to *https://app.krch.ir/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**BulkHistoryReportPost**](TrackingAPI.md#BulkHistoryReportPost) | **Post** /bulk_history_report | Get a bulk history report
-[**HistoryReportPost**](TrackingAPI.md#HistoryReportPost) | **Post** /history_report | Get a history report
-[**TrackingPost**](TrackingAPI.md#TrackingPost) | **Post** /tracking | Track a shipment
+[**HistoryReportPost**](TrackingAPI.md#HistoryReportPost) | **Post** /history_report | Get a history report for shipments
+[**TrackingPost**](TrackingAPI.md#TrackingPost) | **Post** /tracking | Track shipments by reference
 
 
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	input := "{"user":{"username":"test","password":"1234"},"bulk":["54100003992527101","54100003942527101"]}" // string | 
+	input := "input_example" // string | A stringified JSON object containing the bulk tracking numbers.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiBulkHistoryReportPostReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** |  | 
+ **input** | **string** | A stringified JSON object containing the bulk tracking numbers. | 
 
 ### Return type
 
@@ -62,11 +62,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -78,7 +78,7 @@ No authorization required
 
 > HistoryReportResponse HistoryReportPost(ctx).Input(input).Execute()
 
-Get a history report
+Get a history report for shipments
 
 ### Example
 
@@ -93,7 +93,7 @@ import (
 )
 
 func main() {
-	input := "{"user":{"username":"test","password":"1234"},"date":{"from":"25-09-2017","to":"10-10-2017"},"maximum_records":10}" // string | 
+	input := "input_example" // string | A stringified JSON object for the history report request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -118,7 +118,7 @@ Other parameters are passed through a pointer to a apiHistoryReportPostRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** |  | 
+ **input** | **string** | A stringified JSON object for the history report request. | 
 
 ### Return type
 
@@ -126,11 +126,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -142,7 +142,7 @@ No authorization required
 
 > TrackingResponse TrackingPost(ctx).Input(input).Execute()
 
-Track a shipment
+Track shipments by reference
 
 ### Example
 
@@ -157,7 +157,7 @@ import (
 )
 
 func main() {
-	input := "{"order":{"reference":"54100003225544101","lang":"fa"}}" // string | 
+	input := "input_example" // string | A stringified JSON object containing the tracking references.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -182,7 +182,7 @@ Other parameters are passed through a pointer to a apiTrackingPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** |  | 
+ **input** | **string** | A stringified JSON object containing the tracking references. | 
 
 ### Return type
 
@@ -190,11 +190,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

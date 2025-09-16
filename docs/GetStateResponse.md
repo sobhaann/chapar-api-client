@@ -4,13 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**[]State**](State.md) |  | [optional] 
+**Result** | **bool** |  | 
+**Message** | Pointer to **NullableString** |  | [optional] 
+**Object** | [**GetStateObject**](GetStateObject.md) |  | 
 
 ## Methods
 
 ### NewGetStateResponse
 
-`func NewGetStateResponse() *GetStateResponse`
+`func NewGetStateResponse(result bool, object GetStateObject, ) *GetStateResponse`
 
 NewGetStateResponse instantiates a new GetStateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -25,30 +27,80 @@ NewGetStateResponseWithDefaults instantiates a new GetStateResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetState
+### GetResult
 
-`func (o *GetStateResponse) GetState() []State`
+`func (o *GetStateResponse) GetResult() bool`
 
-GetState returns the State field if non-nil, zero value otherwise.
+GetResult returns the Result field if non-nil, zero value otherwise.
 
-### GetStateOk
+### GetResultOk
 
-`func (o *GetStateResponse) GetStateOk() (*[]State, bool)`
+`func (o *GetStateResponse) GetResultOk() (*bool, bool)`
 
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetState
+### SetResult
 
-`func (o *GetStateResponse) SetState(v []State)`
+`func (o *GetStateResponse) SetResult(v bool)`
 
-SetState sets State field to given value.
+SetResult sets Result field to given value.
 
-### HasState
 
-`func (o *GetStateResponse) HasState() bool`
+### GetMessage
 
-HasState returns a boolean if a field has been set.
+`func (o *GetStateResponse) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *GetStateResponse) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *GetStateResponse) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *GetStateResponse) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *GetStateResponse) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *GetStateResponse) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
+### GetObject
+
+`func (o *GetStateResponse) GetObject() GetStateObject`
+
+GetObject returns the Object field if non-nil, zero value otherwise.
+
+### GetObjectOk
+
+`func (o *GetStateResponse) GetObjectOk() (*GetStateObject, bool)`
+
+GetObjectOk returns a tuple with the Object field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObject
+
+`func (o *GetStateResponse) SetObject(v GetStateObject)`
+
+SetObject sets Object field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

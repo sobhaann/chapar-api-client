@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetQuotePost
 
-> GetQuoteResponse GetQuotePost(ctx).Input(input).Execute()
+> QuoteResponse GetQuotePost(ctx).Input(input).Execute()
 
 Get a shipping cost quote
 
@@ -27,7 +27,7 @@ import (
 )
 
 func main() {
-	input := "{"order":{"origin":"10866","destination":"10866","method":"1","value":"3200000","weight":"4"}}" // string | 
+	input := "input_example" // string | A stringified JSON object for the quote request.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -36,7 +36,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `QuotesAPI.GetQuotePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetQuotePost`: GetQuoteResponse
+	// response from `GetQuotePost`: QuoteResponse
 	fmt.Fprintf(os.Stdout, "Response from `QuotesAPI.GetQuotePost`: %v\n", resp)
 }
 ```
@@ -52,19 +52,19 @@ Other parameters are passed through a pointer to a apiGetQuotePostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** |  | 
+ **input** | **string** | A stringified JSON object for the quote request. | 
 
 ### Return type
 
-[**GetQuoteResponse**](GetQuoteResponse.md)
+[**QuoteResponse**](QuoteResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
