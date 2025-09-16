@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StateNo** | **string** |  | 
+**StateNo** | Pointer to **string** |  | [optional] 
 **False** | Pointer to **string** |  | [optional] 
-**Name** | **string** |  | 
+**Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCity
 
-`func NewCity(stateNo string, name string, ) *City`
+`func NewCity() *City`
 
 NewCity instantiates a new City object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetStateNo sets StateNo field to given value.
 
+### HasStateNo
+
+`func (o *City) HasStateNo() bool`
+
+HasStateNo returns a boolean if a field has been set.
 
 ### GetFalse
 
@@ -91,6 +96,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *City) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

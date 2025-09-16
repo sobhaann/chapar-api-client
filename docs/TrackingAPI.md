@@ -5,8 +5,8 @@ All URIs are relative to *https://app.krch.ir/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**BulkHistoryReportPost**](TrackingAPI.md#BulkHistoryReportPost) | **Post** /bulk_history_report | Get a bulk history report
-[**HistoryReportPost**](TrackingAPI.md#HistoryReportPost) | **Post** /history_report | Get a history report for shipments
-[**TrackingPost**](TrackingAPI.md#TrackingPost) | **Post** /tracking | Track shipments by reference
+[**HistoryReportPost**](TrackingAPI.md#HistoryReportPost) | **Post** /history_report | Get a history report
+[**TrackingPost**](TrackingAPI.md#TrackingPost) | **Post** /tracking | Track a shipment
 
 
 
@@ -15,8 +15,6 @@ Method | HTTP request | Description
 > BulkHistoryReportResponse BulkHistoryReportPost(ctx).Input(input).Execute()
 
 Get a bulk history report
-
-
 
 ### Example
 
@@ -31,7 +29,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the bulk history report request.
+	input := "{"user":{"username":"test","password":"1234"},"bulk":["54100003992527101","54100003942527101"]}" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -56,7 +54,7 @@ Other parameters are passed through a pointer to a apiBulkHistoryReportPostReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the bulk history report request. | 
+ **input** | **string** |  | 
 
 ### Return type
 
@@ -64,11 +62,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -80,9 +78,7 @@ Name | Type | Description  | Notes
 
 > HistoryReportResponse HistoryReportPost(ctx).Input(input).Execute()
 
-Get a history report for shipments
-
-
+Get a history report
 
 ### Example
 
@@ -97,7 +93,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the history report request.
+	input := "{"user":{"username":"test","password":"1234"},"date":{"from":"25-09-2017","to":"10-10-2017"},"maximum_records":10}" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -122,7 +118,7 @@ Other parameters are passed through a pointer to a apiHistoryReportPostRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the history report request. | 
+ **input** | **string** |  | 
 
 ### Return type
 
@@ -130,11 +126,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -144,11 +140,9 @@ Name | Type | Description  | Notes
 
 ## TrackingPost
 
-> BulkImportPost200Response TrackingPost(ctx).Input(input).Execute()
+> TrackingResponse TrackingPost(ctx).Input(input).Execute()
 
-Track shipments by reference
-
-
+Track a shipment
 
 ### Example
 
@@ -163,7 +157,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the tracking request.
+	input := "{"order":{"reference":"54100003225544101","lang":"fa"}}" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -172,7 +166,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TrackingAPI.TrackingPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TrackingPost`: BulkImportPost200Response
+	// response from `TrackingPost`: TrackingResponse
 	fmt.Fprintf(os.Stdout, "Response from `TrackingAPI.TrackingPost`: %v\n", resp)
 }
 ```
@@ -188,19 +182,19 @@ Other parameters are passed through a pointer to a apiTrackingPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the tracking request. | 
+ **input** | **string** |  | 
 
 ### Return type
 
-[**BulkImportPost200Response**](BulkImportPost200Response.md)
+[**TrackingResponse**](TrackingResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

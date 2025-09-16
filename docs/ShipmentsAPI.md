@@ -4,18 +4,16 @@ All URIs are relative to *https://app.krch.ir/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BulkImportPost**](ShipmentsAPI.md#BulkImportPost) | **Post** /bulk_import | Import multiple shipments at once
+[**BulkImportPost**](ShipmentsAPI.md#BulkImportPost) | **Post** /bulk_import | Import shipments in bulk
 [**CancelPickupPost**](ShipmentsAPI.md#CancelPickupPost) | **Post** /cancel_pickup | Cancel a scheduled pickup
 
 
 
 ## BulkImportPost
 
-> BulkImportPost200Response BulkImportPost(ctx).Input(input).Signature(signature).Execute()
+> BulkImportResponse BulkImportPost(ctx).BulkImportRequest(bulkImportRequest).Execute()
 
-Import multiple shipments at once
-
-
+Import shipments in bulk
 
 ### Example
 
@@ -30,17 +28,16 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the bulk import request.
-	signature := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	bulkImportRequest := *openapiclient.NewBulkImportRequest() // BulkImportRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ShipmentsAPI.BulkImportPost(context.Background()).Input(input).Signature(signature).Execute()
+	resp, r, err := apiClient.ShipmentsAPI.BulkImportPost(context.Background()).BulkImportRequest(bulkImportRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ShipmentsAPI.BulkImportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BulkImportPost`: BulkImportPost200Response
+	// response from `BulkImportPost`: BulkImportResponse
 	fmt.Fprintf(os.Stdout, "Response from `ShipmentsAPI.BulkImportPost`: %v\n", resp)
 }
 ```
@@ -56,20 +53,19 @@ Other parameters are passed through a pointer to a apiBulkImportPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the bulk import request. | 
- **signature** | ***os.File** |  | 
+ **bulkImportRequest** | [**BulkImportRequest**](BulkImportRequest.md) |  | 
 
 ### Return type
 
-[**BulkImportPost200Response**](BulkImportPost200Response.md)
+[**BulkImportResponse**](BulkImportResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -79,11 +75,9 @@ Name | Type | Description  | Notes
 
 ## CancelPickupPost
 
-> BulkImportPost200Response CancelPickupPost(ctx).Input(input).Execute()
+> GetStateResponse CancelPickupPost(ctx).Input(input).Execute()
 
 Cancel a scheduled pickup
-
-
 
 ### Example
 
@@ -98,7 +92,7 @@ import (
 )
 
 func main() {
-	input := "input_example" // string | A stringified JSON object for the cancel pickup request.
+	input := "{"user":{"username":"test","password":"1234"},"consignment_no":"54100004430041101","reason":"آزمایشی"}" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -107,7 +101,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ShipmentsAPI.CancelPickupPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelPickupPost`: BulkImportPost200Response
+	// response from `CancelPickupPost`: GetStateResponse
 	fmt.Fprintf(os.Stdout, "Response from `ShipmentsAPI.CancelPickupPost`: %v\n", resp)
 }
 ```
@@ -123,19 +117,19 @@ Other parameters are passed through a pointer to a apiCancelPickupPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | **string** | A stringified JSON object for the cancel pickup request. | 
+ **input** | **string** |  | 
 
 ### Return type
 
-[**BulkImportPost200Response**](BulkImportPost200Response.md)
+[**GetStateResponse**](GetStateResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

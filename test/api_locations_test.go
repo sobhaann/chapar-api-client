@@ -34,16 +34,4 @@ func Test_chapar_LocationsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test LocationsAPIService GetStateGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.LocationsAPI.GetStateGet(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }
