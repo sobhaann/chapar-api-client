@@ -5,17 +5,15 @@ All URIs are relative to *https://app.krch.ir/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetCityPost**](LocationsAPI.md#GetCityPost) | **Post** /get_city | Get list of cities for a state
-[**GetStateGet**](LocationsAPI.md#GetStateGet) | **Get** /get_state | Get list of states
+[**GetStateGet**](LocationsAPI.md#GetStateGet) | **Get** /get_state | Get list of all states
 
 
 
 ## GetCityPost
 
-> GetCityPost200Response GetCityPost(ctx).Input(input).Execute()
+> GetCityResponse GetCityPost(ctx).Input(input).Execute()
 
 Get list of cities for a state
-
-
 
 ### Example
 
@@ -39,7 +37,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `LocationsAPI.GetCityPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCityPost`: GetCityPost200Response
+	// response from `GetCityPost`: GetCityResponse
 	fmt.Fprintf(os.Stdout, "Response from `LocationsAPI.GetCityPost`: %v\n", resp)
 }
 ```
@@ -59,11 +57,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCityPost200Response**](GetCityPost200Response.md)
+[**GetCityResponse**](GetCityResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -77,11 +75,9 @@ No authorization required
 
 ## GetStateGet
 
-> GetStateGet200Response GetStateGet(ctx).Execute()
+> GetStateResponse GetStateGet(ctx).Execute()
 
-Get list of states
-
-
+Get list of all states
 
 ### Example
 
@@ -104,7 +100,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `LocationsAPI.GetStateGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetStateGet`: GetStateGet200Response
+	// response from `GetStateGet`: GetStateResponse
 	fmt.Fprintf(os.Stdout, "Response from `LocationsAPI.GetStateGet`: %v\n", resp)
 }
 ```
@@ -120,7 +116,7 @@ Other parameters are passed through a pointer to a apiGetStateGetRequest struct 
 
 ### Return type
 
-[**GetStateGet200Response**](GetStateGet200Response.md)
+[**GetStateResponse**](GetStateResponse.md)
 
 ### Authorization
 

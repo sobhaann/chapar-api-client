@@ -11,11 +11,9 @@ Method | HTTP request | Description
 
 ## BulkImportPost
 
-> BulkImportPost200Response BulkImportPost(ctx).Input(input).Signature(signature).Execute()
+> BulkImportResponse BulkImportPost(ctx).Input(input).Signature(signature).Execute()
 
 Import multiple shipments at once
-
-
 
 ### Example
 
@@ -40,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ShipmentsAPI.BulkImportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BulkImportPost`: BulkImportPost200Response
+	// response from `BulkImportPost`: BulkImportResponse
 	fmt.Fprintf(os.Stdout, "Response from `ShipmentsAPI.BulkImportPost`: %v\n", resp)
 }
 ```
@@ -61,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkImportPost200Response**](BulkImportPost200Response.md)
+[**BulkImportResponse**](BulkImportResponse.md)
 
 ### Authorization
 
@@ -79,11 +77,9 @@ Name | Type | Description  | Notes
 
 ## CancelPickupPost
 
-> BulkImportPost200Response CancelPickupPost(ctx).Input(input).Execute()
+> GenericResponse CancelPickupPost(ctx).Input(input).Execute()
 
 Cancel a scheduled pickup
-
-
 
 ### Example
 
@@ -107,7 +103,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ShipmentsAPI.CancelPickupPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelPickupPost`: BulkImportPost200Response
+	// response from `CancelPickupPost`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `ShipmentsAPI.CancelPickupPost`: %v\n", resp)
 }
 ```
@@ -127,11 +123,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkImportPost200Response**](BulkImportPost200Response.md)
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

@@ -12,11 +12,9 @@ Method | HTTP request | Description
 
 ## BulkHistoryReportPost
 
-> BulkHistoryReportPost200Response BulkHistoryReportPost(ctx).Input(input).Execute()
+> BulkHistoryReportResponse BulkHistoryReportPost(ctx).Input(input).Execute()
 
 Get a bulk history report
-
-
 
 ### Example
 
@@ -40,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TrackingAPI.BulkHistoryReportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BulkHistoryReportPost`: BulkHistoryReportPost200Response
+	// response from `BulkHistoryReportPost`: BulkHistoryReportResponse
 	fmt.Fprintf(os.Stdout, "Response from `TrackingAPI.BulkHistoryReportPost`: %v\n", resp)
 }
 ```
@@ -60,11 +58,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkHistoryReportPost200Response**](BulkHistoryReportPost200Response.md)
+[**BulkHistoryReportResponse**](BulkHistoryReportResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -78,11 +76,9 @@ No authorization required
 
 ## HistoryReportPost
 
-> HistoryReportPost200Response HistoryReportPost(ctx).Input(input).Execute()
+> HistoryReportResponse HistoryReportPost(ctx).Input(input).Execute()
 
 Get a history report for shipments
-
-
 
 ### Example
 
@@ -106,7 +102,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TrackingAPI.HistoryReportPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HistoryReportPost`: HistoryReportPost200Response
+	// response from `HistoryReportPost`: HistoryReportResponse
 	fmt.Fprintf(os.Stdout, "Response from `TrackingAPI.HistoryReportPost`: %v\n", resp)
 }
 ```
@@ -126,11 +122,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoryReportPost200Response**](HistoryReportPost200Response.md)
+[**HistoryReportResponse**](HistoryReportResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -144,11 +140,9 @@ No authorization required
 
 ## TrackingPost
 
-> BulkImportPost200Response TrackingPost(ctx).Input(input).Execute()
+> TrackingResponse TrackingPost(ctx).Input(input).Execute()
 
 Track shipments by reference
-
-
 
 ### Example
 
@@ -172,7 +166,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TrackingAPI.TrackingPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TrackingPost`: BulkImportPost200Response
+	// response from `TrackingPost`: TrackingResponse
 	fmt.Fprintf(os.Stdout, "Response from `TrackingAPI.TrackingPost`: %v\n", resp)
 }
 ```
@@ -192,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkImportPost200Response**](BulkImportPost200Response.md)
+[**TrackingResponse**](TrackingResponse.md)
 
 ### Authorization
 
